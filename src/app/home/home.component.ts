@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Account } from '../interfaces/account.model'; // Import the Account interface
-import { AccountService } from '../services/account.service';
+import { Firm, Account } from '../interfaces/finance.model'; // Import the Account interface
+import { AccountService } from '../services/financial.service';
 
 @Component({
   selector: 'app-home',
@@ -10,17 +10,18 @@ import { AccountService } from '../services/account.service';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  accounts: Account[] = [];
+  // accounts: Account[] = [];
+  firms: Firm[] = [];
 
   constructor(private accountService: AccountService) {}
 
   async ngOnInit() {
     try {
-      const accounts = this.accountService.getAllAccounts();
-      this.accounts = accounts;
-      console.log('Accounts fetched:', accounts);
+      const generatedFirms = this.accountService.generateDemoFirms();
+      this.firms = generatedFirms;
+      console.log('Firms fetched:', this.firms);
     } catch (error) {
-      console.error('Error fetching accounts:', error);
+      console.error('Error fetching firms:', error);
     }
   }
 }
