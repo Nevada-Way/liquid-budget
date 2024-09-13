@@ -39,11 +39,11 @@ export class AccountService {
 
     //Populat the firm's accounts property with its correct accounts (using list of account ids)
     const accounts: Account[] = this.fetchAccountsByIds(accountIds);
-    console.log('Mason: getFirmWithAccounts.accountIds =', accountIds);
-    console.log(
-      'Mason: getFirmWithAccounts.fetchAccountsByIds.accounts =',
-      accounts
-    );
+    // console.log('Mason: getFirmWithAccounts.accountIds =', accountIds);
+    // console.log(
+    //   'Mason: getFirmWithAccounts.fetchAccountsByIds.accounts =',
+    //   accounts
+    // );
     // Filter accounts to only include those with matching IDs
     const filteredAccounts = accounts.filter((account) =>
       accountIds.includes(account.id)
@@ -62,6 +62,7 @@ export class AccountService {
     const emptyFirm: Firm = {
       name: '',
       id: '',
+      percentFromTotalFirms: 0,
       type: '',
       accounts: [],
     };
@@ -102,18 +103,21 @@ export class AccountService {
       {
         name: 'Bank-1',
         id: 'FIRM-1',
+        percentFromTotalFirms: 0.35,
         type: 'Investment Firm',
         accounts: [],
       },
       {
         name: 'IBI',
         id: 'FIRM-2',
+        percentFromTotalFirms: 0.35,
         type: 'Financial Institution',
         accounts: [],
       },
       {
         name: 'Meitav',
         id: 'FIRM-3',
+        percentFromTotalFirms: 0.3,
         type: 'Brokerage',
         accounts: [],
       },
@@ -126,9 +130,10 @@ export class AccountService {
       {
         name: 'My First Account',
         id: 'ACCT-1',
+        percentFromAllFirmAccounts: 0.35,
         type: 'Stock',
         comment: 'My first investment account',
-        amount: 1000.0,
+        unitAmount: 1000.0,
         currency: 'USD',
         unitValue: 50.0,
         maturity: 'Tue Aug 13 2024 16:01:46 GMT-0700 Pacific Daylight Time',
@@ -136,9 +141,10 @@ export class AccountService {
       {
         name: 'My Second Account',
         id: 'ACCT-2',
+        percentFromAllFirmAccounts: 0.35,
         type: 'Bond',
         comment: 'My second investment account',
-        amount: 2000.0,
+        unitAmount: 2000.0,
         currency: 'EUR',
         unitValue: 100.0,
         maturity: 'Wed Aug 14 2024 17:02:47 GMT-0700 Pacific Daylight Time',
@@ -146,9 +152,10 @@ export class AccountService {
       {
         name: 'My Third Account',
         id: 'ACCT-3',
+        percentFromAllFirmAccounts: 0.35,
         type: 'MoneyFund',
         comment: 'My third investment account',
-        amount: 3000.0,
+        unitAmount: 3000.0,
         currency: 'GBP',
         unitValue: 150.0,
         maturity: 'Thu Aug 15 2024 18:03:48 GMT-0700 Pacific Daylight Time',
@@ -156,9 +163,10 @@ export class AccountService {
       {
         name: 'My Fourth Account',
         id: 'ACCT-4',
+        percentFromAllFirmAccounts: 0.35,
         type: 'Cash',
         comment: 'My fourth investment account',
-        amount: 4000.0,
+        unitAmount: 4000.0,
         currency: 'CAD',
         unitValue: 200.0,
         maturity: 'Fri Aug 16 2024 19:04:49 GMT-0700 Pacific Daylight Time',
@@ -167,9 +175,10 @@ export class AccountService {
       {
         name: '436',
         id: 'ACCT-5',
+        percentFromAllFirmAccounts: 0.35,
         type: 'Stock',
         comment: 'My first investment account',
-        amount: 1000.0,
+        unitAmount: 1000.0,
         currency: 'USD',
         unitValue: 50.0,
         maturity: 'Tue Aug 13 2024 16:01:46 GMT-0700 Pacific Daylight Time',
@@ -177,9 +186,10 @@ export class AccountService {
       {
         name: '437',
         id: 'ACCT-6',
+        percentFromAllFirmAccounts: 0.35,
         type: 'Bond',
         comment: 'My second investment account',
-        amount: 2000.0,
+        unitAmount: 2000.0,
         currency: 'EUR',
         unitValue: 100.0,
         maturity: 'Wed Aug 14 2024 17:02:47 GMT-0700 Pacific Daylight Time',
@@ -187,9 +197,10 @@ export class AccountService {
       {
         name: '438',
         id: 'ACCT-7',
+        percentFromAllFirmAccounts: 0.35,
         type: 'MoneyFund',
         comment: 'My third investment account',
-        amount: 3000.0,
+        unitAmount: 3000.0,
         currency: 'GBP',
         unitValue: 150.0,
         maturity: 'Thu Aug 15 2024 18:03:48 GMT-0700 Pacific Daylight Time',
@@ -197,9 +208,10 @@ export class AccountService {
       {
         name: '439',
         id: 'ACCT-8',
+        percentFromAllFirmAccounts: 0.35,
         type: 'Cash',
         comment: 'My fourth investment account',
-        amount: 4000.0,
+        unitAmount: 4000.0,
         currency: 'CAD',
         unitValue: 200.0,
         maturity: 'Fri Aug 16 2024 19:04:49 GMT-0700 Pacific Daylight Time',
