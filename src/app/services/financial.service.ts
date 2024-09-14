@@ -13,20 +13,26 @@ export class FinancialService {
     var demoFirmData: Firm[];
 
     const firm1Data: Firm = this.getFirmWithAccounts('FIRM-1', [
-      'ACCT-1',
-      'ACCT-2',
-      'ACCT-3',
+      'OTS-ACCT-1',
+      'OTS-ACCT-2',
+      'OTS-ACCT-3',
+      'OTS-ACCT-4',
     ]);
     console.log(firm1Data);
 
     const firm2Data: Firm = this.getFirmWithAccounts('FIRM-2', [
-      'ACCT-4',
-      'ACCT-5',
-      'ACCT-6',
+      'IBI-ACCT-1',
+      'IBI-ACCT-2',
+      'IBI-ACCT-3',
+      'IBI-ACCT-4',
+      'IBI-ACCT-5',
+      'IBI-ACCT-6',
     ]);
     const firm3Data: Firm = this.getFirmWithAccounts('FIRM-3', [
-      'ACCT-7',
-      'ACCT-8',
+      'MTV-ACCT-1',
+      'MTV-ACCT-2',
+      'MTV-ACCT-3',
+      'MTV-ACCT-4',
     ]);
 
     // demoFirmData =
