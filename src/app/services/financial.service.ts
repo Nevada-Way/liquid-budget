@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Account, Firm } from '../interfaces/finance.model';
+import { HardcodedDataService } from './hardcoded-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AccountService {
-  constructor() {}
+export class FinancialService {
+  constructor(private HardcodedDataService: HardcodedDataService) {}
 
   generateDemoFirms(): Firm[] {
     // const demoFirmData: Firm[] = [];
@@ -63,11 +64,12 @@ export class AccountService {
       name: '',
       id: '',
       percentFromTotalFirms: 0,
+      actualValueFirmTotal: 0,
       type: '',
       accounts: [],
     };
 
-    const firms: Firm[] = this.getALlFirms();
+    const firms: Firm[] = this.HardcodedDataService.getALlFirms();
 
     const foundFirm = firms.find((firm) => firm.id === firmId);
 
@@ -79,7 +81,7 @@ export class AccountService {
   }
 
   fetchAccountsByIds(accountIds: string[]): Account[] {
-    const allAccounts: Account[] = this.getAllAccounts();
+    const allAccounts: Account[] = this.HardcodedDataService.getAllAccounts();
     //const selectedAccounts: Account[] = [];
 
     allAccounts.filter((account) => accountIds.includes(account.id));
@@ -87,137 +89,23 @@ export class AccountService {
     return allAccounts;
   }
 
-  //////////////////////////////////////////////////////
-  ///// HARD CODED DATA  /////////////////////////////////////////////////
-  //////////////////////////////////////////////////////
+  convertDataToActualValues(
+    originalFirms: Firm[],
+    totalFirmsValue: number
+  ): Firm[] {
+    // Mapping actual values of the firms total
+    const actualValueFirms: Firm[] = originalFirms.map((firm) => ({
+      ...firm,
+      actualValueFirmTotal: firm.percentFromTotalFirms * totalFirmsValue,
+    }));
 
-  /**
-   *
-   * These hard coded 'firm' array items dont have accounts associated with them
-   * To get a firm object with specific accounts need to
-   *  call getFirmWithAccounts(firm-id , array-of-account-ids)
-   * @returns Firm[] an array of firms with hardcoded property valuee
-   */
-  getALlFirms(): Firm[] {
-    const allFirms: Firm[] = [
-      {
-        name: 'Bank-1',
-        id: 'FIRM-1',
-        percentFromTotalFirms: 0.35,
-        type: 'Investment Firm',
-        accounts: [],
-      },
-      {
-        name: 'IBI',
-        id: 'FIRM-2',
-        percentFromTotalFirms: 0.35,
-        type: 'Financial Institution',
-        accounts: [],
-      },
-      {
-        name: 'Meitav',
-        id: 'FIRM-3',
-        percentFromTotalFirms: 0.3,
-        type: 'Brokerage',
-        accounts: [],
-      },
-    ];
-    return allFirms;
-  }
-
-  getAllAccounts(): Account[] {
-    const allAccounts: Account[] = [
-      {
-        name: 'My First Account',
-        id: 'ACCT-1',
-        percentFromAllFirmAccounts: 0.35,
-        type: 'Stock',
-        comment: 'My first investment account',
-        unitAmount: 1000.0,
-        currency: 'USD',
-        unitValue: 50.0,
-        maturity: 'Tue Aug 13 2024 16:01:46 GMT-0700 Pacific Daylight Time',
-      },
-      {
-        name: 'My Second Account',
-        id: 'ACCT-2',
-        percentFromAllFirmAccounts: 0.35,
-        type: 'Bond',
-        comment: 'My second investment account',
-        unitAmount: 2000.0,
-        currency: 'EUR',
-        unitValue: 100.0,
-        maturity: 'Wed Aug 14 2024 17:02:47 GMT-0700 Pacific Daylight Time',
-      },
-      {
-        name: 'My Third Account',
-        id: 'ACCT-3',
-        percentFromAllFirmAccounts: 0.35,
-        type: 'MoneyFund',
-        comment: 'My third investment account',
-        unitAmount: 3000.0,
-        currency: 'GBP',
-        unitValue: 150.0,
-        maturity: 'Thu Aug 15 2024 18:03:48 GMT-0700 Pacific Daylight Time',
-      },
-      {
-        name: 'My Fourth Account',
-        id: 'ACCT-4',
-        percentFromAllFirmAccounts: 0.35,
-        type: 'Cash',
-        comment: 'My fourth investment account',
-        unitAmount: 4000.0,
-        currency: 'CAD',
-        unitValue: 200.0,
-        maturity: 'Fri Aug 16 2024 19:04:49 GMT-0700 Pacific Daylight Time',
-      },
-      ////////////////////////
-      {
-        name: '436',
-        id: 'ACCT-5',
-        percentFromAllFirmAccounts: 0.35,
-        type: 'Stock',
-        comment: 'My first investment account',
-        unitAmount: 1000.0,
-        currency: 'USD',
-        unitValue: 50.0,
-        maturity: 'Tue Aug 13 2024 16:01:46 GMT-0700 Pacific Daylight Time',
-      },
-      {
-        name: '437',
-        id: 'ACCT-6',
-        percentFromAllFirmAccounts: 0.35,
-        type: 'Bond',
-        comment: 'My second investment account',
-        unitAmount: 2000.0,
-        currency: 'EUR',
-        unitValue: 100.0,
-        maturity: 'Wed Aug 14 2024 17:02:47 GMT-0700 Pacific Daylight Time',
-      },
-      {
-        name: '438',
-        id: 'ACCT-7',
-        percentFromAllFirmAccounts: 0.35,
-        type: 'MoneyFund',
-        comment: 'My third investment account',
-        unitAmount: 3000.0,
-        currency: 'GBP',
-        unitValue: 150.0,
-        maturity: 'Thu Aug 15 2024 18:03:48 GMT-0700 Pacific Daylight Time',
-      },
-      {
-        name: '439',
-        id: 'ACCT-8',
-        percentFromAllFirmAccounts: 0.35,
-        type: 'Cash',
-        comment: 'My fourth investment account',
-        unitAmount: 4000.0,
-        currency: 'CAD',
-        unitValue: 200.0,
-        maturity: 'Fri Aug 16 2024 19:04:49 GMT-0700 Pacific Daylight Time',
-      },
-    ];
-
-    return allAccounts;
+    // Mapping the actual values of each account in the firm
+    actualValueFirms.forEach((firm) => {
+      firm.accounts.forEach((account) => {
+        account.actualValueAccountTotal =
+          account.percentFromAllFirmAccounts * firm.actualValueFirmTotal;
+      });
+    });
+    return actualValueFirms;
   }
 }

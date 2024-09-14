@@ -1,15 +1,3 @@
-export interface Account {
-  name: string;
-  id: string;
-  type: string;
-  comment: string;
-  currency: string;
-  unitAmount: number;
-  unitValue: number;
-  percentFromAllFirmAccounts: number;
-  maturity: string;
-}
-
 export interface Firm {
   name: string;
   id: string;
@@ -20,4 +8,18 @@ export interface Firm {
   // So instead we use %, when the user inputs the total value of all firms, then the actual total of each firm
   // can be calculated
   // Only knowing the total of all assets will give the real value.
+  actualValueFirmTotal: number; // This is the actual value of the sum in the firm, it can be used to store
+  // the calculated value based on the % and the total of all the firms
+}
+export interface Account {
+  name: string;
+  id: string;
+  type: string;
+  comment: string;
+  currency: string;
+  unitAmount: number;
+  unitValue: number;
+  percentFromAllFirmAccounts: number;
+  actualValueAccountTotal: number;
+  maturity: string;
 }

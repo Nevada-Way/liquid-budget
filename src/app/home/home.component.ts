@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Firm, Account } from '../interfaces/finance.model'; // Import the Account interface
-import { AccountService } from '../services/financial.service';
+import { FinancialService } from '../services/financial.service';
 
 @Component({
   selector: 'app-home',
@@ -11,15 +11,21 @@ import { AccountService } from '../services/financial.service';
 })
 export class HomeComponent implements OnInit {
   // accounts: Account[] = [];
-  // firms: Firm[] = [];
+  firms: Firm[] = [];
 
-  constructor(private accountService: AccountService) {}
+  constructor(private FinancialService: FinancialService) {}
 
   async ngOnInit() {
     try {
-      const generatedFirms: Firm[] = this.accountService.generateDemoFirms();
-      // this.firms = generatedFirms;
+      const generatedFirms: Firm[] = this.FinancialService.generateDemoFirms();
       console.log('Firms fetched:', generatedFirms);
+
+      this.firms = this.FinancialService.convertDataToActualValues(
+        generatedFirms,
+        100
+      );
+
+      console.log('Actual value firms:', this.firms);
     } catch (error) {
       console.error('Error fetching firms:', error);
     }
