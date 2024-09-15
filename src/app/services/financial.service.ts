@@ -102,14 +102,16 @@ export class FinancialService {
     // Mapping actual values of the firms total
     const actualValueFirms: Firm[] = originalFirms.map((firm) => ({
       ...firm,
-      actualValueFirmTotal: firm.percentFromTotalFirms * totalFirmsValue,
+      actualValueFirmTotal:
+        (firm.percentFromTotalFirms / 100) * totalFirmsValue,
     }));
 
     // Mapping the actual values of each account in the firm
     actualValueFirms.forEach((firm) => {
       firm.accounts.forEach((account) => {
         account.actualValueAccountTotal =
-          account.percentFromAllFirmAccounts * firm.actualValueFirmTotal;
+          (account.percentFromAllFirmAccounts / 100) *
+          firm.actualValueFirmTotal;
       });
     });
     return actualValueFirms;

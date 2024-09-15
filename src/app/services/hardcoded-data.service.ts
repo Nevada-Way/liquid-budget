@@ -23,7 +23,7 @@ export class HardcodedDataService {
       {
         name: 'OTSAR',
         id: 'FIRM-1',
-        percentFromTotalFirms: 0.35,
+        percentFromTotalFirms: 28.55,
         actualValueFirmTotal: 0,
         type: 'Investment Firm',
         accounts: [],
@@ -31,7 +31,7 @@ export class HardcodedDataService {
       {
         name: 'IBI',
         id: 'FIRM-2',
-        percentFromTotalFirms: 0.35,
+        percentFromTotalFirms: 43.71,
         actualValueFirmTotal: 0,
         type: 'Financial Institution',
         accounts: [],
@@ -39,7 +39,7 @@ export class HardcodedDataService {
       {
         name: 'MEITAV',
         id: 'FIRM-3',
-        percentFromTotalFirms: 0.3,
+        percentFromTotalFirms: 27.74,
         actualValueFirmTotal: 0,
         type: 'Brokerage',
         accounts: [],
@@ -53,7 +53,7 @@ export class HardcodedDataService {
       {
         name: 'Money Fund',
         id: 'OTS-ACCT-1',
-        percentFromAllFirmAccounts: 0.2486,
+        percentFromAllFirmAccounts: 24.86,
         actualValueAccountTotal: 0,
         type: 'MoneyFund',
         comment: 'A money fund for inflation protection',
@@ -65,7 +65,7 @@ export class HardcodedDataService {
       {
         name: 'Gov bond',
         id: 'OTS-ACCT-2',
-        percentFromAllFirmAccounts: 0.1412,
+        percentFromAllFirmAccounts: 14.12,
         actualValueAccountTotal: 0,
         type: 'Bond',
         comment: 'My second investment account',
@@ -77,7 +77,7 @@ export class HardcodedDataService {
       {
         name: 'Savings',
         id: 'OTS-ACCT-3',
-        percentFromAllFirmAccounts: 0.339,
+        percentFromAllFirmAccounts: 33.9,
         actualValueAccountTotal: 0,
         type: 'Savings',
         comment: 'My third investment account',
@@ -89,7 +89,7 @@ export class HardcodedDataService {
       {
         name: 'USD Pakam',
         id: 'OTS-ACCT-4',
-        percentFromAllFirmAccounts: 0.2712,
+        percentFromAllFirmAccounts: 27.12,
         actualValueAccountTotal: 0,
         type: 'Cash',
         comment: 'USD 1 year Pakam translated to NIS',
@@ -103,7 +103,7 @@ export class HardcodedDataService {
       {
         name: 'Just Cash',
         id: 'IBI-ACCT-1',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 0.37,
         actualValueAccountTotal: 0,
         type: 'Cash',
         comment: 'Intermediate flow',
@@ -115,7 +115,7 @@ export class HardcodedDataService {
       {
         name: 'Gov-changing-intreset',
         id: 'IBI-ACCT-2',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 31.37,
         actualValueAccountTotal: 0,
         type: 'Bond',
         comment: 'My second investment account',
@@ -127,7 +127,7 @@ export class HardcodedDataService {
       {
         name: 'Treas-3-Month-Bill',
         id: 'IBI-ACCT-3',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 9.96,
         actualValueAccountTotal: 0,
         type: 'Bond',
         comment: 'My second investment account',
@@ -139,7 +139,7 @@ export class HardcodedDataService {
       {
         name: 'Treas-4.25',
         id: 'IBI-ACCT-4',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 21.03,
         actualValueAccountTotal: 0,
         type: 'Bond',
         comment: 'My second investment account',
@@ -151,7 +151,7 @@ export class HardcodedDataService {
       {
         name: 'Treas-3.75',
         id: 'IBI-ACCT-5',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 36.16,
         actualValueAccountTotal: 0,
         type: 'Bond',
         comment: 'My second investment account',
@@ -163,7 +163,7 @@ export class HardcodedDataService {
       {
         name: 'VOO-ETF',
         id: 'IBI-ACCT-6',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 1.11,
         actualValueAccountTotal: 0,
         type: 'ETF',
         comment: 'My second investment account',
@@ -177,7 +177,7 @@ export class HardcodedDataService {
       {
         name: 'Just cash',
         id: 'MTV-ACCT-1',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 1.16,
         actualValueAccountTotal: 0,
         type: 'Cash',
         comment: 'Sitting cash for maintenance',
@@ -189,7 +189,7 @@ export class HardcodedDataService {
       {
         name: 'Gov-Fixed-Intrest 1026',
         id: 'MTV-ACCT-2',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 14.53,
         actualValueAccountTotal: 0,
         type: 'Bond',
         comment: 'My fourth investment account',
@@ -201,7 +201,7 @@ export class HardcodedDataService {
       {
         name: 'Treas-3.25',
         id: 'MTV-ACCT-3',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 51.16,
         actualValueAccountTotal: 0,
         type: 'Bond',
         comment: 'bla bla',
@@ -213,7 +213,7 @@ export class HardcodedDataService {
       {
         name: 'Treas-Oct-2024',
         id: 'MTV-ACCT-4',
-        percentFromAllFirmAccounts: 0.35,
+        percentFromAllFirmAccounts: 33.14,
         actualValueAccountTotal: 0,
         type: 'Bond',
         comment: 'Short term (few months) bond',
