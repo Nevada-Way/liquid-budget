@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Firm, Account } from '../interfaces/finance.model'; // Import the Account interface
 import { FinancialService } from '../services/financial.service';
+import { AssetsTableComponent } from '../assets-table/assets-table.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [AssetsTableComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
