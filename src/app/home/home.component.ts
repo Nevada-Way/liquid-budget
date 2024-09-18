@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Firm, Account } from '../interfaces/finance.model'; // Import the Account interface
+import { Component, OnInit, Output } from '@angular/core';
+import { Firm, DataDemo } from '../interfaces/finance.model'; // Import the Account interface
 import { FinancialService } from '../services/financial.service';
 import { AssetsTableComponent } from '../assets-table/assets-table.component';
 
@@ -11,10 +11,24 @@ import { AssetsTableComponent } from '../assets-table/assets-table.component';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  // accounts: Account[] = [];
   firms: Firm[] = [];
 
   constructor(private FinancialService: FinancialService) {}
+
+  myParentData: DataDemo[] = [
+    {
+      id: 1,
+      name: 'aaa',
+    },
+    {
+      id: 2,
+      name: '======',
+    },
+    {
+      id: 3,
+      name: 'ccc',
+    },
+  ];
 
   async ngOnInit() {
     try {
@@ -26,9 +40,9 @@ export class HomeComponent implements OnInit {
         620000
       );
 
-      console.log('Actual value firms:', this.firms);
+      //console.log('Actual value firms:', this.firms);
     } catch (error) {
-      console.error('Error fetching firms:', error);
+      //console.error('Error fetching firms:', error);
     }
   }
 }

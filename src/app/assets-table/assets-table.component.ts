@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
+import { DataDemo, Firm } from '../interfaces/finance.model';
 
 @Component({
   selector: 'app-assets-table',
@@ -9,20 +10,8 @@ import { MatTableModule } from '@angular/material/table';
   styleUrl: './assets-table.component.css',
 })
 export class AssetsTableComponent {
-  dataSource = [
-    {
-      id: 1,
-      name: 'aaa',
-    },
-    {
-      id: 2,
-      name: 'bbb',
-    },
-    {
-      id: 3,
-      name: 'ccc',
-    },
-  ];
+  //@Input() firmsInputData: Firm[] = [];
+  @Input() myDataInput: DataDemo[] = [];
 
   displayedColumns: string[] = ['id', 'name'];
 }

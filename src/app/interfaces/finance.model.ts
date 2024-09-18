@@ -23,3 +23,8 @@ export interface Account {
   actualValueAccountTotal: number;
   maturity: string;
 }
+
+export interface DataDemo {
+  id: number;
+  name: string;
+}
