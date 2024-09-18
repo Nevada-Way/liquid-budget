@@ -10,8 +10,9 @@ import { DataDemo, Firm } from '../interfaces/finance.model';
   styleUrl: './assets-table.component.css',
 })
 export class AssetsTableComponent {
-  //@Input() firmsInputData: Firm[] = [];
-  @Input() myDataInput: DataDemo[] = [];
+  @Input() firmsDataInput: Firm[] = [];
+  // @Input() myDataInput: DataDemo[] = [];
 
+  // displayedColumns: string[] = ['id', 'name'];
   displayedColumns: string[] = ['id', 'name'];
 }

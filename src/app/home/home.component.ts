@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
 
       //console.log('Actual value firms:', this.firms);
     } catch (error) {
-      //console.error('Error fetching firms:', error);
+      console.error('Error fetching firms:', error);
     }
   }
 }
