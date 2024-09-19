@@ -1,4 +1,13 @@
 <p>home works!</p>
 
 <!-- <app-assets-table [myDataInput]="myParentData"></app-assets-table> -->
-<app-assets-table [firmsDataInput]="firms"></app-assets-table>
+
+@for (firm of firms; track firm.id) {
+<div>
+  <p>ID: {{ firm.id }}</p>
+  <p>Name: {{ firm.name }}</p>
+  <p>Total: {{ firm.actualValueFirmTotal | number : "1.0-0" }}</p>
+</div>
+<!-- <app-assets-table [firmsDataInput]="firms"></app-assets-table> -->
+<app-assets-table [accountsDataInput]="firm.accounts"></app-assets-table>
+}
