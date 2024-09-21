@@ -1,0 +1,37 @@
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid $color-grey-dark;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba($color-white, 0.15);
+  background-color: rgba($color-white, 0.8);
+  width: 32rem;
+  padding: 2rem;
+  transition: transform 300ms;
+
+  &__icon {
+    font-size: 6rem;
+    //---------------------------------------
+    // Rule for cliping text so that
+    // it is filled with background-image
+
+    background-image: linear-gradient(
+      to right,
+      $color-primary-light,
+      $color-primary-dark
+    );
+    background-clip: text;
+    color: transparent;
+  }
+
+  &__text {
+    font-size: $font-size-small;
+    text-align: center;
+  }
+
+  &:hover {
+    transform: translateY(-1.5rem) scale(1.03);
+  }
+}

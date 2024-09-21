@@ -1,0 +1,137 @@
+/* ------------ */
+/* CTA BUTTON   */
+/* ------------ */
+
+.btn {
+  &, // For a <button> element
+  &:link, // link and visited are only for <a> element
+  &:visited {
+    // This styling is for <a> and <button> elements
+    font-size: $font-size-default;
+    /* border: none; */
+    cursor: pointer;
+    padding: 1rem 4rem;
+    display: inline-block;
+    border-radius: 20rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* When we use "transition: all" then when page refreshes the element */
+    /* will animate, so better to be specific */
+    /* transition: all 0.8s; */
+    transition: transform 800ms;
+    position: relative;
+
+    // Special styling for case we use this style
+    // on a <button> element
+    border: none;
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(-0.4rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  }
+
+  &:active,
+  &:focus {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+}
+.btn--white {
+  // border: 1px $color-black solid;
+  background-color: $color-white;
+  color: $color-grey-dark;
+}
+
+.btn--green {
+  // border: 1px $color-black solid;
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  /* padding: 6rem 36rem; */
+  /* The ::after pseudo element is treated a s a child of the btn element */
+  /* So using 100% for width & height is 100% of the parent (the btn ) */
+  /* This means that this ::after element is hiding behind the btn */
+  height: 100%;
+  width: 100%;
+  border-radius: 20rem;
+
+  /* Relative to the hosting component : Shifting half the width to the right & half its height up */
+  position: absolute;
+  top: -0;
+  left: 0;
+
+  /* Relative to itself, fine tuning the centering by shifting 
+   itself (this "::after" element half its width to the right & half its height up */
+  /* transform: translate(-50%, -50%); */
+  z-index: -1;
+
+  /* This is the original state of the ::after pseudo class */
+  /* So here we need to put the transition ptroperty for btn:hover::after */
+  transition: all 1000ms;
+}
+
+/* We use this rule because we want the ::after pseudo element to be white */
+/* So the btn has its ::after and the btn--white holds the color */
+.btn--white::after {
+  background-color: $color-white;
+}
+
+.btn:hover::after {
+  transform: scale(1.5, 2);
+  /* When we want to fade something out its final state is opacity: 0; */
+  opacity: 0;
+}
+
+/* What btn-animated does is make the button appear from the bottom and move up to its restting place */
+.btn--animated {
+  /* animation name, duration, timing-function , delay*/
+  animation: moveFromBottom 900ms ease-out 1400ms;
+
+  /* The 'animation-fill-mode' property stes the beggining state of the animated property to have the values of first keyframe 
+  ( in our case 0% ) */
+  /* What this does is prevent the property from appearing on the screen
+     before the animation starts  */
+  animation-fill-mode: backwards;
+}
+
+.btn-text {
+  font-size: $font-size-default;
+  font-weight: 500;
+
+  &:link,
+  &:visited {
+    color: $color-primary-dark;
+
+    // We need to add the inline-block value because we are
+    //styling an <a> anchor.
+    // Since browsers give anchors a default display: inline then
+    // properties such as width, height, vertical padding.
+    // Since there is no vertical height for an inline style the
+    // transform: translateY(-5px); has no refrence and is ignored.
+    // So declaring the display as inline-block solves the problem
+    // the style now has hright so now the translateY will work.
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary-dark;
+    padding: 3px 6px;
+    transition: all 400ms;
+  }
+
+  &:hover {
+    background-color: $color-primary-dark;
+    color: $color-white;
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+  }
+
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+    transform: translateY(0);
+  }
+}

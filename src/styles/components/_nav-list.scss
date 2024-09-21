@@ -1,0 +1,43 @@
+.nav-list {
+  list-style: none;
+  display: flex;
+
+  // If the flecbox shrinks then the 'gap' prop is the minimum
+  // spacing that flexbox will try to maintain
+  gap: 3rem;
+
+  // To verticaly place the items in the flex box use align-items
+  align-items: center;
+
+  // For an even horizontaly spread items use justify-content
+  justify-content: space-between;
+}
+
+.nav-item {
+  display: inline-block;
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-decoration: none;
+  padding-top: 1rem;
+  // I  use this so that all lines have the
+  // same line spacing, otherwise the first line has a
+  // larger spacing then the following text lines.
+  line-height: 1;
+}
+
+.nav-item:link,
+.nav-item:visited {
+  color: $color-grey-light-1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.nav-item:hover,
+.nav-item:active {
+  color: $color-primary;
+  box-shadow: 0 1rem 2rem rgba($color-black, 0.4);
+  transform: rotate(-5deg) scale(1);
+}

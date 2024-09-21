@@ -1,0 +1,227 @@
+.form {
+  color: inherit;
+
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    // The input element does not inherit font props
+    // So it doesnt inherit color, font family, size etc..
+    color: inherit;
+    font-family: inherit;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, 0.5);
+    border: none;
+
+    // We use display: transparent to componsate for
+    // the border-bottom of the focused feild.
+    // Unless both feilds have a border-bottom of same width
+    // then the feilds will twitch when focus changes.
+    border-bottom: 3px solid transparent;
+
+    // We use display: block so that the
+    // input feild id in its own line
+    display: block;
+    width: 80%;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary;
+    }
+
+    // Only when the input feild is in
+    // focus AND invalid then use this style rule
+    &:focus:invalid {
+      border-bottom: 3px solid $color-secondary-dark;
+    }
+
+    // The '::' double colons represent a psedu element
+    // The pseudo-elemnts are things that are displayed on the page
+    // as opposd to pseudo-classe (':' singlr colon) which
+    // represent things like state (e.g. focus).
+    //
+    // Here we define a rule to style the placeholder
+    // inside the input feild.
+    // We want the placeholder text to be bold when in focus
+    // and gray when not in focus.
+    &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+  }
+
+  &__label {
+    // If we dont use display:block then
+    // the margin, padding etc will have no effect.
+    // They only work on block elements.
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-right: 0.7rem;
+    transition: all 0.3s;
+  }
+
+  // Here we make the effect where when we type into an input feild
+  // the placeholder text seems to fly out of the field and land
+  // as a label outside the field under the location it was before.
+
+  // This is done by creating an animation as follows :
+  // (1) When the placeholder is shown we hide the label.
+  //
+  // (2) When user starts typeing in field then placeholder is not shown.
+
+  // We use the sibling selector (sibling selectors are '+' , '~').
+  // We use the 'adjecent sibling selector' which is '+'.
+  //  It selects the immediate sibling after the current sibling.
+  //  Since the <input> element is the current then the next
+  //  sibling in the html is <label> so we use '+'.
+
+  // In case there were other elements between the current <input>
+  // element and our target <label> then we would have used
+  // the '~' general-sibling selector.
+
+  // The 'placeholder-shown' pseudo class applies styles only
+  // when the input element is displaying its placeholder text.
+  &__input:placeholder-shown + &__label {
+    //     How to hide the label:
+    //         (a) set visibility to hidden (this will make the label REALY gone)
+    //         (b) But we cannot animate the visibility property. We need
+    //             an opacity property to make the element animatable.
+    //             So we set opacity to 0.
+
+    visibility: hidden;
+    opacity: 0;
+
+    // To animate as to the placeholder drops down to become a label
+    // we place the hidden label above it's end position, aproximitly
+    // where the input field placeholder value is displayed.
+    //
+    transform: translateY(-4rem);
+  }
+
+  //---------------------------------------------
+  //--- R A D I O    B U T T O N    S T Y L I N G
+  //---------------------------------------------
+
+  &__radio-group {
+    width: 40%;
+    //we use display inline so that the 2 radio buttons appear side-by-side
+    display: inline-block;
+  }
+
+  &__radio-label {
+    font-size: $font-size-default;
+    cursor: pointer;
+
+    // We use this as the position relative to position the
+    // circle ring of the radio button centerd with the
+    // label text
+    position: relative;
+
+    // To space from the radio circle-ring
+    padding-left: 4.5rem;
+  }
+
+  &__radio-button {
+    // We want the radio button to be a ring-circle
+    // and alternate with an inner filled-circle.
+
+    // We first create the ring
+    // The element has to be a block element (default is inline)
+    // so that way the height+width properties can control its shape.
+    // But because value 'block' takes up the whole line we need an 'inline-block'
+    // that way we have the control on the shape and also our circle stays
+    // on the same line.
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    border-radius: 50%;
+
+    // Up to here the circle ring of the radio button is
+    // not centered with the label text of the radio button.
+    // So to position it exactly where we want we use
+    // position absolute (the relative is the parent elemnt
+    // which is the <label> tag in html which has
+    // the form__radio-label class.
+    position: absolute;
+    left: 0rem;
+    top: 0.2rem;
+
+    // This &__radio-button::after class we use the ::after pseudo
+    // class to force the browser to display the inner filled circle
+    // immediatly after the &__radio-button ( the ring circle )
+    &::after {
+      // When we use the ::after , ::before pseudo classes
+      // we must add the content property otherwise the
+      // whole rule is ignored.
+      // The value of content doesnt matter, it can be "" empty string.
+      content: "";
+      // Now we style the filled circle in the center of the radio button
+
+      // We must use display as block or inline-block so that the
+      // width and height are not ignored.
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      background-color: $color-primary;
+
+      // Now we want to position the filled circle right in the center of
+      // the ring circle.
+      // To do this we use position: absolute but notice that the
+      // the parent ( &__radio-button ) also has position: absolute.
+      //
+      // In cases where the parent is has position: absolute set , then
+      // it's already removed from the normal document flow and
+      // positioned relative to something.
+      // This means that all its children are now also removed and
+      // refrence their parent as the origin.
+      position: absolute;
+
+      // In the next 3 properties we do the trick where we position an element
+      // percisly in the center of another element.
+      // We first move the whole object 50% of its parent.
+      // But the point that was positined is one of the corners of the object.
+      // So we fix that by moving back 50% of its own width/height.
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      // We set the opacity to 0 because by default we dont want
+      // to show the radio button as checked.
+      // We will turn the opacity to 1 only when it is selected.
+      opacity: 0;
+
+      // We now add a transition for the opacity property
+      // So that when it changes from 0 to 1 we see it
+      // appear gently
+      transition: opacity 0.3s;
+    }
+  }
+
+  // Here we style the case when the radio button is clicked
+  // so only when the radio-input is checked then we want
+  // the opcity of the inner radio button to be visible ( 1 )
+
+  // To understnad the selection tree look at the HTML file.
+  // (1) We first select the radio-input in it's "checked" state
+  // (2) We choose radio-input's sibling __radio-label using
+  //     the sibling selector ( "+" is for direct sibling and
+  //     the ( "~" is for any sibling )
+  // (3) Now that we are focused on the radio-label class we
+  //    select it's child, the radio-button with it's ::after pseudo-class.
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    opacity: 1;
+  }
+
+  // The last todo for the radio button effect is to hide the
+  // browesr's default radio buttons.
+  &__radio-input {
+    display: none;
+  }
+}

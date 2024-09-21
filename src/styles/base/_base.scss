@@ -1,0 +1,29 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+
+  /* By setting to inherit each element will always inherit the box-sizing */
+  /* Since we set the body{} element style to box-sizing: border-box , all 
+    elelments will inherit this value from the body*/
+  /* This is a best practice becaus now 3rd party plugins can set the 
+     box-sizing of body to whatever value and all elements will inherit it.*/
+  box-sizing: inherit;
+}
+
+html {
+  /* To make 'rem' calc simple we want font-size = 10px*/
+  /* But we shouldnt set it to 10px because that means */
+  /*  that the browser will ignore font-size set by user     */
+  /*   in browsersettings. So we need to set value that   */
+  /*   is a % of the browser's font size. 10px / 16px = 62.5%*/
+  /*   The default is 16px we want 10px so we find the factor*/
+
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box; /* width height defined will include the padding & border */
+  border: none;
+}

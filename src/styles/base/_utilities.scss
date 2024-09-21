@@ -1,0 +1,36 @@
+// Only in the utility classes we want to use the
+// !important keyword.
+// As best practice necer use it
+// But in case of utility we want it to overide
+// anything, because we want to force the utility.
+// We want the utility to beagnostic to the
+// styling hierachy of the specific location we
+// add it to.
+
+.u-center-text {
+  text-align: center !important;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important;
+}
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important;
+}
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important;
+}
+
+.u-margin-top-big {
+  margin-top: 8rem !important;
+}
+
+.u-margin-top-huge {
+  margin-top: 10rem !important;
+}
+
+.u-container-center {
+  margin: 0 20rem !important;
+}

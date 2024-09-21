@@ -1,0 +1,86 @@
+body {
+  font-family: "Lato", sans-serif;
+
+  font-size: 1.125rem; /*Use 'rem' so font sizes are relative to the browser user's font size prefrences.*/
+
+  line-height: 1.7; /* Recommended default. 1.7 * the font-size; */
+
+  font-weight: 400; /*values 100, 200 ... 900 where normal===400*/
+
+  color: $color-grey-dark; /* $color-white is pure white and #000 is pure black so #888 is in the middle*/
+
+  padding: 3rem;
+}
+
+.heading-primary {
+  font-weight: 400;
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+.heading-primary--main {
+  display: block;
+
+  font-size: 6rem;
+  letter-spacing: 6.8rem;
+
+  animation: moveFromLeft 1000ms ease-out 400ms;
+
+  /* The 'backface-visibility' property will hide the backside of the element */
+  /* In some browsers the animation may flcker because the back side is visible */
+  /* I did not see a need for this in chrome but as good practice I use it */
+  backface-visibility: hidden;
+}
+
+.heading-primary--sub {
+  display: block;
+
+  font-size: 3.5rem;
+  letter-spacing: 2.5rem;
+  margin-bottom: 6rem;
+
+  animation: moveFromRight 1000ms ease-out 400ms;
+  backface-visibility: hidden;
+}
+
+.heading-secondary {
+  text-transform: uppercase;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 0.8rem;
+  //---------------------------------------
+  // Start of rules for cliping text so that
+  // it is filled with background-image
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  background-clip: text;
+  color: transparent;
+  // End of rules for cliping text with background-image
+  //---------------------------------------
+
+  display: inline-block;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: skewX(3deg) skewY(5deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
+  }
+}
+
+.heading-tertiary {
+  text-transform: uppercase;
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.paragraph {
+  font-size: 2rem;
+  font-weight: 400;
+
+  &:not(:last-child) {
+    margin-bottom: 5rem;
+  }
+}
