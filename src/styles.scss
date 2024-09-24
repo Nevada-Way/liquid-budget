@@ -1,0 +1,5 @@
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// This is best practice to have the styles.scss file in the root of the app and
+// it ust imports main.scss  which itself imports all the styles specific for the app.
+@import "./styles/main.scss";
