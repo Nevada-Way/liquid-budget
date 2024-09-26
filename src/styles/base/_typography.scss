@@ -1,5 +1,7 @@
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Lato", sans-serif; /* Lato is a thin and tall font*/
+
+  //font-family: "Rubik", sans-serif;
 
   font-size: 1.125rem; /*Use 'rem' so font sizes are relative to the browser user's font size prefrences.*/
 
@@ -13,7 +15,7 @@ body {
 }
 
 .heading-primary {
-  font-weight: 400;
+  font-weight: 600;
   text-transform: uppercase;
   color: $color-white;
 }
@@ -21,8 +23,8 @@ body {
 .heading-primary--main {
   display: block;
 
-  font-size: 6rem;
-  letter-spacing: 6.8rem;
+  font-size: 4rem;
+  letter-spacing: 2.5rem;
 
   animation: moveFromLeft 1000ms ease-out 400ms;
 

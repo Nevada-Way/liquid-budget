@@ -10,5 +10,5 @@ import { HomeComponent } from './home/home.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'workspace-1';
+  title = 'Liquid Budget';
 }

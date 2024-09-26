@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Liquid Budget &mdash; Living off asset drawdown</title>
     <meta charset="utf-8" />
-    <!-- Waht does the next line mean <base... -->
+    <title>Liquid Budget &mdash; Living off asset drawdown</title>
+
+    <!-- The <base href="/" /> tag in an HTML file specifies the 
+     base URL for relative URLs within the document. 
+     This means that any relative URL (e.g., /about.html, images/logo.png) will be 
+     interpreted relative to this base URL.
+     In this case, setting the base URL to / means that all relative URLs 
+     will be interpreted relative to the root of the current domain. -->
     <base href="/" />
 
-    <!-- This viewportmeta setting is crucial for responsive design -->
+    <!-- This viewport meta setting is crucial for responsive design -->
     <!-- without it the @media queries for screen reactivness wont work -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -15,9 +21,9 @@
       content="This is the Liquid Budget website, View your Liquidable assets and annual drawdown"
     />
 
-    <!-- =============  -->
-    <!-- Linking fonts -->
-    <!-- =============  -->
+    <!-- ==================================  -->
+    <!-- =======    Linking fonts    ======  -->
+    <!-- ==================================  -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,14 +36,44 @@
       rel="stylesheet"
     />
 
-    <!-- =============  -->
-    <!-- Linking icons -->
-    <!-- =============  -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-    <!-- <link rel="icon" type="image/x-icon" href="favicon.ico" /> -->
+    <!-- ==================================  -->
+    <!-- =======    Linking icons    ======-->
+    <!-- ==================================  -->
 
-    <!-- Linking icons for the website : -->
-    <link rel="icon" href="./assets/favicon.ico" />
+    <!-- 
+    (1) rel="icon": This attribute indicates that the linked resource is a favicon.
+    (2) type="image/x-icon": This attribute specifies the MIME type of the 
+         image/x-icon" is a specific MIME type that indicates the content is an icon image.
+         It's a common format for favicons
+    (3) href="src/favicon.ico": This attribute sets the URL of the favicon image.
+        In this case, the favicon is located in the same directory 
+        as the index.html file and is named favicon.ico. 
+    -->
+
+    <!-- <link rel="icon" type="image/x-icon" href="src/favicon.ico" /> -->
+    <link rel="shortcut icon" type="image/x-icon" href="./src/favicon.ico" />
+
+    <!--
+    Discussion about the favicon alternative code :
+     An alternative to the above link of an image as favicon we can use this code:
+         <link rel="shortcut icon" type="image/png" href="src/favicon.png" />
+      This does the same because a "shortcut icon" is A shortcut icon is a small, 
+      typically square image that appears in the browser's tab or address bar.
+      This is exactly a favicon.
+       Using this code:
+           <link rel="icon" type="image/x-icon" href="src/favicon.ico" />
+        The attributes :   rel="icon" type="image/x-icon"tell the 
+        browser the same thing as rel="shortcut icon".
+    -->
 
     <!-- The  apple-touch-icon must be 180x180px-->
     <!-- <link rel="apple-touch-icon" href="img/apple-touch-icon.png" /> -->
@@ -48,14 +84,6 @@
 
     <!-- <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
   <script defer src="/js/lala.js"></script> -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <app-root></app-root>

@@ -1,6 +1,22 @@
-<p>home works!</p>
+<!-- The home comp will hold the content of the <body> element
+     The is the <header> , <main> and <footer>
+  -->
 
-<!-- <app-assets-table [myDataInput]="myParentData"></app-assets-table> -->
+<header class="header">
+  <div class="header__logo-box">
+    <img
+      src="./assets/img/logo-white.png"
+      alt="Logo white"
+      class="header__logo-image"
+    />
+  </div>
+
+  <div class="header__text-box">
+    <h1 class="heading-primary">
+      <span class="heading-primary--main">Liquid Budget</span>
+    </h1>
+  </div>
+</header>
 
 @for (firm of firms; track firm.id) {
 <div>
