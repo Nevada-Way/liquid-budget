@@ -26,4 +26,6 @@ html {
 body {
   box-sizing: border-box; /* width height defined will include the padding & border */
   border: none;
+  //by default the whole webpage has a 3rem padding on all sides
+  padding: 3rem;
 }
