@@ -1,0 +1,20 @@
+// This sections is the financial firms sections.
+// It represents each firm as a card, the title is the firm name & total asset value.
+// The bottom part of the card is name and value of each financial vehicle (stock, bonds...)
+//
+.section-tours {
+  background-color: $color-grey-light-1;
+
+  margin-top: -18rem;
+  padding: 35em 0 15rem 0;
+
+  &__card-container {
+    // height: 701rem;
+    margin: 0 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    // align-content: center;
+    justify-items: center;
+    // column-gap: 10rem;
+  }
+}
