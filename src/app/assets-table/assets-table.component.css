@@ -1,5 +1,5 @@
 .container-table {
-  width: 40%;
+  width: 100%;
 }
 
 .users-table {
@@ -10,6 +10,15 @@
 
 .users-table-cell {
   border: 1px solid #dddddd;
-  text-align: left;
+  text-align: center;
   padding: 8px;
+  font-size: larger;
+}
+
+table .mat-mdc-header-cell {
+  border: 1px solid red;
+  background-color: aqua;
+}
+
+.heading-table {
 }
