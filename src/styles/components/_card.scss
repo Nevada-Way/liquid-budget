@@ -156,6 +156,7 @@
         font-size: 2rem;
         padding: 1rem;
 
+        // The following draws a line under each list item except for the last item
         &:not(:last-child) {
           border-bottom: 1px solid $color-grey-light-2;
         }
