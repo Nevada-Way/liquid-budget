@@ -8,8 +8,9 @@
   width: 100%;
 }
 
+/* The following rule is a material rule, I want the background to be transparent so that
+it does not peep behind the rounded corners of the header row */
 .mat-mdc-table {
-  background-color: aqua;
   background-color: transparent;
 }
 
@@ -18,7 +19,7 @@
   text-align: center;
   padding: 8px;
   font-size: larger;
-  background-color: #efefef;
+  /* background-color: #efefef; */
 }
 
 table .mat-mdc-header-cell {
@@ -27,12 +28,17 @@ table .mat-mdc-header-cell {
 }
 
 table .mat-mdc-header-cell:first-child {
-  overflow: hidden !important;
   border-top-left-radius: 10px;
 }
 
 table .mat-mdc-header-cell:last-child {
-  overflow: hidden !important;
-  overflow: hidden !important;
   border-top-right-radius: 10px;
+}
+
+table .mat-mdc-row:nth-child(odd) {
+  background-color: red;
+}
+
+table .mat-mdc-row:nth-child(even) {
+  background-color: aqua;
 }
