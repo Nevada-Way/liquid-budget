@@ -1,24 +1,38 @@
 .container-table {
-  width: 100%;
+  width: 70%;
+  overflow: hidden !important;
 }
 
 .users-table {
   table-layout: fixed;
   width: 100%;
-  border-collapse: collapse;
+}
+
+.mat-mdc-table {
+  background-color: aqua;
+  background-color: transparent;
 }
 
 .users-table-cell {
-  border: 1px solid #dddddd;
+  /* border: 1px solid #dddddd; */
   text-align: center;
   padding: 8px;
   font-size: larger;
+  background-color: #efefef;
 }
 
 table .mat-mdc-header-cell {
-  border: 1px solid red;
-  background-color: aqua;
+  border: 1px solid black;
+  background-color: #ccc;
 }
 
-.heading-table {
+table .mat-mdc-header-cell:first-child {
+  overflow: hidden !important;
+  border-top-left-radius: 10px;
+}
+
+table .mat-mdc-header-cell:last-child {
+  overflow: hidden !important;
+  overflow: hidden !important;
+  border-top-right-radius: 10px;
 }

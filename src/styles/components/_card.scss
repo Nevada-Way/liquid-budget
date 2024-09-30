@@ -25,6 +25,7 @@
 
     &--front {
       background-color: white;
+      background-color: orange;
     }
 
     &--back {
@@ -44,6 +45,7 @@
           rgba($color-primary-light, 1),
           rgba($color-primary-dark, 1)
         );
+
         // background-color: $color-primary-light;
       }
       &--3 {
