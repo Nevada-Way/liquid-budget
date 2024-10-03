@@ -33,14 +33,18 @@
     <div class="u-center-text u-margin-bottom-big">
       <h2 class="heading-secondary u-margin-top-big">Your Financial Firms</h2>
     </div>
-    <div class="section-firms__card-container">
+
+    <div class="section-firms__container">
       @for (firm of firms; track firm.id) {
 
-      <!-- =========================== -->
-      <!-- ==== C A R D   L O O P  === -->
-      <!-- =========================== -->
+      <!-- ====================================================================== -->
+      <!-- ==== C A R D   L O O P  F O R   E A C H   F I R M  O N E   C A R D === -->
+      <!-- ====================================================================== -->
 
-      <div class="card">
+      <div class="card section-firms__container_card">
+        <!-- ===================================== -->
+        <!-- ==== C A R D   F R O N T S I D E  === -->
+
         <div class="card__side card__side--front">
           <div class="card__picture card__picture--3">&NonBreakingSpace;</div>
           <h4 class="card__heading">
@@ -56,14 +60,19 @@
           <!-- Using the app-assets-table here temporarly so i can style it -->
           <!-- If i dont put it here then it will only show on the back of the flipping card -->
           <!-- =============================== -->
-
-          <app-assets-table
-            [accountsDataInput]="firm.accounts"
-          ></app-assets-table>
+          <!-- <div class="card__content">
+            <app-assets-table
+              [accountsDataInput]="firm.accounts"
+            ></app-assets-table>
+          </div> -->
           <!-- <p>ID: {{ firm.id }}</p> -->
         </div>
+
+        <!-- ===================================== -->
+        <!-- ==== C A R D   B A C K S I D E  === -->
+
         <div class="card__side card__side--back card__side--back--3">
-          <div class="card__cta">
+          <div class="card__table-body card__table-typo">
             <div class="card__price-box">
               <!-- <p class="card__price-only">Only</p>
                              <p class="card__price-value">$297</p> -->
@@ -85,15 +94,15 @@
         </div>
       </div>
 
-      <!-- <div>
+      }
+    </div>
+  </section>
+</main>
+
+<!-- <div>
       <p>ID: {{ firm.id }}</p>
       <p>Name: {{ firm.name }}</p>
       <p>Total: {{ firm.actualValueFirmTotal | number : "1.0-0" }}</p>
     </div> -->
 
-      <!-- <app-assets-table [firmsDataInput]="firms"></app-assets-table> -->
-
-      }
-    </div>
-  </section>
-</main>
+<!-- <app-assets-table [firmsDataInput]="firms"></app-assets-table> -->

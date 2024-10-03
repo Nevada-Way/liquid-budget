@@ -1,17 +1,13 @@
 .container-table {
-  width: 70%;
-  overflow: hidden !important;
+  /* width: 70%;
+  overflow: hidden; */
+  /* flex-grow: 1; */
 }
 
 .users-table {
-  table-layout: fixed;
-  width: 100%;
-}
-
-/* The following rule is a material rule, I want the background to be transparent so that
-it does not peep behind the rounded corners of the header row */
-.mat-mdc-table {
-  background-color: transparent;
+  /* table-layout: fixed; */
+  /* width: 100%; */
+  flex-grow: 1;
 }
 
 .users-table-cell {
@@ -20,6 +16,16 @@ it does not peep behind the rounded corners of the header row */
   padding: 8px;
   font-size: larger;
   /* background-color: #efefef; */
+}
+
+/* The following "mat-mdc..." rules are a material classes,
+   I use the value "transparent" because I want the background to be transparent so that
+   it does not peep behind the rounded corners of the header row.
+   
+   I dont use the selector "table .mat-mdc-table" because i want to select all the .mat-mdc-table classses
+   in the DOM regardless if they are children elements of table*/
+.mat-mdc-table {
+  background-color: transparent;
 }
 
 table .mat-mdc-header-cell {

@@ -3,16 +3,19 @@
 // The bottom part of the card is name and value of each financial vehicle (stock, bonds...)
 //
 .section-firms {
-  border: 1px solid red;
+  border: 1px solid rgb(56, 184, 67);
   background-color: $color-grey-light-1;
 
-  &__card-container {
-    // height: 701rem;
+  &__container {
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 10rem;
+    row-gap: 5rem;
+    justify-content: space-evenly;
     margin: 0 5%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    // align-content: center;
-    justify-items: center;
-    // column-gap: 10rem;
+    padding: 5rem 0;
   }
+
+  // &__container-card {
+  // }
 }

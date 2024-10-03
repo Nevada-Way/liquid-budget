@@ -24,12 +24,17 @@
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 
     &--front {
-      background-color: white;
+      // background-color: white;
       background-color: orange;
     }
 
     &--back {
+      display: flex;
+      align-items: flex-start;
+      // TEMP-HANDLE :
+      // The bottom line is commented out so that the backside of the card is displayed to enable development process
       transform: rotateY(180deg);
+
       &--1 {
         background-image: linear-gradient(
           to right bottom,
@@ -62,6 +67,7 @@
   &:hover &__side--front {
     transform: rotateY(-180deg);
   }
+
   &:hover &__side--back {
     transform: rotateY(0);
   }
@@ -145,42 +151,51 @@
     }
   }
 
-  &__details {
-    // padding: 0rem;
-
-    ul {
-      list-style: none;
-      width: 80%;
-      margin: 0 auto;
-
-      li {
-        text-align: center;
-        font-size: 2rem;
-        padding: 1rem;
-
-        // The following draws a line under each list item except for the last item
-        &:not(:last-child) {
-          border-bottom: 1px solid $color-grey-light-2;
-        }
-      }
-    }
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
   }
 
-  &__cta {
+  // &__details {
+  //   // padding: 0rem;
+
+  //   ul {
+  //     list-style: none;
+  //     width: 80%;
+  //     margin: 0 auto;
+
+  //     li {
+  //       text-align: center;
+  //       font-size: 2rem;
+  //       padding: 1rem;
+
+  //       // The following draws a line under each list item except for the last item
+  //       &:not(:last-child) {
+  //         border-bottom: 1px solid $color-grey-light-2;
+  //       }
+  //     }
+  //   }
+  // }
+
+  // This is an older version from reusable template
+  &__table-body {
     position: absolute;
-    top: 50%;
+    top: 0%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
+    padding: 5rem 0;
     text-align: center;
     width: 90%;
   }
 
-  &__price-box {
-    color: $color-white;
-    margin-bottom: 8rem;
-  }
+  // &__price-box {
+  //   color: $color-white;
+  //   margin-bottom: 8rem;
+  // }
 
-  &__price-only {
+  &__table-typo {
     font-size: 1.4rem;
     text-transform: uppercase;
   }
