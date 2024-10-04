@@ -56,16 +56,13 @@
             Total: {{ firm.actualValueFirmTotal | number : "1.0-0" }}
           </h1>
 
-          <!-- =============================== -->
-          <!-- Using the app-assets-table here temporarly so i can style it -->
-          <!-- If i dont put it here then it will only show on the back of the flipping card -->
-          <!-- =============================== -->
-          <!-- <div class="card__content">
-            <app-assets-table
-              [accountsDataInput]="firm.accounts"
-            ></app-assets-table>
-          </div> -->
-          <!-- <p>ID: {{ firm.id }}</p> -->
+          <!-- ====================================================== -->
+          <!-- Displaying the pie chart for accounts inside the firm -->
+          <!-- ====================================================== -->
+          <div class="card__content">
+            <!-- <div id="chart_div"></div> -->
+            <div id="donutchart"></div>
+          </div>
         </div>
 
         <!-- ===================================== -->
