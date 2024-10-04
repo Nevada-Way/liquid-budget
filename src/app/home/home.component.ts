@@ -92,9 +92,27 @@ export class HomeComponent implements OnInit {
 
     // chart.draw(data, options);
 
+    // URL to table with all option properties :
+    // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/piechart#configuration-options
     var options = {
-      title: 'My Daily Activities',
+      backgroundColor: 'white', //'transparent',
+      title: '',
       pieHole: 0.4,
+      enableInteractivity: false,
+      pieSliceText: 'none',
+      // legend: { position: 'none' },
+
+      chartArea: {
+        left: 20,
+        top: 10,
+        width: '90%',
+        height: '90%',
+        backgroundColor: 'yellow',
+      },
+
+      // width: 300,
+      // height: 200,
+      // is3D: true,
     };
 
     var chart = new google.visualization.PieChart(
