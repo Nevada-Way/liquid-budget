@@ -44,7 +44,6 @@
       <div class="card section-firms__container_card">
         <!-- ===================================== -->
         <!-- ==== C A R D   F R O N T S I D E  === -->
-
         <div class="card__side card__side--front">
           <div class="card__picture card__picture--3">&NonBreakingSpace;</div>
           <h4 class="card__heading">
@@ -60,14 +59,13 @@
           <!-- Displaying the pie chart for accounts inside the firm -->
           <!-- ====================================================== -->
           <div class="card__content">
-            <!-- <div id="chart_div"></div> -->
-            <div id="donutchart"></div>
+            <!-- <app-chart [accountsDataInput]="firm.accounts"></app-chart> -->
+            <p>{{ firm.name }}</p>
           </div>
         </div>
 
         <!-- ===================================== -->
         <!-- ==== C A R D   B A C K S I D E  === -->
-
         <div class="card__side card__side--back card__side--back--3">
           <div class="card__table-body card__table-typo">
             <div class="card__price-box">
