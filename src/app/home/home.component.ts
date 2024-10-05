@@ -4,6 +4,7 @@ import { Firm, DataDemo } from '../interfaces/finance.model'; // Import the Acco
 import { FinancialService } from '../services/financial.service';
 import { AssetsTableComponent } from '../assets-table/assets-table.component';
 declare var google: any;
+// import * as google from 'google-charts';
 
 @Component({
   selector: 'app-home',
@@ -14,23 +15,24 @@ declare var google: any;
 })
 export class HomeComponent implements OnInit {
   firms: Firm[] = [];
+  charts: any[] = []; // Array to store charts
 
   constructor(private FinancialService: FinancialService) {}
 
-  myParentData: DataDemo[] = [
-    {
-      id: 1,
-      name: 'aaa',
-    },
-    {
-      id: 2,
-      name: '======',
-    },
-    {
-      id: 3,
-      name: 'ccc',
-    },
-  ];
+  // myParentData: DataDemo[] = [
+  //   {
+  //     id: 1,
+  //     name: 'aaa',
+  //   },
+  //   {
+  //     id: 2,
+  //     name: '======',
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'ccc',
+  //   },
+  // ];
 
   async ngOnInit() {
     try {
@@ -61,10 +63,12 @@ export class HomeComponent implements OnInit {
     // URL : https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/basic_load_libs
 
     google.charts.load('current', { packages: ['corechart'] });
-    google.charts.setOnLoadCallback(this.drawChart);
+    // google.charts.setOnLoadCallback(this.drawChart(this.firms));
+    google.charts.setOnLoadCallback(this.drawChart.bind(this));
   }
 
   // This is the callback function we need to
+  // drawChart(theFirms: Firm[]) {
   drawChart() {
     // Create the data table.
     var data = new google.visualization.DataTable();
@@ -78,24 +82,10 @@ export class HomeComponent implements OnInit {
       ['Pepperoni', 2],
     ]);
 
-    // // Set chart options
-    // var options = {
-    //   title: 'How Much Pizza I Ate Last Night',
-    //   width: 400,
-    //   height: 300,
-    // };
-
-    // // Instantiate and draw our chart, passing in some options.
-    // var chart = new google.visualization.PieChart(
-    //   document.getElementById('chart_div')
-    // );
-
-    // chart.draw(data, options);
-
     // URL to table with all option properties :
     // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/piechart#configuration-options
     var options = {
-      backgroundColor: 'white', //'transparent',
+      backgroundColor: 'white', // 'transparent',
       title: '',
       pieHole: 0.4,
       enableInteractivity: false,
@@ -109,15 +99,55 @@ export class HomeComponent implements OnInit {
         height: '90%',
         backgroundColor: 'yellow',
       },
-
-      // width: 300,
-      // height: 200,
-      // is3D: true,
     };
 
-    var chart = new google.visualization.PieChart(
-      document.getElementById('donutchart')
-    );
-    chart.draw(data, options);
+    const colorArray = ['red', 'green', 'white'];
+    for (let i = 0; i < this.firms.length; i++) {
+      const chartId = `donutchart-FIRM-${i + 1}`; // Dynamic chart ID
+      // const chartId = '12';
+      const chartDiv = document.getElementById(chartId);
+
+      if (chartDiv) {
+        const chart = new google.visualization.PieChart(chartDiv);
+        this.charts.push(chart); // Add chart to charts array
+
+        // options.title = `Title ${i + 1}`;
+        options.backgroundColor = colorArray[i];
+
+        this.charts[i].draw(data, options);
+
+        //  // Prepare data and draw the chart
+        //  const data = new google.visualization.DataTable();
+        //  // ... (your data preparation logic here)
+        //  chart.draw(data, {
+        //    title: 'Firm ' + (i + 1) + ' Chart',
+        //    width: 400,
+        //    height: 300,
+        //  });
+      }
+    }
+
+    // for (let i = 0; i < this.firms.length; i++) {
+    //   // Code to be executed n times
+    //   var chart1 = new google.visualization.PieChart(
+    //     document.getElementById('donutchart-FIRM-1')
+    //   );
+    // }
+
+    // var chart1 = new google.visualization.PieChart(
+    //   document.getElementById(this.firms[0].id)
+    // );
+
+    // var chart2 = new google.visualization.PieChart(
+    //   document.getElementById(this.firms[1].id)
+    // );
+
+    // var chart3 = new google.visualization.PieChart(
+    //   document.getElementById(this.firms[2].id)
+    // );
+
+    // chart1.draw(data, options);
+    // chart2.draw(data, options);
+    // chart3.draw(data, options);
   }
 }
