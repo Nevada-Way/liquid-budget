@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Account } from '../interfaces/finance.model';
+import { Firm, Account } from '../interfaces/finance.model';
 declare var google: any;
 
 @Component({
@@ -10,9 +10,14 @@ declare var google: any;
   styleUrl: './chart.component.css',
 })
 export class ChartComponent {
-  @Input() accountsDataInput: Account[] = [];
+  @Input() firmDataInput: Firm = {} as Firm;
+  chartId: string = '';
+
+  // accountsOfFirm: Account[] = [];
 
   async ngOnInit() {
+    this.chartId = `chart-${this.firmDataInput.id}`;
+
     try {
       // =================================================
       // ==  G o o g l e   C h a r t s   S u p p o r t
@@ -28,60 +33,54 @@ export class ChartComponent {
       // URL : https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/basic_load_libs
 
       google.charts.load('current', { packages: ['corechart'] });
-      google.charts.setOnLoadCallback(this.drawChart);
+
+      // This google.charts.setOnLoadCallback() function is used to specify a callback function that
+      // will be executed once the Google Charts library has been fully loaded and initialized.
+      // The setOnLoadCallback function is essential for ensuring that your chart-related
+      // code doesn't run before the Google Charts library is ready.
+      //
+      // The this.drawChart value is the specific callback function that we want to execute once loading completed.
+      //
+      // The .bind(this) method of the callback function (in our case drawChart) creates a new function
+      // instance with a specific 'this' value bound to it.
+      // This binding means that no matter how the new function instance (drawChart instance) is called,
+      // the 'this' keyword inside that function instance will always refer to the 'this' belonging to
+      // HomeComponent (since HomeComponent is the specific object in which the ngOnInint and its context are a child of).
+      //
+      // By using "bind(this)" we make sure that the 'this' keyword is hard-wired into the function drawChart.
+      // If we had not done that, then 'this' could have different context associations and we could not of used
+      // the 'this.chartId' & 'this.firmDataInput' variables inside the drawChart.
+      google.charts.setOnLoadCallback(this.drawChart.bind(this));
+
+      // console.log('===Firms Accounts are : =======');
+      // console.log(accountsOfFirm);
     } catch (error) {
       console.error('Error loading Google Chart package:', error);
     }
-
-    console.log('==========');
-    this.accountsDataInput.forEach((account) => {
-      //console.log(account); // Logs the entire Account object
-      console.log(account.type); // Logs only the name property
-      console.log(account.actualValueAccountTotal); // Logs only the name property
-    });
-
-    // const myNew: any = this.accountsDataInput.map(
-    //   ({ type, actualValueAccountTotal }) => ({
-    //     type,
-    //     actualValueAccountTotal,
-    //   })
-    // );
-    // console.log(myNew);
   } // End ngOnInit
 
-  // This is the callback function we need to
+  // This is the callback function , it will use the values in the 'this.firmDataInput' object
+  // to create a unique ID for the chart drawing.
   drawChart() {
+    console.log(`=== Firm Name is : ${this.firmDataInput.name}  =======`);
+    console.log(`=== Chart ID is : ${this.chartId}  =======`);
     // Create the data table.
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Topping');
     data.addColumn('number', 'Slices');
     data.addRows([
-      ['Mushrooms', 3],
+      [this.firmDataInput.name, 3],
       ['Onions', 1],
       ['Olives', 1],
       ['Zucchini', 1],
       ['Pepperoni', 2],
     ]);
 
-    // // Set chart options
-    // var options = {
-    //   title: 'How Much Pizza I Ate Last Night',
-    //   width: 400,
-    //   height: 300,
-    // };
-
-    // // Instantiate and draw our chart, passing in some options.
-    // var chart = new google.visualization.PieChart(
-    //   document.getElementById('chart_div')
-    // );
-
-    // chart.draw(data, options);
-
     // URL to table with all option properties :
     // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/piechart#configuration-options
     var options = {
-      backgroundColor: 'white', //'transparent',
-      title: '',
+      backgroundColor: 'white', // 'transparent',
+      title: 'this.firmDataInput.name',
       pieHole: 0.4,
       enableInteractivity: false,
       pieSliceText: 'none',
@@ -96,9 +95,37 @@ export class ChartComponent {
       },
     };
 
-    var chart = new google.visualization.PieChart(
-      document.getElementById('donutchart')
+    var chartDiv = new google.visualization.PieChart(
+      document.getElementById(this.chartId)
     );
-    chart.draw(data, options);
+    chartDiv.draw(data, options);
+  }
+
+  //=====================================================
+  // Playing around tryimg to agregate the account data
+  //
+  // 06.10.2024 TODO:
+  // This needs to be a method in the FinancialService class
+  // When invoked it returns an array of objects, each object is
+  // a type of account and its total in the firm: { typeName: 'Bond', Total: 25000 }
+  //=====================================================
+
+  agregateAccounts() {
+    const accountsOfFirm: Account[] = this.firmDataInput.accounts;
+
+    console.log('==========');
+    accountsOfFirm.forEach((account) => {
+      //console.log(account); // Logs the entire Account object
+      console.log(account.type); // Logs only the name property
+      console.log(account.actualValueAccountTotal); // Logs only the name property
+    });
   }
 }
+
+// ===========================================================================
+// ===========================================================================
+// ===========================================================================
+//               T R A S H B I N      /    R E F E R E N C E
+// ===========================================================================
+// ===========================================================================
+// ===========================================================================
