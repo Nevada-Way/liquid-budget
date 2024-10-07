@@ -2,6 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Firm, Account } from '../interfaces/finance.model';
 declare var google: any;
 
+interface AccountTotal {
+  accountType: string;
+  totalValue: number;
+}
+
 @Component({
   selector: 'app-chart',
   standalone: true,
@@ -12,7 +17,6 @@ declare var google: any;
 export class ChartComponent {
   @Input() firmDataInput: Firm = {} as Firm;
   chartId: string = '';
-
   // accountsOfFirm: Account[] = [];
 
   async ngOnInit() {
@@ -62,19 +66,18 @@ export class ChartComponent {
   // This is the callback function , it will use the values in the 'this.firmDataInput' object
   // to create a unique ID for the chart drawing.
   drawChart() {
+    const lala: any[] = this.agregateAccounts();
+    const accountTotal: AccountTotal[] = this.agregateAccounts();
+
+    console.log(lala);
     console.log(`=== Firm Name is : ${this.firmDataInput.name}  =======`);
     console.log(`=== Chart ID is : ${this.chartId}  =======`);
+
     // Create the data table.
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'Topping');
     data.addColumn('number', 'Slices');
-    data.addRows([
-      [this.firmDataInput.name, 3],
-      ['Onions', 1],
-      ['Olives', 1],
-      ['Zucchini', 1],
-      ['Pepperoni', 2],
-    ]);
+    data.addRows(lala);
 
     // URL to table with all option properties :
     // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/piechart#configuration-options
@@ -110,15 +113,29 @@ export class ChartComponent {
   // a type of account and its total in the firm: { typeName: 'Bond', Total: 25000 }
   //=====================================================
 
-  agregateAccounts() {
+  agregateAccounts(): any[] {
     const accountsOfFirm: Account[] = this.firmDataInput.accounts;
 
-    console.log('==========');
-    accountsOfFirm.forEach((account) => {
-      //console.log(account); // Logs the entire Account object
-      console.log(account.type); // Logs only the name property
-      console.log(account.actualValueAccountTotal); // Logs only the name property
-    });
+    const reply: AccountTotal[] = [
+      { accountType: 'cash', totalValue: 3 },
+      { accountType: 'stock', totalValue: 6 },
+      { accountType: 'bond', totalValue: 5 },
+      { accountType: 'saving', totalValue: 2 },
+    ];
+
+    const lala: any[] = reply.map(({ accountType, totalValue }) => [
+      accountType,
+      totalValue,
+    ]);
+
+    // console.log('==========');
+    // accountsOfFirm.forEach((account) => {
+    //   //console.log(account); // Logs the entire Account object
+    //   console.log(account.type); // Logs only the name property
+    //   console.log(account.actualValueAccountTotal); // Logs only the name property
+    // });
+
+    return lala;
   }
 }
 
