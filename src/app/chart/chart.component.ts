@@ -1,11 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Firm, Account } from '../interfaces/finance.model';
+import { FinancialService } from '../services/financial.service';
 declare var google: any;
-
-interface AccountTotal {
-  accountType: string;
-  totalValue: number;
-}
 
 @Component({
   selector: 'app-chart',
@@ -18,6 +14,8 @@ export class ChartComponent {
   @Input() firmDataInput: Firm = {} as Firm;
   chartId: string = '';
   // accountsOfFirm: Account[] = [];
+
+  constructor(private financialService: FinancialService) {}
 
   async ngOnInit() {
     this.chartId = `chart-${this.firmDataInput.id}`;
@@ -66,8 +64,8 @@ export class ChartComponent {
   // This is the callback function , it will use the values in the 'this.firmDataInput' object
   // to create a unique ID for the chart drawing.
   drawChart() {
-    const lala: any[] = this.agregateAccounts();
-    const accountTotal: AccountTotal[] = this.agregateAccounts();
+    const lala: any[] = this.financialService.agregateAccounts();
+    // const accountTotal: AccountTotal[] = this.agregateAccounts();
 
     console.log(lala);
     console.log(`=== Firm Name is : ${this.firmDataInput.name}  =======`);
@@ -102,40 +100,6 @@ export class ChartComponent {
       document.getElementById(this.chartId)
     );
     chartDiv.draw(data, options);
-  }
-
-  //=====================================================
-  // Playing around tryimg to agregate the account data
-  //
-  // 06.10.2024 TODO:
-  // This needs to be a method in the FinancialService class
-  // When invoked it returns an array of objects, each object is
-  // a type of account and its total in the firm: { typeName: 'Bond', Total: 25000 }
-  //=====================================================
-
-  agregateAccounts(): any[] {
-    const accountsOfFirm: Account[] = this.firmDataInput.accounts;
-
-    const reply: AccountTotal[] = [
-      { accountType: 'cash', totalValue: 3 },
-      { accountType: 'stock', totalValue: 6 },
-      { accountType: 'bond', totalValue: 5 },
-      { accountType: 'saving', totalValue: 2 },
-    ];
-
-    const lala: any[] = reply.map(({ accountType, totalValue }) => [
-      accountType,
-      totalValue,
-    ]);
-
-    // console.log('==========');
-    // accountsOfFirm.forEach((account) => {
-    //   //console.log(account); // Logs the entire Account object
-    //   console.log(account.type); // Logs only the name property
-    //   console.log(account.actualValueAccountTotal); // Logs only the name property
-    // });
-
-    return lala;
   }
 }
 

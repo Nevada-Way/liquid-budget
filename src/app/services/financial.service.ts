@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Account, Firm } from '../interfaces/finance.model';
 import { HardcodedDataService } from './hardcoded-data.service';
 
+interface AccountTotal {
+  accountType: string;
+  totalValue: number;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -116,5 +120,42 @@ export class FinancialService {
       });
     });
     return actualValueFirms;
+  }
+
+  agregateAccounts(): any[] {
+    // const accountsOfFirm: Account[] = this.firmDataInput.accounts;
+
+    const reply: AccountTotal[] = [
+      { accountType: 'cash', totalValue: 3 },
+      { accountType: 'stock', totalValue: 6 },
+      { accountType: 'bond', totalValue: 5 },
+      { accountType: 'saving', totalValue: 2 },
+    ];
+
+    // This code does the following:
+    // (1) reply.map() maps the reply array:
+    //     It iterates over each object in the reply array using the map method.
+    //
+    // (2) ({ accountType, totalValue }) Destructures object properties:
+    //     For each object, it destructures the accountType and totalValue properties.
+    //
+    // (3) Creates a new array:  => [ accountType, totalValue,]
+    //
+    //     It creates a new array containing the destructured properties,
+    //     wrapped in another array (to match the format expected by data.addRows).
+    //
+    const lala: any[] = reply.map(({ accountType, totalValue }) => [
+      accountType,
+      totalValue,
+    ]);
+
+    // console.log('==========');
+    // accountsOfFirm.forEach((account) => {
+    //   //console.log(account); // Logs the entire Account object
+    //   console.log(account.type); // Logs only the name property
+    //   console.log(account.actualValueAccountTotal); // Logs only the name property
+    // });
+
+    return lala;
   }
 }
