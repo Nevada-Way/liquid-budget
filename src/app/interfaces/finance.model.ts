@@ -28,3 +28,8 @@ export interface DataDemo {
   id: number;
   name: string;
 }
+
+export interface PseudoAccount {
+  typeOfAccount: string;
+  totalValue: number;
+}

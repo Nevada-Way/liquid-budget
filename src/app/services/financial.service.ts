@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Account, Firm } from '../interfaces/finance.model';
+import { Account, Firm, PseudoAccount } from '../interfaces/finance.model';
 import { HardcodedDataService } from './hardcoded-data.service';
 
 interface AccountTotal {
   accountType: string;
   totalValue: number;
 }
+interface Person {
+  price: number;
+  name: string;
+}
 @Injectable({
   providedIn: 'root',
 })
 export class FinancialService {
-  constructor(private HardcodedDataService: HardcodedDataService) {}
+  constructor(private hardcodedDataService: HardcodedDataService) {}
 
   generateDemoFirms(): Firm[] {
     // const demoFirmData: Firm[] = [];
@@ -80,7 +84,7 @@ export class FinancialService {
       accounts: [],
     };
 
-    const firms: Firm[] = this.HardcodedDataService.getALlFirms();
+    const firms: Firm[] = this.hardcodedDataService.getALlFirms();
 
     const foundFirm = firms.find((firm) => firm.id === firmId);
 
@@ -92,7 +96,7 @@ export class FinancialService {
   }
 
   fetchAccountsByIds(accountIds: string[]): Account[] {
-    const allAccounts: Account[] = this.HardcodedDataService.getAllAccounts();
+    const allAccounts: Account[] = this.hardcodedDataService.getAllAccounts();
     //const selectedAccounts: Account[] = [];
 
     allAccounts.filter((account) => accountIds.includes(account.id));
@@ -122,40 +126,33 @@ export class FinancialService {
     return actualValueFirms;
   }
 
-  agregateAccounts(): any[] {
-    // const accountsOfFirm: Account[] = this.firmDataInput.accounts;
+  agregateAccounts(theAccountsInFirm: Account[]): PseudoAccount[] {
+    const result = theAccountsInFirm.reduce((acc: Account[], cur, index) => {
+      const existingItem = acc.find((item) => item.type === cur.type);
 
-    const reply: AccountTotal[] = [
-      { accountType: 'cash', totalValue: 3 },
-      { accountType: 'stock', totalValue: 6 },
-      { accountType: 'bond', totalValue: 5 },
-      { accountType: 'saving', totalValue: 2 },
-    ];
+      console.log('=== index : ', index);
+      console.log('=== cur : ', cur);
+      console.log('=== acc-1 : ', acc);
+      // acc.push(cur.name);
+      if (existingItem) {
+        existingItem.actualValueAccountTotal += cur.actualValueAccountTotal;
+      } else {
+        acc.push({ ...cur }); // Create a copy to avoid mutating the original object
+      }
 
-    // This code does the following:
-    // (1) reply.map() maps the reply array:
-    //     It iterates over each object in the reply array using the map method.
-    //
-    // (2) ({ accountType, totalValue }) Destructures object properties:
-    //     For each object, it destructures the accountType and totalValue properties.
-    //
-    // (3) Creates a new array:  => [ accountType, totalValue,]
-    //
-    //     It creates a new array containing the destructured properties,
-    //     wrapped in another array (to match the format expected by data.addRows).
-    //
-    const lala: any[] = reply.map(({ accountType, totalValue }) => [
-      accountType,
-      totalValue,
+      return acc;
+    }, []);
+
+    const myResult: any[] = result.map((account) => [
+      account.type,
+      this.roundUpToNearestThousand(account.actualValueAccountTotal),
     ]);
 
-    // console.log('==========');
-    // accountsOfFirm.forEach((account) => {
-    //   //console.log(account); // Logs the entire Account object
-    //   console.log(account.type); // Logs only the name property
-    //   console.log(account.actualValueAccountTotal); // Logs only the name property
-    // });
+    console.log('=== Converted RESULT=========\n', myResult);
+    return myResult;
+  }
 
-    return lala;
+  roundUpToNearestThousand(inputNumber: number): number {
+    return Math.ceil(inputNumber / 1000) * 1000;
   }
 }

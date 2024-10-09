@@ -64,17 +64,19 @@ export class ChartComponent {
   // This is the callback function , it will use the values in the 'this.firmDataInput' object
   // to create a unique ID for the chart drawing.
   drawChart() {
-    const lala: any[] = this.financialService.agregateAccounts();
-    // const accountTotal: AccountTotal[] = this.agregateAccounts();
+    const accountsOfFirm: Account[] = this.firmDataInput.accounts;
 
-    console.log(lala);
-    console.log(`=== Firm Name is : ${this.firmDataInput.name}  =======`);
-    console.log(`=== Chart ID is : ${this.chartId}  =======`);
+    const lala: any[] = this.financialService.agregateAccounts(accountsOfFirm);
+    // const lala: any[] = this.financialService.test(accountsOfFirm);
+
+    console.log('>>>>>>>>>>', lala);
+    // console.log(`=== Firm Name is : ${this.firmDataInput.name}  =======`);
+    // console.log(`=== Chart ID is : ${this.chartId}  =======`);
 
     // Create the data table.
     var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Topping');
-    data.addColumn('number', 'Slices');
+    data.addColumn('string', 'haha');
+    data.addColumn('number', 'gogo');
     data.addRows(lala);
 
     // URL to table with all option properties :

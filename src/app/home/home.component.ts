@@ -4,7 +4,7 @@ import { Firm, DataDemo } from '../interfaces/finance.model';
 import { FinancialService } from '../services/financial.service';
 import { AssetsTableComponent } from '../assets-table/assets-table.component';
 import { ChartComponent } from '../chart/chart.component';
-declare var google: any;
+// declare var google: any;
 // import * as google from 'google-charts';
 
 @Component({
@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
       );
 
       console.log('Actual value firms:', this.firms);
+
+      // this.FinancialService.test(this.firms[0].accounts);
     } catch (error) {
       console.error('Error fetching firms:', error);
     }
