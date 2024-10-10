@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Account, Firm, PseudoAccount } from '../interfaces/finance.model';
 import { HardcodedDataService } from './hardcoded-data.service';
+import { HelperService } from './helper.service';
 
 interface AccountTotal {
   accountType: string;
@@ -14,7 +15,10 @@ interface Person {
   providedIn: 'root',
 })
 export class FinancialService {
-  constructor(private hardcodedDataService: HardcodedDataService) {}
+  constructor(
+    private hardcodedDataService: HardcodedDataService,
+    private helperService: HelperService
+  ) {}
 
   generateDemoFirms(): Firm[] {
     // const demoFirmData: Firm[] = [];
@@ -126,33 +130,67 @@ export class FinancialService {
     return actualValueFirms;
   }
 
-  agregateAccounts(theAccountsInFirm: Account[]): PseudoAccount[] {
-    const result = theAccountsInFirm.reduce((acc: Account[], cur, index) => {
+  /**
+   * This function is given an array of a firm's accounts and returns then combines accounts
+   * based on their type property, summing their actualValueAccountTotal values.
+   * The result returned is an array of [string, number] because this is the format that the chart function needs
+   * in order to display each the total value of each of the firms account by type of account.
+   * @param theAccountsInFirm
+   * @returns [string, number][]
+   */
+  agregateAccounts(theAccountsInFirm: Account[]): [string, number][] {
+    //
+    // The reduce method is applied to the theAccountsInFirm array which is an array of Account objects.
+    // It iterates over each element (Account object) in the array and applies
+    // the callback function (acc , cur) to accumulate a result.
+    //
+    const reducedAccounts = theAccountsInFirm.reduce((acc: Account[], cur) => {
+      //
+      // This line uses the find method to search for an existing account in the acc array with
+      //  the same type as the current element (cur).
+      //
       const existingItem = acc.find((item) => item.type === cur.type);
 
-      console.log('=== index : ', index);
-      console.log('=== cur : ', cur);
-      console.log('=== acc-1 : ', acc);
-      // acc.push(cur.name);
+      // If it has found inside the acc (accumulator) array an existing account with the same type
+      // then it adds the value of this account to the value of the account being accumulated (in the acc var).
+      //
       if (existingItem) {
         existingItem.actualValueAccountTotal += cur.actualValueAccountTotal;
       } else {
+        //
+        // else , since the acc accumulator doesnt have an object with the type in
+        // the cur object then we push this object into the acc.
+        // Now the acc has an account with this new type, if in the next loops
+        // another object has the same type it will not be pushed, instead its value
+        // will be added to the value of this object that we are now pusinh here
+        //
         acc.push({ ...cur }); // Create a copy to avoid mutating the original object
       }
 
       return acc;
     }, []);
 
-    const myResult: any[] = result.map((account) => [
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    ////  C O O N V E R T I N G   I N T O   A R R A Y    O F  [string, number]  //////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////
+    // The final return value needs to be an aray of [string, number] because this is what
+    // the chart function needs to display the aggregated values of all account types.
+
+    // The reducedAccounts.map iterates over each element in the reducedAccounts array and
+    // applies a callback function (a) => [a.type , a.the_total_value_for_all_accounts_of_this_type].
+    // The result is an array of [string, number] arrays.
+    // the string is the value of the 'type' property in the reducedAccounts objects.
+    // the number is the value of the 'actualValueAccountTotal' property in the reducedAccounts objects.
+    //   I also converted the value to a nice esthetic number rounded to the nearest 1000.
+
+    const myResult: [string, number][] = reducedAccounts.map((account) => [
       account.type,
-      this.roundUpToNearestThousand(account.actualValueAccountTotal),
+      this.helperService.roundUpToNearestThousand(
+        account.actualValueAccountTotal
+      ),
     ]);
 
     console.log('=== Converted RESULT=========\n', myResult);
     return myResult;
-  }
-
-  roundUpToNearestThousand(inputNumber: number): number {
-    return Math.ceil(inputNumber / 1000) * 1000;
   }
 }
