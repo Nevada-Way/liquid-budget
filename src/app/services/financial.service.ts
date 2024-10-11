@@ -182,15 +182,16 @@ export class FinancialService {
     // the string is the value of the 'type' property in the reducedAccounts objects.
     // the number is the value of the 'actualValueAccountTotal' property in the reducedAccounts objects.
     //   I also converted the value to a nice esthetic number rounded to the nearest 1000.
+    // When value is returned I divide by 1000 to get a short number without trailing zeros.
 
     const myResult: [string, number][] = reducedAccounts.map((account) => [
       account.type,
       this.helperService.roundUpToNearestThousand(
         account.actualValueAccountTotal
-      ),
+      ) / 1000,
     ]);
 
-    console.log('=== Converted RESULT=========\n', myResult);
+    // console.log('=== Converted RESULT=========\n', myResult);
     return myResult;
   }
 }

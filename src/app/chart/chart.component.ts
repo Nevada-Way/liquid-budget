@@ -69,10 +69,6 @@ export class ChartComponent {
     const lala: any[] = this.financialService.agregateAccounts(accountsOfFirm);
     // const lala: any[] = this.financialService.test(accountsOfFirm);
 
-    console.log('>>>>>>>>>>', lala);
-    // console.log(`=== Firm Name is : ${this.firmDataInput.name}  =======`);
-    // console.log(`=== Chart ID is : ${this.chartId}  =======`);
-
     // Create the data table.
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'haha');
@@ -82,20 +78,44 @@ export class ChartComponent {
     // URL to table with all option properties :
     // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/piechart#configuration-options
     var options = {
-      backgroundColor: 'white', // 'transparent',
-      title: 'this.firmDataInput.name',
+      backgroundColor: 'transparent', //'white',
+      title: '',
       pieHole: 0.4,
       enableInteractivity: false,
-      pieSliceText: 'none',
+      pieSliceText: 'value', // other values : 'none', 'label' , 'percentage' (default)
+      pieSliceTextStyle: { color: 'white', fontSize: 15 },
       // legend: { position: 'none' },
+      legend: {
+        position: 'bottom', // Possible values: 'labeled'
+        textStyle: { color: 'white', fontSize: 20 },
+      },
 
       chartArea: {
-        left: 20,
-        top: 10,
-        width: '90%',
-        height: '90%',
-        backgroundColor: 'yellow',
+        // left: 20,
+        top: 15,
+        // width: '120%',
+        // height: '90%',
+        // backgroundColor: 'yellow',
       },
+      width: '450',
+      height: '250',
+
+      // colors: [
+      //   'ETF',
+      //   '#004411',
+      //   'Cash',
+      //   '#004411',
+      //   'Bonds',
+      //   '#004411',
+      //   'Saving',
+      //   '#004411',
+      // ],
+      slices: [
+        { color: 'black' },
+        { color: 'gray' },
+        { color: 'brown' },
+        { color: 'blue' },
+      ],
     };
 
     var chartDiv = new google.visualization.PieChart(

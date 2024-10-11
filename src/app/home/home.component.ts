@@ -4,6 +4,7 @@ import { Firm, DataDemo } from '../interfaces/finance.model';
 import { FinancialService } from '../services/financial.service';
 import { AssetsTableComponent } from '../assets-table/assets-table.component';
 import { ChartComponent } from '../chart/chart.component';
+import { HelperService } from '../services/helper.service';
 // declare var google: any;
 // import * as google from 'google-charts';
 
@@ -17,8 +18,12 @@ import { ChartComponent } from '../chart/chart.component';
 export class HomeComponent implements OnInit {
   firms: Firm[] = [];
   charts: any[] = []; // Array to store charts
+  totalFirmBalance: number = 0;
 
-  constructor(private FinancialService: FinancialService) {}
+  constructor(
+    private FinancialService: FinancialService,
+    public helperService: HelperService
+  ) {}
 
   async ngOnInit() {
     try {
@@ -30,7 +35,7 @@ export class HomeComponent implements OnInit {
         620000
       );
 
-      console.log('Actual value firms:', this.firms);
+      // console.log('Actual value firms:', this.firms);
 
       // this.FinancialService.test(this.firms[0].accounts);
     } catch (error) {
