@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
 
       this.firms = this.FinancialService.convertDataToActualValues(
         generatedFirms,
-        620000
+        708000
       );
 
       // console.log('Actual value firms:', this.firms);
