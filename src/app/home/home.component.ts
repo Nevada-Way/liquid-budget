@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Firm, DataDemo } from '../interfaces/finance.model';
+import { Firm } from '../interfaces/finance.model';
 import { FinancialService } from '../services/financial.service';
 import { AssetsTableComponent } from '../assets-table/assets-table.component';
 import { ChartComponent } from '../chart/chart.component';

@@ -1,30 +1,49 @@
 <div container-table>
   <table mat-table [dataSource]="accountsDataInput" users-table>
-    <ng-container matColumnDef="id">
+    <!-- <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef class="users-table-cell">ID</th>
       <td mat-cell *matCellDef="let myelement" class="users-table-cell">
         {{ myelement.id }}
       </td>
-    </ng-container>
+    </ng-container> -->
 
     <ng-container matColumnDef="name">
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="users-table-cell"
+        class="users-table-cell align-left"
         class="heading-table"
       >
         Name
       </th>
-      <td mat-cell *matCellDef="let myelement" class="users-table-cell">
+      <td
+        mat-cell
+        *matCellDef="let myelement"
+        class="users-table-cell align-left"
+      >
         {{ myelement.name }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="accountTotal">
-      <th mat-header-cell *matHeaderCellDef class="users-table-cell">Total</th>
-      <td mat-cell *matCellDef="let myelement" class="users-table-cell">
-        {{ myelement.actualValueAccountTotal | number : "1.0-0" }}
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="users-table-cell align-right"
+      >
+        Total
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let myelement"
+        class="users-table-cell align-right"
+      >
+        <!-- {{ myelement.actualValueAccountTotal | number : "1.0-0" }} -->
+        {{
+          helperService.roundUpToNearestThousand(
+            myelement.actualValueAccountTotal
+          ) / 1000
+        }}
       </td>
     </ng-container>
 

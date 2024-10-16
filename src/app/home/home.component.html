@@ -73,6 +73,19 @@
         <!-- ===================================== -->
         <!-- ==== C A R D   B A C K S I D E  === -->
         <div class="card__side card__side--back card__side--back--3">
+          <h4>
+            <span class="card__heading-span">
+              {{ firm.name }}
+            </span>
+          </h4>
+          <h1 class="card__heading-span">
+            Total:
+            {{
+              this.helperService.roundUpToNearestThousand(
+                firm.actualValueFirmTotal
+              ) / 1000
+            }}K
+          </h1>
           <div class="card__table-body card__table-typo">
             <div class="card__price-box">
               <!-- <p class="card__price-only">Only</p>

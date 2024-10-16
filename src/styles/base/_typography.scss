@@ -89,6 +89,13 @@ body {
   text-transform: uppercase;
   font-size: 1.6rem;
   font-weight: 700;
-  text-align: center !important;
+  // text-align: center !important;
   background-color: aqua;
+}
+
+.align-left {
+  text-align: left !important;
+}
+.align-right {
+  text-align: right !important;
 }

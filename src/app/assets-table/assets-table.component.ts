@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { Firm, Account } from '../interfaces/finance.model';
+import { Account } from '../interfaces/finance.model';
+import { HelperService } from '../services/helper.service';
 
 @Component({
   selector: 'app-assets-table',
@@ -13,7 +14,8 @@ import { Firm, Account } from '../interfaces/finance.model';
 export class AssetsTableComponent {
   // @Input() firmsDataInput: Firm[] = [];
   @Input() accountsDataInput: Account[] = [];
+  constructor(public helperService: HelperService) {}
 
-  displayedColumns: string[] = ['id', 'name', 'accountTotal'];
+  displayedColumns: string[] = ['name', 'accountTotal'];
   // actualValueAccountTotal;
 }
