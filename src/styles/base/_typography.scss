@@ -99,3 +99,15 @@ body {
 .align-right {
   text-align: right !important;
 }
+.flex-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin-top: 0.5rem;
+  // display: flex !important;
+  // justify-content: center !important;
+  // align-items: center !important;
+  // padding: 0 4rem;
+}
