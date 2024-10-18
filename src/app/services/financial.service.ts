@@ -39,13 +39,13 @@ export class FinancialService {
       'IBI-ACCT-3',
       'IBI-ACCT-4',
       'IBI-ACCT-5',
-      'IBI-ACCT-6',
     ]);
     const firm3Data: Firm = this.getFirmWithAccounts('FIRM-3', [
       'MTV-ACCT-1',
       'MTV-ACCT-2',
       'MTV-ACCT-3',
       'MTV-ACCT-4',
+      'MTV-ACCT-5',
     ]);
 
     // demoFirmData =

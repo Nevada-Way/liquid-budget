@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Firm, Account } from '../interfaces/finance.model';
 import { FinancialService } from '../services/financial.service';
+import { HelperService } from '../services/helper.service';
 declare var google: any;
 
 @Component({
@@ -15,7 +16,10 @@ export class ChartComponent {
   chartId: string = '';
   // accountsOfFirm: Account[] = [];
 
-  constructor(private financialService: FinancialService) {}
+  constructor(
+    private financialService: FinancialService,
+    private helperService: HelperService
+  ) {}
 
   async ngOnInit() {
     this.chartId = `chart-${this.firmDataInput.id}`;
@@ -66,14 +70,22 @@ export class ChartComponent {
   drawChart() {
     const accountsOfFirm: Account[] = this.firmDataInput.accounts;
 
-    const lala: any[] = this.financialService.agregateAccounts(accountsOfFirm);
-    // const lala: any[] = this.financialService.test(accountsOfFirm);
+    const accountAgregated: any[] =
+      this.financialService.agregateAccounts(accountsOfFirm);
+    // const accountAgregated: any[] = this.financialService.test(accountsOfFirm);
 
     // Create the data table.
     var data = new google.visualization.DataTable();
     data.addColumn('string', 'haha');
     data.addColumn('number', 'gogo');
-    data.addRows(lala);
+
+    //data.addRows(this.helperService.convertArrayToUpperCase(accountAgregated));
+    data.addRows(accountAgregated);
+
+    console.log(
+      '$$$$$$$ Agregated Accounts array = ',
+      this.helperService.convertArrayToUpperCase(accountAgregated)
+    );
 
     // URL to table with all option properties :
     // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/piechart#configuration-options
@@ -87,7 +99,7 @@ export class ChartComponent {
       // legend: { position: 'none' },
       legend: {
         position: 'bottom', // Possible values: 'labeled'
-        textStyle: { color: 'white', fontSize: 20 },
+        textStyle: { color: 'black', fontSize: 20 },
       },
 
       chartArea: {
@@ -100,19 +112,9 @@ export class ChartComponent {
       width: '450',
       height: '250',
 
-      // colors: [
-      //   'ETF',
-      //   '#004411',
-      //   'Cash',
-      //   '#004411',
-      //   'Bonds',
-      //   '#004411',
-      //   'Saving',
-      //   '#004411',
-      // ],
       slices: [
         { color: 'black' },
-        { color: 'gray' },
+        { color: '#497542' },
         { color: 'brown' },
         { color: 'blue' },
       ],

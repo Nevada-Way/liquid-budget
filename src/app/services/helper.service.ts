@@ -21,4 +21,19 @@ export class HelperService {
   roundUpToNearestThousand(inputNumber: number): number {
     return Math.ceil(inputNumber / 1000) * 1000;
   }
+
+  convertArrayToUpperCase(myArray: any[]): any {
+    myArray.map(([item, quantity]) => {
+      return [item.toUpperCase(), quantity];
+    });
+  }
+
+  // convertArrayToUpperCase(
+  //   array: { name: string; quantity: number }[]
+  // ): { name: string; quantity: number }[] {
+  //   return array.map((item) => ({
+  //     name: item.name.toUpperCase(), // Call toUpperCase() to get the string
+  //     quantity: item.quantity,
+  //   }));
+  // }
 }
