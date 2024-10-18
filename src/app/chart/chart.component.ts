@@ -79,13 +79,13 @@ export class ChartComponent {
     data.addColumn('string', 'haha');
     data.addColumn('number', 'gogo');
 
-    //data.addRows(this.helperService.convertArrayToUpperCase(accountAgregated));
-    data.addRows(accountAgregated);
+    data.addRows(this.helperService.convertArrayToUpperCase(accountAgregated));
+    // data.addRows(accountAgregated);
 
-    console.log(
-      '$$$$$$$ Agregated Accounts array = ',
-      this.helperService.convertArrayToUpperCase(accountAgregated)
-    );
+    // console.log(
+    //   '$$$$$$$ Agregated Accounts array = ',
+    //   this.helperService.convertArrayToUpperCase(accountAgregated)
+    // );
 
     // URL to table with all option properties :
     // https://developers-dot-devsite-v2-prod.appspot.com/chart/interactive/docs/gallery/piechart#configuration-options
@@ -99,7 +99,7 @@ export class ChartComponent {
       // legend: { position: 'none' },
       legend: {
         position: 'bottom', // Possible values: 'labeled'
-        textStyle: { color: 'black', fontSize: 20 },
+        textStyle: { color: 'black', fontSize: 18 },
       },
 
       chartArea: {

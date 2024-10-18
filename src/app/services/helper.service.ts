@@ -22,10 +22,14 @@ export class HelperService {
     return Math.ceil(inputNumber / 1000) * 1000;
   }
 
-  convertArrayToUpperCase(myArray: any[]): any {
-    myArray.map(([item, quantity]) => {
+  convertArrayToUpperCase(myArray: any[]) {
+    console.log('myArray', myArray);
+
+    const result: any[] = myArray.map(([item, quantity]) => {
       return [item.toUpperCase(), quantity];
     });
+    console.log('result', result);
+    return result;
   }
 
   // convertArrayToUpperCase(
