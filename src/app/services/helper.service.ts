@@ -22,7 +22,14 @@ export class HelperService {
     return Math.ceil(inputNumber / 1000) * 1000;
   }
 
-  convertArrayToUpperCase(myArray: any[]) {
+  /**
+   * This function receives an array of array-entities. Each entity is an array
+   * of a string and a number.
+   * It returns a new array  where all the strings are converted to uppercase.
+   * @param myArray
+   * @returns
+   */
+  convertArrayToUpperCase(myArray: [string, number][]): [string, number][] {
     console.log('myArray', myArray);
 
     const result: any[] = myArray.map(([item, quantity]) => {

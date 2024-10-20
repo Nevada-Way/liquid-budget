@@ -31,7 +31,19 @@
 
   <section class="section-firms">
     <div class="u-center-text u-margin-bottom-big">
-      <h2 class="heading-secondary u-margin-top-big">Your Financial Firms</h2>
+      <h2 class="heading-secondary u-margin-top-big">
+        Total value of financial firms:
+        <input
+          class="heading-secondary u-margin-top-big"
+          type="number"
+          [(ngModel)]="this.signalTotalFirmBalance"
+        />
+        <!-- {{
+          this.helperService.roundUpToNearestThousand(this.totalFirmBalance) /
+            1000
+        }}
+        K -->
+      </h2>
     </div>
 
     <div class="section-firms__container">
