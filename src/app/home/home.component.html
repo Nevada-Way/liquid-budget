@@ -38,6 +38,16 @@
           type="number"
           [(ngModel)]="this.signalTotalFirmBalance"
         />
+        <button
+          (click)="
+            recalcFirms(
+              this.financialService.generateDemoFirms(),
+              this.signalTotalFirmBalance()
+            )
+          "
+        >
+          CALC
+        </button>
       </h2>
     </div>
 

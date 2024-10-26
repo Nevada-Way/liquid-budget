@@ -21,24 +21,27 @@ export class HomeComponent implements OnInit {
   firms: Firm[] = [];
 
   charts: any[] = []; // Array to store charts
-  totalFirmBalance: number = this.signalTotalFirmBalance();
 
   constructor(
-    private FinancialService: FinancialService,
+    public financialService: FinancialService,
     public helperService: HelperService
   ) {}
 
   async ngOnInit() {
     try {
-      const generatedFirms: Firm[] = this.FinancialService.generateDemoFirms();
+      const generatedFirms: Firm[] = this.financialService.generateDemoFirms();
       console.log('Firms fetched:', generatedFirms);
 
-      this.firms = this.FinancialService.convertDataToActualValues(
-        generatedFirms,
-        this.totalFirmBalance
-      );
+      this.recalcFirms(generatedFirms, this.signalTotalFirmBalance());
     } catch (error) {
       console.error('Error fetching firms:', error);
     }
+  }
+
+  recalcFirms(inpuGeneratedFirms: Firm[], totalFirmBalance: number) {
+    this.firms = this.financialService.convertDataToActualValues(
+      inpuGeneratedFirms,
+      totalFirmBalance
+    );
   }
 }
