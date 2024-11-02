@@ -3,7 +3,7 @@
       (2) The <main> holds the default <section-firms>
   -->
 
-<header class="shared-header">
+<header class="shared-header u-margin-bottom-medium">
   <div>
     <img
       src="./assets/img/logo-white.png"
@@ -30,15 +30,27 @@
   <!-- ++++++++++++++++++++++++++++++++++++++  -->
 
   <section class="section-firms">
-    <div class="u-center-text u-margin-bottom-big">
-      <h2 class="heading-secondary u-margin-top-big">
+    <div class="u-center-text">
+      <h2 class="heading-secondary">
         Total value of financial firms:
-        <input
-          class="heading-secondary u-margin-top-big"
-          type="number"
-          [(ngModel)]="this.signalTotalFirmBalance"
-        />
+        <mat-form-field>
+          <input
+            matInput
+            class="heading-secondary mat-input-element large-input-field"
+            type="number"
+            [(ngModel)]="this.signalTotalFirmBalance"
+          />
+        </mat-form-field>
+        <!-- mat-raised-button -->
         <button
+          mat-fab
+          class="btn-calc"
+          color="primary"
+          style="
+            background-color: red !important;
+            font-size: 2.5rem !important;
+            font-weight: 600 !important;
+          "
           (click)="
             recalcFirms(
               this.financialService.generateDemoFirms(),
@@ -46,7 +58,7 @@
             )
           "
         >
-          CALC
+          GO
         </button>
       </h2>
     </div>

@@ -7,11 +7,20 @@ import { AssetsTableComponent } from '../assets-table/assets-table.component';
 import { ChartComponent } from '../chart/chart.component';
 import { HelperService } from '../services/helper.service';
 import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [AssetsTableComponent, ChartComponent, CommonModule, FormsModule],
+  imports: [
+    AssetsTableComponent,
+    ChartComponent,
+    CommonModule,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
