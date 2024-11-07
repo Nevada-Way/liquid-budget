@@ -43,13 +43,10 @@
   margin: 0 20rem !important;
 }
 
-.transparent {
-  background-color: transparent !important;
-  border-radius: 10px !important;
-  border-color: $color-primary;
+//////////////////////////////
+/// // P A D D I N G
+//////////////////////////////
+
+.u-padding-top-medium {
+  padding-top: 3rem !important;
 }
-// .mat1-mdc-form-field-bottom-align {
-//   /* Remove the bottom margin or padding */
-//   margin-bottom: 0 !important;
-//   padding-bottom: 0 !important;
-// }
