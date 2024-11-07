@@ -15,12 +15,20 @@
   margin-bottom: 1.5rem !important;
 }
 
+.u-margin-right-small {
+  margin-right: 1.5rem !important;
+}
+
 .u-margin-bottom-medium {
   margin-bottom: 4rem !important;
 }
 
 .u-margin-bottom-big {
   margin-bottom: 8rem !important;
+}
+
+.u-margin-right-medium {
+  margin-right: 4rem !important;
 }
 
 .u-margin-top-big {
@@ -35,3 +43,13 @@
   margin: 0 20rem !important;
 }
 
+.transparent {
+  background-color: transparent !important;
+  border-radius: 10px !important;
+  border-color: $color-primary;
+}
+// .mat1-mdc-form-field-bottom-align {
+//   /* Remove the bottom margin or padding */
+//   margin-bottom: 0 !important;
+//   padding-bottom: 0 !important;
+// }

@@ -30,37 +30,31 @@
   <!-- ++++++++++++++++++++++++++++++++++++++  -->
 
   <section class="section-firms">
-    <div class="u-center-text">
-      <h2 class="heading-secondary">
-        Total value of financial firms:
-        <mat-form-field>
-          <input
-            matInput
-            class="heading-secondary mat-input-element large-input-field"
-            type="number"
-            [(ngModel)]="this.signalTotalFirmBalance"
-          />
-        </mat-form-field>
-        <!-- mat-raised-button -->
-        <button
-          mat-fab
-          class="btn-calc"
-          color="primary"
-          style="
-            background-color: red !important;
-            font-size: 2.5rem !important;
-            font-weight: 600 !important;
-          "
-          (click)="
-            recalcFirms(
-              this.financialService.generateDemoFirms(),
-              this.signalTotalFirmBalance()
-            )
-          "
-        >
-          GO
-        </button>
-      </h2>
+    <!-- <div class="uu-center-text"> -->
+    <div class="sub-title">
+      <h2 class="heading-secondary">Total value of financial firms:</h2>
+
+      <input
+        matInput
+        class="large-input-field transparent u-margin-right-medium"
+        type="number"
+        [(ngModel)]="this.signalTotalFirmBalance"
+      />
+
+      <!-- mat-raised-button -->
+      <button
+        mat-fab
+        class="btn-calc"
+        style="font-size: 2.5rem !important; font-weight: 600 !important"
+        (click)="
+          recalcFirms(
+            this.financialService.generateDemoFirms(),
+            this.signalTotalFirmBalance()
+          )
+        "
+      >
+        GO
+      </button>
     </div>
 
     <div class="section-firms__container">
