@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { Firm } from '../interfaces/finance.model';
+import { AnnualBudget, Firm } from '../interfaces/finance.model';
 import { FinancialService } from '../services/financial.service';
 import { AssetsTableComponent } from '../assets-table/assets-table.component';
 import { ChartComponent } from '../chart/chart.component';
@@ -9,6 +9,8 @@ import { HelperService } from '../services/helper.service';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { HardcodedDataService } from '../services/hardcoded-data.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatInputModule,
     MatButtonModule,
+    MatListModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -31,17 +34,39 @@ export class HomeComponent implements OnInit {
 
   charts: any[] = []; // Array to store charts
 
+  annualBudgets: AnnualBudget[] = [];
+
+  // budgets = Array.from({ length: 10 }).map((_, i) => {
+  //   return {
+  //     year: i + 2024,
+  //     budget: `Budget for ${i + 2024}`,
+  //     // Add more properties as needed
+  //   };
+  // });
+
   constructor(
     public financialService: FinancialService,
-    public helperService: HelperService
+    public helperService: HelperService,
+    public hardcodedDataService: HardcodedDataService
   ) {}
 
   async ngOnInit() {
     try {
+      //////////////////////////////////
+      // Loading and calculating the firm's data
+      //////////////////////////////////
+
       const generatedFirms: Firm[] = this.financialService.generateDemoFirms();
-      console.log('Firms fetched:', generatedFirms);
+      // console.log('Firms fetched:', generatedFirms);
 
       this.recalcFirms(generatedFirms, this.signalTotalFirmBalance());
+
+      //////////////////////////////////
+      // Loading the annual budgets
+      //////////////////////////////////
+      this.annualBudgets = this.hardcodedDataService.getAllBudgets();
+
+      console.log('Budgets list :', this.annualBudgets);
     } catch (error) {
       console.error('Error fetching firms:', error);
     }

@@ -33,3 +33,9 @@ export interface PseudoAccount {
   typeOfAccount: string;
   totalValue: number;
 }
+
+export interface AnnualBudget {
+  year: number;
+  budget: number;
+  percentUsed: number /**value in percent for example : 30 and not 0.3  */;
+}

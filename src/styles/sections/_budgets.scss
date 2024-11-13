@@ -1,0 +1,33 @@
+// This sections is the budgets sections.
+// It displays a list, each item is the year and its budget.
+//
+
+.section-budgets {
+  // border: 1px solid rgb(56, 184, 67);
+  flex: 1;
+  border: 2px solid rgb(32, 101, 180);
+
+  //   background-color: rgb(209, 228, 81);
+
+  &_title {
+  }
+
+  &__scrollable-container {
+    // background-color: lightgreen;
+
+    height: 50%; /* Adjust the height as needed */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+
+  &__scrollable-list-item {
+    background-color: lightgreen;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+  }
+}

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Account, Firm } from '../interfaces/finance.model';
+import { Account, AnnualBudget, Firm } from '../interfaces/finance.model';
 
 @Injectable({
   providedIn: 'root',
@@ -239,5 +239,47 @@ export class HardcodedDataService {
     ];
 
     return allAccounts;
+  }
+
+  getAllBudgets(): AnnualBudget[] {
+    const allBudgets: AnnualBudget[] = [
+      {
+        year: 2025,
+        budget: 30,
+        percentUsed: 0,
+      },
+      {
+        year: 2026,
+        budget: 45,
+        percentUsed: 0,
+      },
+      {
+        year: 2027,
+        budget: 30,
+        percentUsed: 0,
+      },
+      {
+        year: 2028,
+        budget: 57,
+        percentUsed: 0,
+      },
+      {
+        year: 2029,
+        budget: 45,
+        percentUsed: 0,
+      },
+      {
+        year: 2030,
+        budget: 57,
+        percentUsed: 0,
+      },
+      {
+        year: 2031,
+        budget: 30,
+        percentUsed: 0,
+      },
+    ];
+
+    return allBudgets;
   }
 }
