@@ -251,32 +251,32 @@ export class HardcodedDataService {
       {
         year: 2026,
         budget: 45,
-        percentUsed: 0,
+        percentUsed: 20,
       },
       {
         year: 2027,
         budget: 30,
-        percentUsed: 0,
+        percentUsed: 40,
       },
       {
         year: 2028,
         budget: 57,
-        percentUsed: 0,
+        percentUsed: 60,
       },
       {
         year: 2029,
         budget: 45,
-        percentUsed: 0,
+        percentUsed: 70,
       },
       {
         year: 2030,
         budget: 57,
-        percentUsed: 0,
+        percentUsed: 80,
       },
       {
         year: 2031,
         budget: 30,
-        percentUsed: 0,
+        percentUsed: 100,
       },
     ];
 

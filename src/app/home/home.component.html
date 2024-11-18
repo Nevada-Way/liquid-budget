@@ -32,7 +32,7 @@
   <div class="dashboard">
     <section class="section-firms u-padding-vertical-medium">
       <div class="sub-title u-padding-bottom-medium">
-        <h2 class="heading-secondary">Total Assets:</h2>
+        <h2 class="heading-secondary font-secondary">Total Assets:</h2>
 
         <input
           matInput
@@ -133,23 +133,16 @@
     </section>
 
     <section class="section-budgets">
-      <h2 class="heading-secondary">Budget</h2>
+      <h2 class="font-secondary u-center-text">Budget</h2>
       <mat-list class="section-budgets__scrollable-container">
         <mat-list-item
-          class="section-budgets__scrollable-container"
+          class="section-budgets__scrollable-container font-secondary"
           *ngFor="let item of annualBudgets"
         >
-          {{ item.year }} | {{ item.budget }}
+          {{ item.year }} | {{ item.budget }} |
+          {{ (this.signalTotalFirmBalance() * (100 - item.percentUsed)) / 100 }}
         </mat-list-item>
       </mat-list>
     </section>
   </div>
 </main>
-
-<!-- <div>
-      <p>ID: {{ firm.id }}</p>
-      <p>Name: {{ firm.name }}</p>
-      <p>Total: {{ firm.actualValueFirmTotal | number : "1.0-0" }}</p>
-    </div> -->
-
-<!-- <app-assets-table [firmsDataInput]="firms"></app-assets-table> -->

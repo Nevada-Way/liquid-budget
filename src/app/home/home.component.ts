@@ -36,14 +36,6 @@ export class HomeComponent implements OnInit {
 
   annualBudgets: AnnualBudget[] = [];
 
-  // budgets = Array.from({ length: 10 }).map((_, i) => {
-  //   return {
-  //     year: i + 2024,
-  //     budget: `Budget for ${i + 2024}`,
-  //     // Add more properties as needed
-  //   };
-  // });
-
   constructor(
     public financialService: FinancialService,
     public helperService: HelperService,
