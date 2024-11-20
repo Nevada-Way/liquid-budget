@@ -3,33 +3,35 @@
 //
 
 .section-budgets {
-  // border: 1px solid rgb(56, 184, 67);
+  background-color: $color-grey-light-1;
+  // border: 2px solid rgb(32, 101, 180);
   flex: 1;
-  border: 2px solid rgb(32, 101, 180);
-
-  //   background-color: rgb(209, 228, 81);
+  padding-top: 10rem;
 
   &_title {
   }
 
   &__scrollable-container {
     // background-color: lightgreen;
+    // border-left: 3px solid #c61515;
+    border-left: 3px solid $color-primary;
 
-    height: 50%; /* Adjust the height as needed */
+    height: 60%; /* Adjust the height as needed */
     overflow-y: auto;
     // border: 1px solid #ccc;
-    border-bottom: 3px solid #c61515;
-    padding: 10px;
+    // padding: 10px;
   }
 
   &__scrollable-list-item {
-    background-color: lightgreen;
+    // background-color: lightgreen;
 
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
-    // border-bottom: 1px solid #ddd;
-    border-bottom: 3px solid #c61515;
+    // border-bottom: 3px solid #c61515;
+    border-bottom: 3px solid $color-primary;
+
+    margin-bottom: 6rem;
   }
 }

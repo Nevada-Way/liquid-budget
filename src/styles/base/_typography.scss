@@ -51,6 +51,14 @@ body {
   color: $color-primary-dark;
 }
 
+.font-tertiary {
+  text-transform: uppercase !important;
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8rem !important;
+  color: $color-primary-dark;
+}
+
 .mdc-list-item__primary-text {
   font-size: 3rem !important;
   font-weight: 700 !important;
@@ -91,6 +99,12 @@ body {
   font-weight: 700;
 }
 
+.heading-list {
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .paragraph {
   font-size: 2rem;
   font-weight: 400;

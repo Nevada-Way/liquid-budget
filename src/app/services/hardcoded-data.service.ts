@@ -246,7 +246,7 @@ export class HardcodedDataService {
       {
         year: 2025,
         budget: 30,
-        percentUsed: 0,
+        percentUsed: 1,
       },
       {
         year: 2026,
