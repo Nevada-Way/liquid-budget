@@ -241,42 +241,77 @@ export class HardcodedDataService {
     return allAccounts;
   }
 
+  //
+  //
+  //
+  // %
+  // %
+  // %
+  // %
+
+  //
+  // %
+  // %
+  // %
+  // %
+  // %
+  // .0%
   getAllBudgets(): AnnualBudget[] {
     const allBudgets: AnnualBudget[] = [
       {
         year: 2025,
-        budget: 30,
-        percentUsed: 1,
+        percentBudget: 6.2,
+        percentRemaining: 93.8,
       },
       {
         year: 2026,
-        budget: 45,
-        percentUsed: 20,
+        percentBudget: 8.5,
+        percentRemaining: 87.2,
       },
       {
         year: 2027,
-        budget: 30,
-        percentUsed: 40,
+        percentBudget: 8.5,
+        percentRemaining: 78.8,
       },
       {
         year: 2028,
-        budget: 57,
-        percentUsed: 60,
+        percentBudget: 17.7,
+        percentRemaining: 61.1,
       },
       {
         year: 2029,
-        budget: 45,
-        percentUsed: 70,
+        percentBudget: 8.5,
+        percentRemaining: 52.6,
       },
       {
         year: 2030,
-        budget: 57,
-        percentUsed: 80,
+        percentBudget: 8.5,
+        percentRemaining: 44.2,
       },
       {
         year: 2031,
-        budget: 30,
-        percentUsed: 100,
+        percentBudget: 6.2,
+        percentRemaining: 38,
+      },
+      {
+        year: 2032,
+        percentBudget: 8.5,
+        percentRemaining: 29.5,
+      },
+      {
+        year: 2033,
+        percentBudget: 17.7,
+        percentRemaining: 11.8,
+      },
+      {
+        year: 2034,
+        percentBudget: 6.9,
+        percentRemaining: 4.9,
+      },
+      {
+        year: 2035,
+        percentBudget: 4.6,
+        percentRemaining: 0.3,
       },
     ];
 

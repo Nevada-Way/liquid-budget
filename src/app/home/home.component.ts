@@ -56,9 +56,31 @@ export class HomeComponent implements OnInit {
       //////////////////////////////////
       // Loading the annual budgets
       //////////////////////////////////
-      this.annualBudgets = this.hardcodedDataService.getAllBudgets();
+      // this.annualBudgets = this.hardcodedDataService.getAllBudgets();
+      const budgetsList: AnnualBudget[] =
+        this.hardcodedDataService.getAllBudgets();
+      console.log(`Budgets list length : ${budgetsList.length}`);
 
-      console.log('Budgets list :', this.annualBudgets);
+      this.annualBudgets = budgetsList.map((budget, index) => {
+        const year = budget.year;
+        const percentBudget =
+          this.helperService.roundUpToNearestThousand(
+            (budget.percentBudget * this.signalTotalFirmBalance()) / 100
+          ) / 1000;
+        const percentRemaining =
+          this.helperService.roundUpToNearestThousand(
+            (budget.percentRemaining * this.signalTotalFirmBalance()) / 100
+          ) / 1000;
+
+        return {
+          year,
+          percentBudget,
+          percentRemaining,
+        };
+      });
+
+      //this.annualBudgets = budgetsList;
+      console.log('annualBudgets = ', this.annualBudgets);
     } catch (error) {
       console.error('Error fetching firms:', error);
     }

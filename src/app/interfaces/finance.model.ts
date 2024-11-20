@@ -36,6 +36,6 @@ export interface PseudoAccount {
 
 export interface AnnualBudget {
   year: number;
-  budget: number;
-  percentUsed: number /**value in percent for example : 30 and not 0.3  */;
+  percentBudget: number;
+  percentRemaining: number /**value in percent for example : 30 and not 0.3  */;
 }
