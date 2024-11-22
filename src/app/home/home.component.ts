@@ -28,13 +28,15 @@ import { HardcodedDataService } from '../services/hardcoded-data.service';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  signalTotalFirmBalance: WritableSignal<number> = signal(100000); //709000
+  signalTotalFirmBalance: WritableSignal<number> = signal(650000); //709000
 
   firms: Firm[] = [];
 
   charts: any[] = []; // Array to store charts
 
   annualBudgets: AnnualBudget[] = [];
+
+  focusYear: number = 2025;
 
   constructor(
     public financialService: FinancialService,
@@ -54,30 +56,13 @@ export class HomeComponent implements OnInit {
       this.recalcFirms(generatedFirms, this.signalTotalFirmBalance());
 
       //////////////////////////////////
-      // Loading the annual budgets
+      // Loading and calculating annual budgets
       //////////////////////////////////
       // this.annualBudgets = this.hardcodedDataService.getAllBudgets();
       const budgetsList: AnnualBudget[] =
         this.hardcodedDataService.getAllBudgets();
-      console.log(`Budgets list length : ${budgetsList.length}`);
 
-      this.annualBudgets = budgetsList.map((budget, index) => {
-        const year = budget.year;
-        const percentBudget =
-          this.helperService.roundUpToNearestThousand(
-            (budget.percentBudget * this.signalTotalFirmBalance()) / 100
-          ) / 1000;
-        const percentRemaining =
-          this.helperService.roundUpToNearestThousand(
-            (budget.percentRemaining * this.signalTotalFirmBalance()) / 100
-          ) / 1000;
-
-        return {
-          year,
-          percentBudget,
-          percentRemaining,
-        };
-      });
+      this.recalcBudgetsList(budgetsList, this.signalTotalFirmBalance());
 
       //this.annualBudgets = budgetsList;
       console.log('annualBudgets = ', this.annualBudgets);
@@ -90,6 +75,40 @@ export class HomeComponent implements OnInit {
     this.firms = this.financialService.convertDataToActualValues(
       inpuGeneratedFirms,
       totalFirmBalance
+    );
+  }
+
+  recalcBudgetsList(
+    inputBudgetsList: AnnualBudget[],
+    totalFirmBalance: number
+  ) {
+    this.annualBudgets = inputBudgetsList.map((budget) => {
+      const year = budget.year;
+      const percentBudget =
+        this.helperService.roundUpToNearestThousand(
+          (budget.percentBudget * totalFirmBalance) / 100
+        ) / 1000;
+      const percentRemaining =
+        this.helperService.roundUpToNearestThousand(
+          (budget.percentRemaining * totalFirmBalance) / 100
+        ) / 1000;
+      return {
+        year,
+        percentBudget,
+        percentRemaining,
+      };
+    });
+  }
+
+  recalcAll() {
+    this.recalcFirms(
+      this.financialService.generateDemoFirms(),
+      this.signalTotalFirmBalance()
+    );
+
+    this.recalcBudgetsList(
+      this.hardcodedDataService.getAllBudgets(),
+      this.signalTotalFirmBalance()
     );
   }
 }
