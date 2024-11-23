@@ -18,13 +18,13 @@
 // @import "./components/nav-list";
 // @import "./components/story";
 
+@import "./layout/whole-page";
 @import "./layout/header";
-// @import "./layout/footer";
+@import "./layout/footer";
 // @import "./layout/grids";
-@import "./layout/sub-title";
 
 @import "./sections/budgets";
-@import "./sections/dashboard";
+@import "./layout/dashboard";
 @import "./sections/firms";
 
 /////////////////////

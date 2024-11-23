@@ -1,0 +1,12 @@
+// The dashboard is the main section of the website page
+// It is sandwiched between the header ontop and the footer at bottom
+
+.dashboard {
+  border: 2px solid rgb(32, 101, 180);
+  // height: 80vh;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  padding: 0.5rem;
+}

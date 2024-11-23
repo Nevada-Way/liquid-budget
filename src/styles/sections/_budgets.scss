@@ -4,16 +4,17 @@
 
 .section-budgets {
   background-color: $color-grey-light-1;
-  // border: 2px solid rgb(32, 101, 180);
+  border: 4px solid rgb(205, 165, 9);
   flex: 1;
-  padding-top: 10rem;
+  max-height: 80vh;
+  // padding-top: 10rem;
 
   &__scrollable-container {
     // background-color: lightgreen;
     // border-left: 3px solid #c61515;
     border-left: 3px solid $color-primary;
 
-    height: 40%; /* Adjust the height as needed */
+    height: 60vh; /* Adjust the height as needed */
     overflow-y: auto;
     // border: 1px solid #ccc;
     // padding: 10px;
