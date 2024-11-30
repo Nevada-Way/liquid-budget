@@ -1,8 +1,11 @@
 // The dashboard is the main section of the website page
 // It is sandwiched between the header ontop and the footer at bottom
+// Its contents are :
+// (1) The section that holds the assets info (the input feild & cards)
+// (2) The section that has the list of annual budgets
 
 .dashboard {
-  border: 2px solid rgb(32, 101, 180);
+  border: 4px solid rgb(32, 101, 180);
   // height: 80vh;
 
   display: flex;
