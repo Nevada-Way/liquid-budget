@@ -134,12 +134,18 @@
 
   <section class="section-budgets">
     <h2 class="font-secondary u-center-text">Budget</h2>
-    <h3 class="heading-list heading-tertiary">
+    <!-- <h3 class="heading-list heading-tertiary">
       <span>Year </span>
       <span>Budget</span>
       <span>Reserve</span>
-    </h3>
+    </h3> -->
     <mat-list class="section-budgets__scrollable-container">
+      <mat-list-item class="heading-list heading-tertiary">
+        <span>Year | Budget | Reserve</span>
+        <!-- <span>Budget</span>
+        <span>Reserve</span> -->
+      </mat-list-item>
+
       <mat-list-item
         [class.highlighted-row]="item.year === 2026"
         class="section-budgets__scrollable-list-item font-tertiary"

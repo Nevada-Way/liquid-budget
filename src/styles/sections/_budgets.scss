@@ -4,14 +4,14 @@
 
 .section-budgets {
   background-color: $color-grey-light-1;
-  border: 8px solid rgb(205, 165, 9);
-  // flex: 1;
-  flex-grow: 1;
-  flex-shrink: 1;
+  border: 8px solid rgb(223, 200, 107);
+
+  margin: 0 25rem;
 
   max-height: 80vh;
-  max-width: 30vw;
-  min-width: 30vw;
+  // max-width: 70rem;
+  // min-width: 30vw;
+  overflow: auto;
   // padding-top: 10rem;
 
   &__scrollable-container {
