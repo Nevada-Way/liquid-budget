@@ -141,6 +141,13 @@
       <div class="section-budgets__col3">Reserve</div>
     </div>
 
+    <div class="section-budgets__scrollable-container">
+      <div class="section-budgets__row" *ngFor="let item of annualBudgets">
+        <div class="section-budgets__col1">{{ item.year }}</div>
+        <div class="section-budgets__col2">{{ item.percentBudget }}</div>
+        <div class="section-budgets__col3">{{ item.percentRemaining }}</div>
+      </div>
+    </div>
     <!-- <mat-list class="section-budgets__scrollable-container">
       <mat-list-item class="heading-list heading-tertiary">
         <span>Year | Budget | Reserve</span>
