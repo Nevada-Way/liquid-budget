@@ -3,16 +3,43 @@
 //
 
 .section-budgets {
-  background-color: $color-grey-light-1;
   border: 8px solid rgb(223, 200, 107);
+  background-color: $color-grey-light-1;
 
   margin: 0 25rem;
-
-  max-height: 80vh;
-  // max-width: 70rem;
-  // min-width: 30vw;
+  // max-height: 80vh;
   overflow: auto;
-  // padding-top: 10rem;
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: start;
+    gap: 2rem;
+  }
+
+  &__header-row {
+    background-color: lightgreen;
+    grid-column: 1 / -1;
+    @include my-font-secondary;
+
+    /* Inherit styles from .font-secondary */
+    // max-height: 2rem;
+  }
+
+  &__col1 {
+    background-color: rgb(238, 167, 144);
+    @include my-font-secondary;
+  }
+
+  &__col2 {
+    background-color: rgb(178, 191, 238);
+    @include my-font-secondary;
+  }
+
+  &__col3 {
+    background-color: rgb(213, 109, 225);
+    @include my-font-secondary;
+  }
 
   &__scrollable-container {
     // background-color: lightgreen;

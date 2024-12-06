@@ -43,6 +43,14 @@ body {
   backface-visibility: hidden;
 }
 
+@mixin my-font-secondary {
+  text-transform: uppercase !important;
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8rem !important;
+  color: $color-primary-dark;
+}
+
 .font-secondary {
   text-transform: uppercase !important;
   font-size: 3rem !important;
