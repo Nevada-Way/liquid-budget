@@ -113,10 +113,13 @@ export class ChartComponent {
       height: '250',
 
       slices: [
-        { color: 'black' },
-        { color: '#497542' },
-        { color: 'brown' },
-        { color: 'blue' },
+        // If you want to update color values then first update the
+        // commented color defenitions here and in file \src\styles\abstracts\_variables.scss
+        { color: '#60099e' }, // $chart-color-cash: #60099e;
+        { color: '#005cbb' }, //$chart-color-bonds: #005cbb;
+
+        { color: '#c78f0c' }, // $chart-color-shares: #c78f0c;
+        { color: 'blue' }, // $chart-color-other: 'blue';
       ],
     };
 
@@ -126,11 +129,3 @@ export class ChartComponent {
     chartDiv.draw(data, options);
   }
 }
-
-// ===========================================================================
-// ===========================================================================
-// ===========================================================================
-//               T R A S H B I N      /    R E F E R E N C E
-// ===========================================================================
-// ===========================================================================
-// ===========================================================================
