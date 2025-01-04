@@ -1,0 +1,451 @@
+/* 
+**
+** IMPORTANT:
+** To support mobile decices add inside the root <html> tag this <meta> viewport
+**    <meta name="viewport" content="width=device-width initial-scale=1">
+**
+** BEST PRACTICES:
+** (1) If designed the website for mobile first then use minimum widths 
+**     in media query, i.e. @media (min-width: 84v) { ... }
+**     otherwise use max-width.
+**
+** (2) In @media query this is always true : 
+**       1 rem = 1em = 16px (or whatever the defaulty browser font size).
+**     So what we set in the root element (the html { }) is ignored,
+**     we set the font-size there to be 62.5% ( = 10px) but in @media query that
+**     setting is ignored and 1rem = 16px (or whatever the user set
+**     in browser settings for Medium font size)
+**  
+** (3) The most best practice and recommended units for media query are 'rem' units.
+**     How to use rem units in media query:
+**       (a) Decide on target dimension, i.e. width of 1140px.
+**       (b) Use this formula:  rem value = pixel value / root font size
+**           If we set font-size: 16px in our root html then formula is :
+**           rem-value = screen-value-px / 16px
+**           Example: Screen width = 1140px then rem = 1140 / 16 = 71.25rem 
+**     
+** (4) DO-NOT use px units in media queries because of because of
+**     Inconsistent Behavior Across Devices.
+**
+** (5) max vs min , what to use :
+**     (a) For readability of media query think of alias for 'max' as 'below'
+**         and for min think of the alias 'above'.
+**     (b) Example:  @media (max-width: 84em) { ... } is read as 
+**                   @media (when below-width 84em) { do this ... }
+**
+** (5) ORDER OF @media queries in file:
+**     If using max-width/max-height then the order of the @media 
+**     queries needs to be in descending order (largest to smallest).
+**     This is because as we go to lower screen sizes we will need more specific 
+**     styling that we dont want to appear in the larger screens.
+*/
+
+/*********************************/
+/*******   Breakpoints ***********/
+/*********************************/
+
+/*********************************
+** Default Screen Sizes : 
+** This is the default screen width without need for a media query.
+**   Screen width = 1140px 
+**   Any screen size above 1140 gets no change in the css
+**   So our first breakpoint is anything below 1140 (max-width alias "below width")
+**   
+*/
+
+/* ====================================================
+** BREAKPOINT-1 : All screens BELOW 1140px
+**  In rem units = 1140px / 16px = 71rem 
+*/
+
+@media (max-width: 71em) {
+  html {
+    /* Converting browser root element 
+       font size to 9 (when default is 1rem = 16px) */
+    /*9 px / 16px =  56.25%*/
+    /* This means that 1rem = 9px*/
+    font-size: 25%;
+  }
+}
+
+/* ====================================================
+** BREAKPOINT-2 : All screens BELOW ???px
+**  In rem units = ???px / 16px = ??rem 
+*/
+@media (max-width: 75em) {
+  html {
+    /* Converting browser root element 
+       font size to 9 (when default is 1rem = 16px) */
+    /*9 px / 16px =  56.25%*/
+    /* This means that 1rem = 9px*/
+    font-size: 56.25%;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+
+  .heading-secondary {
+    font-size: 3.6rem;
+  }
+
+  .heading-tertiary {
+    font-size: 2.4rem;
+  }
+
+  .shared-header {
+    padding: 0 3.2rem;
+  }
+
+  .hero-content {
+    gap: 4.8rem;
+  }
+
+  .nav-list {
+    gap: 3.2rem;
+  }
+
+  .testimonial-container {
+    padding: 0 3.2rem;
+  }
+
+  .testimonials {
+    column-gap: 3.2rem;
+  }
+}
+
+/************************************/
+/* BELOW 928px FOR STANDARD TABLETS */
+/************************************/
+/* ==================================================== */
+/* max screen size target is 928 px */
+/* So in 'em' units we calc:  928px / 16px ~ 58em */
+@media (max-width: 58em) {
+  html {
+    /* Converting browser root element 
+       font size to 8px (when default is 1rem = 16px) */
+    /* 8px / 16px =  50%*/
+    /* This means that 1rem = 8px*/
+    font-size: 50%;
+  }
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding: 0 6.4rem;
+    gap: 6.4rem;
+  }
+
+  .hero-img-box,
+  .hero-text-box {
+    text-align: center;
+  }
+  .hero-img {
+    width: 40%;
+  }
+
+  .delivered-meals {
+    justify-content: center;
+    margin-top: 3.2rem;
+  }
+
+  .logos img {
+    height: 2.4rem;
+  }
+
+  .step-number {
+    font-size: 7.4rem;
+  }
+
+  .card-content {
+    padding: 2.4rem 3.2rem 3.2rem 2.4rem;
+  }
+
+  .card-title {
+    font-size: 2.2rem;
+  }
+
+  .section-testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .cta {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .cta-text-box {
+    padding: 3.2rem 6.4rem 6.4rem 3.2rem;
+  }
+
+  .cta-form {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-image {
+    background-repeat: no-repeat; /* Prevent tiling if image is smaller */
+    background-position: 50% 20%; /* Center the image horizontally and 20% from the top */
+  }
+
+  .btn-mobile-nav {
+    display: block;
+    z-index: 2;
+  }
+
+  .btn-mobile-nav.btn-mobile-nav__menu {
+    display: block;
+  }
+
+  .btn-mobile-nav.btn-mobile-nav__close {
+    display: none;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 4.8rem;
+    align-items: center;
+  }
+
+  .nav-list {
+    gap: 9.8rem;
+  }
+
+  .nav-item {
+    font-size: 3.2rem;
+  }
+
+  .shared-header {
+    position: relative;
+  }
+
+  body,
+  html {
+    overflow-x: hidden;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 10rem;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in;
+
+    /* To transition from a hidden style to visible */
+    /* you cannot use display: none.*/
+    /* you need to use these 3 settings: */
+
+    /* (1) Set opacity to 0 : */
+    opacity: 0;
+
+    /* (2) Turn off reaction of the cursor to links, butons .. : */
+    pointer-events: none;
+
+    /* (3) Hide the elment from screen readers (accessability) : */
+    visibility: hidden;
+  }
+
+  .nav-open .main-nav {
+    /* H I D E   N A V  until menu is clicked  */
+    /* display: none; Doesnt enable animations */
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /*Needed for safari support*/
+  }
+
+  .nav-open .btn-mobile-nav.btn-mobile-nav__menu {
+    display: none;
+  }
+
+  .nav-open .btn-mobile-nav.btn-mobile-nav__close {
+    display: block;
+  }
+}
+
+/* ==================================================== */
+/* max screen size target is 704 px */
+/* So in 'em' units we calc:  704px / 16px = 44em */
+/*  */
+/* In this size we want to shrink all 3 & 4 col grids to 2 col */
+
+/*********************************/
+/* BELOW 704px FOR SMALL TABLETS */
+/*********************************/
+@media (max-width: 44em) {
+  .grid--3-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .meal-list {
+    grid-column: 1 / 2 span;
+    justify-self: center;
+  }
+
+  .heading-secondary {
+    font-size: 3.2rem;
+  }
+
+  .footer-grid {
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 3.2rem;
+    row-gap: 6.4rem;
+  }
+
+  .nav-col {
+    grid-row: 1;
+    grid-column: span 2;
+  }
+
+  .logo-col {
+    grid-column: span 3;
+  }
+
+  .contact-col {
+    grid-column: span 3;
+  }
+
+  .ribbon {
+    width: 80%;
+    height: 8%;
+    font-size: 1.6rem;
+    top: 1rem;
+    left: 15rem;
+  }
+}
+
+/* ==================================================== */
+/* max screen size target is 544px */
+/* So in 'em' units we calc:  544px / 16px = 34em */
+/* Size is for phones, so we now change all grids to 1 col */
+
+/**************************/
+/* BELOW 544px FOR PHONES */
+/**************************/
+
+@media (max-width: 34em) {
+  .heading-primary {
+    font-size: 3.6rem;
+    line-height: 1.05;
+  }
+
+  .heading-secondary {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 8rem;
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    font-size: 1.8rem;
+    padding: 2.4rem 4.8rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .section-hero {
+    height: 120vh;
+    padding: 4.8rem 0rem 0rem 0rem;
+    /* margin-bottom: 6.4rem; */
+  }
+
+  .hero-content {
+    max-width: 100%;
+    gap: 3.2rem;
+    padding-bottom: 4.8rem;
+  }
+
+  .hero-description {
+    font-size: 1.8rem;
+  }
+
+  .hero-img-box {
+    width: 100%;
+    height: 6.4rem;
+  }
+  .hero-img {
+    width: 70%;
+  }
+
+  .section-feautred {
+    margin-bottom: 9.6rem;
+  }
+
+  .logos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3.2rem;
+    row-gap: 2.4rem;
+    justify-content: center;
+  }
+  .logos img {
+    height: 1.8rem;
+  }
+
+  .step-img-box:nth-child(2) {
+    grid-row: 1;
+  }
+
+  .step-img-box:nth-child(6) {
+    grid-row: 5;
+  }
+
+  .step-img-box {
+    transform: translateY(2.4rem);
+  }
+  /* 
+  .grid {
+    column-gap: 0rem;
+  } */
+
+  .grid--2-cols,
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-image {
+    grid-row: 1;
+    width: auto;
+    height: 30rem;
+  }
+
+  .pricing-plan-item-right {
+    justify-self: center;
+  }
+  .pricing-plan-item-left {
+    justify-self: center;
+  }
+}
+
+/* --- 0x LAYOUT SPACING SYSTEM (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+............................................................
+--- 01 TYPOGRAPHY SYSTEM
+- Font size (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98 */
