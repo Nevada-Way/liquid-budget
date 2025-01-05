@@ -1,11 +1,27 @@
+// Logical Flow:
+// (1) You define your base styles (e.g., resets, typography, global variables).
+//
+// (2) Then, you style your components (e.g., header, navigation, content sections).
+//
+// (3) Finally, you apply media queries to adjust these styles for different screen sizes.
+// This ensures that your base styles and component styles are established before
+//  they are modified by responsive rules.
+
+//*******************************
+//**   (1)   BASE STYLES
+//*******************************
+
 // @import "./abstracts/functions";
-@import "./abstracts/queries";
 @import "./abstracts/variables";
 
 @import "./base/base";
 // @import "./base/animations";
 @import "./base/typography";
 @import "./base/utilities";
+
+//*******************************
+//**   (2) COMPONENTS STYLES
+//*******************************
 
 // @import "./components/bg-video";
 // @import "./components/button";
@@ -34,3 +50,11 @@
 
 // @import "base/base";
 // @import "base/fonts";
+
+//*******************************
+//**   (3)  MEDIA QUERY STYLES
+//*******************************
+
+// Media queries need to be the last loaded
+// Their job is to fine tune all the above styling for different screen size cases
+@import "./abstracts/queries";
