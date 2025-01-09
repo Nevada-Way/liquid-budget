@@ -17,7 +17,7 @@
 
   &__title {
     border: 8px solid rgb(120, 72, 216);
-    display: flex;
+    display: inline-block flex;
     gap: 1rem;
     // justify-content: flex-start;
     align-items: center;
@@ -25,7 +25,7 @@
 
     margin: 0 3rem;
     padding-left: 3rem;
-    overflow: hidden;
+    //overflow: hidden;
   }
 
   &__card-container {

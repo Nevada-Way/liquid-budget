@@ -54,11 +54,15 @@
 */
 
 /* ====================================================
-** BREAKPOINT-1 : All screens BELOW 1239px
-**  In rem units = 1239px / 16px = 77rem 
+** BREAKPOINT-1 : All screens BELOW 1232px
+**  In rem units = 1232px / 16px = 77rem 
+**
+** Reason for this breakpopint:
+**   The font size in the annual-budget table is too big
+**   causing the column headers to be unreadable.
+**
 */
-
-@media (max-width: 77rem) {
+@media (max-width: 77rem) /* 1232px */ {
   html {
     font-size: 50%; /* 8 px / 16px =  50%*/
     /* This means that 1rem = 8px*/
@@ -67,12 +71,112 @@
   header.shared-header.u-margin-bottom-small {
     border: 8px solid rgb(98, 239, 22);
   }
+
+  // More TODO
+  // The legend of the chart is cropped by card width, need fix.
 }
 
 /* ====================================================
-** BREAKPOINT-2 : All screens BELOW ???px
-**  In rem units = ???px / 16px = ??rem 
+** BREAKPOINT-2 : All screens BELOW 992px
+**  In rem units = 992px / 16px = 62rem 
+** Reasons for this breakpopint:
+** (1) The annual-budget table's container is to high
+**     it has too much blank space at the bottom.
+**     It seems as though the height is propotional to the width
+**
+** (2) The chart circles are too big causing the cards to be too big.
+**     Need to make them smaller.
+**
 */
+@media (max-width: 62rem) /* 992px */ {
+  html {
+    // Leave the font-size as prev breakpoint
+    // font-size: 50%; /* 8 px / 16px =  50%*/ /* This means that 1rem = 8px*/
+  }
+
+  header.shared-header.u-margin-bottom-small {
+    border: 8px solid rgb(229, 149, 21);
+  }
+}
+
+/* ====================================================
+** BREAKPOINT-3 : All screens BELOW 816px
+**  In rem units = 816px / 16px = 51rem 
+** Reasons for this breakpopint (both to fix by root font-size changing):
+** (1) The font size of the shared-header is too big and collapses to 2 lines.
+**     Needs smaller font.
+**
+** (2) The annual-budget table is too narrow croping columns.
+**     Need to widen it to width of its container (like the card container is)
+**
+*/
+@media (max-width: 51rem) /* 816px */ {
+  html {
+    // Leave the font-size as prev breakpoint
+    // font-size: 50%; /* 8 px / 16px =  50%*/ /* This means that 1rem = 8px*/
+  }
+
+  header.shared-header.u-margin-bottom-small {
+    border: 8px solid rgb(229, 149, 21);
+  }
+
+  .section-budgets {
+    margin: 0 10%;
+  }
+
+  // .heading-primary--main {
+  //   font-size: 3rem;
+  //   letter-spacing: 1rem;
+  // }
+  .heading-primary--main {
+    font-size: 3rem;
+    letter-spacing: 2rem;
+  }
+}
+
+/* ====================================================
+** BREAKPOINT-4 : All screens BELOW 672px
+**  In rem units = 672px / 16px = 42rem 
+** Reasons for this breakpopint (both to fix by root font-size changing):
+** (1) The font size of the shared-header is too big and collapses to 2 lines.
+**     Needs even smaller font.
+**
+** (2) In the assets input bar, the button is hidden and cropped
+**     Need to change the display spacing & logic to flex or not allow overflow and hiding
+**
+*/
+@media (max-width: 42rem) /* 672px */ {
+  html {
+    font-size: 37.5%; /* 6 px / 16px =  37.5%*/ /* This means that 1rem = 6px*/
+  }
+
+  header.shared-header.u-margin-bottom-small {
+    border: 8px solid rgb(227, 31, 60);
+  }
+
+  .section-budgets {
+    margin: 0 0;
+  }
+
+  .heading-primary--main {
+    font-size: 3rem;
+    letter-spacing: 1.58rem;
+  }
+
+  //.......................
+  //  section-firms __title
+  .section-firms {
+    &__title {
+      border: 8px solid rgb(72, 182, 216);
+      padding-left: 0rem;
+    }
+  }
+}
+
+// .heading-primary--main {
+//   font-size: 2.5rem;
+//   letter-spacing: 0.8rem;
+// }
 
 /* --- 0x LAYOUT SPACING SYSTEM (px)
   2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
