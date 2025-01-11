@@ -55,6 +55,8 @@
     @include u-display-flex-justify-content-center;
   }
 
+  //****** NOT IN USE , RELAVENT ONLY IF WANT TO FORCE SCROLLING
+  //****** I DONT SEE NEED BECAUSE THE PAGE ITSELF SCROLLS AND
   &__scrollable-container {
     // background-color: lightgreen;
     // border-left: 3px solid #c61515;

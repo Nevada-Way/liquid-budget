@@ -92,14 +92,14 @@ export class ChartComponent {
     var options = {
       backgroundColor: 'transparent', //'white',
       title: '',
-      pieHole: 0.4,
+      pieHole: 0.4, // last balue was 0.4
       enableInteractivity: false,
       pieSliceText: 'value', // other values : 'none', 'label' , 'percentage' (default)
-      pieSliceTextStyle: { color: 'white', fontSize: 15 },
+      pieSliceTextStyle: { color: 'white', fontSize: 14 },
       // legend: { position: 'none' },
       legend: {
         position: 'bottom', // Possible values: 'labeled'
-        textStyle: { color: 'black', fontSize: 18 },
+        textStyle: { color: 'black', fontSize: 14 },
       },
 
       chartArea: {
@@ -109,8 +109,8 @@ export class ChartComponent {
         // height: '90%',
         // backgroundColor: 'yellow',
       },
-      width: '450',
-      height: '250',
+      width: '200', // prev value:  width: '450',
+      height: '200', // prev value: height: '250',
 
       slices: [
         // If you want to update color values then first update the

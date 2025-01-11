@@ -140,7 +140,12 @@
       <div class="section-budgets__header-col">Reserve</div>
     </div>
 
-    <div class="section-budgets__scrollable-container">
+    <!-- The div below is used to wrap all the table rows excluding the column headers -->
+    <!-- That way when scrolling the headers are fixed place and dont disapear off screen -->
+    <!-- I commented out the div because I dont want scroll in this version -->
+    <!--  -->
+    <!-- <div class="section-budgets__scrollable-container"> -->
+    <div>
       <div class="section-budgets__row" *ngFor="let item of annualBudgets">
         <div class="section-budgets__col1">{{ item.year }}</div>
         <div class="section-budgets__col2">

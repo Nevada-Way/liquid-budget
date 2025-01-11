@@ -176,17 +176,11 @@
 **  In rem units = 496px / 16px = 31rem 
 ** Reasons for this breakpopint :
 **
-** (1) The input bow width is too large 
+** (1) The input row width is too large 
 ** (2) The GO button overflows to the right.
 **
 */
 @media (max-width: 31rem) /* 496px */ {
-  // html {
-  //   font-size: 37.5%; /* 6 px / 16px =  37.5%*/ /* This means that 1rem = 6px*/
-  // }
-
-  //.......................
-  //
   .section-firms {
     &__title {
       /* section-firms__title */
