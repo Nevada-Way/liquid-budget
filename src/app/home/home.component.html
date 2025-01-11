@@ -36,7 +36,7 @@
 
       <input
         matInput
-        class="input-box-large input-box-round u-margin-right-medium no-arrows"
+        class="input-box-large input-box-round u-margin-right-small no-arrows"
         style="no-arrows"
         type="number"
         [(ngModel)]="this.signalTotalFirmBalance"
@@ -45,8 +45,8 @@
       <!-- mat-raised-button -->
       <button
         mat-fab
+        mat-mini
         class="btn-calc"
-        style="font-size: 2.5rem !important; font-weight: 600 !important"
         (click)="
           recalcFirms(
             this.financialService.generateDemoFirms(),

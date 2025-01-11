@@ -16,15 +16,17 @@
   align-items: center;
 
   &__title {
+    /* section-firms__title */
     border: 8px solid rgb(120, 72, 216);
-    display: inline-block flex;
+    display: block flex;
+    flex-wrap: wrap; /* prevents overflow, forces wrap to a line under */
+    align-items: center;
     gap: 1rem;
     // justify-content: flex-start;
-    align-items: center;
     // margin: 0 10rem;
 
     margin: 0 3rem;
-    padding-left: 3rem;
+    padding: 1rem;
     //overflow: hidden;
   }
 
