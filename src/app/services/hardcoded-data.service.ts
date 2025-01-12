@@ -90,7 +90,7 @@ export class HardcodedDataService {
         maturity: 'Oct 15 2026 18:03:48 GMT-0700 Pacific Daylight Time',
       },
       {
-        name: 'Savings Feb 2025',
+        name: 'Saving 0225',
         // This is a savings account, i consider it a bond
         id: 'OTS-ACCT-4',
         percentFromAllFirmAccounts: 31.58,
@@ -103,7 +103,7 @@ export class HardcodedDataService {
         maturity: 'Feb 5 2025 19:04:49 GMT-0700 Pacific Daylight Time',
       },
       {
-        name: 'Pakam US bond 0325',
+        name: 'Pakam bnd 0325',
         id: 'OTS-ACCT-5',
         percentFromAllFirmAccounts: 25.79,
         actualValueAccountTotal: 0,

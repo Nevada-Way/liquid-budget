@@ -37,6 +37,7 @@ table .mat-mdc-header-cell {
 
 table .mat-mdc-header-cell:first-child {
   border-top-left-radius: 10px;
+  margin: 0;
 }
 
 table .mat-mdc-header-cell:last-child {
@@ -49,4 +50,14 @@ table .mat-mdc-row:nth-child(odd) {
 
 table .mat-mdc-row:nth-child(even) {
   background-color: #e2e9f9;
+}
+
+table {
+  .mat-mdc-row {
+    height: 6rem; /* Adjust this value as needed */
+
+    &:nth-child(even) {
+      background-color: #e2e9f9;
+    }
+  }
 }
