@@ -109,7 +109,7 @@ export class ChartComponent {
         // height: '90%',
         // backgroundColor: 'yellow',
       },
-      width: '200', // prev value:  width: '450',
+      width: '335', // prev value:  width: '450',
       height: '200', // prev value: height: '250',
 
       slices: [

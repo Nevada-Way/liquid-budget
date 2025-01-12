@@ -121,6 +121,7 @@
   }
 
   .section-budgets {
+    border: 8px solid rgb(91, 25, 206);
     margin: 0 10%;
   }
 
@@ -144,6 +145,8 @@
 ** (2) In the assets input bar, the button is hidden and cropped
 **     Need to change the display spacing & logic to flex or not allow overflow and hiding
 **
+** (3) The legend of the chart overflows in the bottom & hidden, need to
+**     make the card longer.
 */
 @media (max-width: 42rem) /* 672px */ {
   html {
@@ -151,7 +154,7 @@
   }
 
   .section-budgets {
-    // border: 8px solid rgb(227, 31, 60);
+    border: 8px solid rgb(227, 31, 60);
     margin: 0 0;
   }
 
@@ -167,6 +170,18 @@
     &__title {
       border: 8px solid rgb(72, 182, 216);
       padding: 1rem 1rem;
+    }
+  }
+
+  //.......................
+  //  card__side
+  // Making the card longer so that the legend fits into the card border
+
+  .card {
+    &__side {
+      //border: 6px solid rgb(204, 12, 12);
+      width: 95%;
+      height: 100%;
     }
   }
 }
@@ -206,6 +221,19 @@
     border: 4px solid rgb(94, 250, 59);
     font-size: 2.5rem;
     letter-spacing: 1.2rem;
+  }
+
+  .section-budgets {
+    border: 8px solid rgb(71, 133, 240);
+    margin: 0 0;
+
+    &__header-col {
+      background-color: rgb(247, 244, 150);
+      font-size: 2.8rem !important;
+      letter-spacing: 0.4rem !important;
+      // display: flex;
+      // justify-content: center;
+    }
   }
 }
 

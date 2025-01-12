@@ -54,10 +54,11 @@ export class HardcodedDataService {
       ///  OTSAR
       {
         name: 'Cash local & FC',
+        // Cash (IL + FC)
         id: 'OTS-ACCT-1',
         percentFromAllFirmAccounts: 6.32,
         actualValueAccountTotal: 0,
-        type: 'cash', // Cash (IL + FC)
+        type: 'CS', // CS = CASH
         comment: 'Cash in local & Foreign Currency USD & EUR',
         unitAmount: 0,
         currency: 'YAR',
@@ -69,7 +70,7 @@ export class HardcodedDataService {
         id: 'OTS-ACCT-2',
         percentFromAllFirmAccounts: 23.16,
         actualValueAccountTotal: 0,
-        type: 'cash',
+        type: 'CS', // CS = CASH
         comment: 'Money fund based on local bonds',
         unitAmount: 0,
         currency: 'YAR',
@@ -81,7 +82,7 @@ export class HardcodedDataService {
         id: 'OTS-ACCT-3',
         percentFromAllFirmAccounts: 13.16,
         actualValueAccountTotal: 0,
-        type: 'bond',
+        type: 'BD', // BD=BOND
         comment: 'Bond fixed Oct 2026',
         unitAmount: 0,
         currency: 'YAR',
@@ -90,10 +91,11 @@ export class HardcodedDataService {
       },
       {
         name: 'Savings Feb 2025',
+        // This is a savings account, i consider it a bond
         id: 'OTS-ACCT-4',
         percentFromAllFirmAccounts: 31.58,
         actualValueAccountTotal: 0,
-        type: 'bond', // This is a savings account, i consider it a bond
+        type: 'BD', // BD=BOND
         comment: 'Savings matures Feb 2025',
         unitAmount: 0,
         currency: 'YAR',
@@ -105,7 +107,7 @@ export class HardcodedDataService {
         id: 'OTS-ACCT-5',
         percentFromAllFirmAccounts: 25.79,
         actualValueAccountTotal: 0,
-        type: 'bond',
+        type: 'BD', // BD=BOND
         comment: 'A USD Short term holding matures Mar 30 2025',
         unitAmount: 0,
         currency: 'YAR',
@@ -119,7 +121,7 @@ export class HardcodedDataService {
         id: 'IBI-ACCT-1',
         percentFromAllFirmAccounts: 2.6,
         actualValueAccountTotal: 0,
-        type: 'cash',
+        type: 'CS', // CS = CASH
         comment: 'For internal firm cashflow',
         unitAmount: 0,
         currency: 'YAR',
@@ -131,7 +133,7 @@ export class HardcodedDataService {
         id: 'IBI-ACCT-2',
         percentFromAllFirmAccounts: 46.75,
         actualValueAccountTotal: 0,
-        type: 'cash',
+        type: 'CS', // CS = CASH
         comment: 'Resets every 3 months',
         unitAmount: 0,
         currency: 'YAR',
@@ -143,7 +145,7 @@ export class HardcodedDataService {
         id: 'IBI-ACCT-3',
         percentFromAllFirmAccounts: 27.6,
         actualValueAccountTotal: 0,
-        type: 'bond',
+        type: 'BD', // BD=BOND
         comment: 'Changing intreset IL May 2026',
         unitAmount: 0,
         currency: 'YAR',
@@ -181,7 +183,7 @@ export class HardcodedDataService {
         id: 'MTV-ACCT-1',
         percentFromAllFirmAccounts: 0.62,
         actualValueAccountTotal: 0,
-        type: 'cash',
+        type: 'CS', // CS = CASH
         comment: 'For internal firm cashflow',
         unitAmount: 0,
         currency: 'YAR',
@@ -193,7 +195,7 @@ export class HardcodedDataService {
         id: 'MTV-ACCT-2',
         percentFromAllFirmAccounts: 44.43,
         actualValueAccountTotal: 0,
-        type: 'cash',
+        type: 'CS', // CS = CASH
         comment: 'Resets every 3 months',
         unitAmount: 0,
         currency: 'YAR',
@@ -205,7 +207,7 @@ export class HardcodedDataService {
         id: 'MTV-ACCT-3',
         percentFromAllFirmAccounts: 32.49,
         actualValueAccountTotal: 0,
-        type: 'cash',
+        type: 'CS', // CS = CASH
         comment: 'Resets every 3 months',
         unitAmount: 0,
         currency: 'YAR',
@@ -217,7 +219,7 @@ export class HardcodedDataService {
         id: 'MTV-ACCT-4',
         percentFromAllFirmAccounts: 11.94,
         actualValueAccountTotal: 0,
-        type: 'bond',
+        type: 'BD', // BD=BOND
         comment: 'Changing intreset IL Oct 2026',
         unitAmount: 0,
         currency: 'YAR',
@@ -229,7 +231,7 @@ export class HardcodedDataService {
         id: 'MTV-ACCT-5',
         percentFromAllFirmAccounts: 10.51,
         actualValueAccountTotal: 0,
-        type: 'gold',
+        type: 'GD', // GD = GOLD
         comment: 'Gold stock',
         unitAmount: 0,
         currency: 'YAR',
