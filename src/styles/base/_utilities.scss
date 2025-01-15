@@ -8,7 +8,8 @@
 // add it to.
 
 @mixin u-display-flex-justify-content-center {
-  border: solid 2px black;
+  border-bottom: solid 0.5px white;
+  // border-bottom-color: rgb(11, 11, 11);
   display: flex;
   justify-content: center;
 }
@@ -24,8 +25,8 @@
 }
 
 .u-text-align-right {
-  background-color: red;
-  border: solid 2px black;
+  //background-color: red;
+  //border: solid 2px black;
   text-align: right !important;
 }
 

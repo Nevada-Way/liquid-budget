@@ -56,13 +56,13 @@ body {
   letter-spacing: 0.1rem !important;
 }
 
-// .font-secondary {
-//   text-transform: uppercase !important;
-//   font-size: 3rem !important;
-//   font-weight: 700 !important;
-//   letter-spacing: 0.8rem !important;
-//   color: $color-primary-dark;
-// }
+@mixin my-font-footer {
+  // text-transform: uppercase !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  letter-spacing: 0.2rem !important;
+  color: $color-primary-dark;
+}
 
 .font-tertiary {
   text-transform: uppercase !important;

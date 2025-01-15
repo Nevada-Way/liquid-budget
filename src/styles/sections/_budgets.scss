@@ -3,8 +3,8 @@
 //
 
 .section-budgets {
-  border: 8px solid rgb(223, 200, 107);
-  background-color: $color-grey-light-1;
+  //border: 8px solid rgb(223, 200, 107);
+  //background-color: $color-grey-light-1;
 
   //margin: 0 25rem;
   margin: 0 20%;
@@ -20,37 +20,59 @@
   }
 
   &__header-row {
-    background-color: rgb(65, 222, 227);
+    background-color: rgba(
+      $color-tertiary-light,
+      0.8
+    ); // $color-tertiary-light: #005cbb;
+
     grid-column: 1 / -1;
-    @include my-font-secondary;
-    @include u-display-flex-justify-content-center;
     justify-self: stretch;
+
+    @include my-font-secondary;
+    color: $color-grey-light-1; //This comes here right after the @unclude because it needs to overide
+    // the color of the "my-font-secondary" variable.
+
+    @include u-display-flex-justify-content-center;
     // display: flex;
     // justify-content: center;
+
+    //==== ROUNDED CORNERS
+    border-radius: 1rem 1rem 0 0;
   }
 
   &__header-col {
-    background-color: rgb(175, 234, 47);
+    //background-color: rgb(175, 234, 47);
     @include my-font-secondary;
+
     @include u-display-flex-justify-content-center;
     // display: flex;
     // justify-content: center;
+
+    &__1 {
+      background-color: rgba($color-budget-list-column-1, 0.8);
+    }
+    &__2 {
+      background-color: rgba($color-budget-list-column-2, 0.8);
+    }
+    &__3 {
+      background-color: rgba($color-budget-list-column-3, 0.8);
+    }
   }
 
   &__col1 {
-    background-color: rgb(238, 167, 144);
+    background-color: rgba($color-budget-list-column-1, 0.4);
     @include my-font-secondary;
     @include u-display-flex-justify-content-center;
   }
 
   &__col2 {
-    background-color: rgb(178, 191, 238);
+    background-color: rgba($color-budget-list-column-2, 0.4);
     @include my-font-secondary;
     @include u-display-flex-justify-content-center;
   }
 
   &__col3 {
-    background-color: rgb(213, 109, 225);
+    background-color: rgba($color-budget-list-column-3, 0.4);
     @include my-font-secondary;
     @include u-display-flex-justify-content-center;
   }
@@ -80,10 +102,6 @@
 
     margin-bottom: 6rem;
   }
-}
-
-.budget-list-column {
-  color: $color-budget-list-column;
 }
 
 .reserve-list-column {

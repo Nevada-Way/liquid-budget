@@ -3,7 +3,7 @@
 // The bottom part of the card is name and value of each financial vehicle (stock, bonds...)
 //
 .section-firms {
-  border: 8px solid rgb(193, 220, 72);
+  //border: 8px solid rgb(193, 220, 72);
   display: block;
   // This section-firms will grow four times faster than the section-budgets
   // which has a setting of flex: 1
@@ -11,13 +11,13 @@
   flex-shrink: 4;
   overflow: hidden;
 
-  background-color: $color-grey-light-1;
+  //background-color: $color-grey-light-1;
   // background-color: lightgreen;
   align-items: center;
 
   &__title {
     /* section-firms__title */
-    border: 8px solid rgb(120, 72, 216);
+    //border: 8px solid rgb(120, 72, 216);
     display: block flex;
     flex-wrap: wrap; /* prevents overflow, forces wrap to a line under */
     align-items: center;
@@ -31,7 +31,7 @@
   }
 
   &__card-container {
-    border: 8px solid rgb(234, 34, 34);
+    //border: 8px solid rgb(234, 34, 34);
 
     // background-color: rgb(204, 121, 227);
     display: flex;

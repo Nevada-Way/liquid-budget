@@ -132,12 +132,20 @@
   </section>
 
   <section class="section-budgets">
-    <div class="section-budgets__row section-budgets__header-row">Budget</div>
+    <div class="section-budgets__row section-budgets__header-row">
+      Budget Plan
+    </div>
 
     <div class="section-budgets__row">
-      <div class="section-budgets__header-col">Year</div>
-      <div class="section-budgets__header-col">Budget</div>
-      <div class="section-budgets__header-col">Reserve</div>
+      <div class="section-budgets__header-col section-budgets__header-col__1">
+        Year
+      </div>
+      <div class="section-budgets__header-col section-budgets__header-col__2">
+        Budget
+      </div>
+      <div class="section-budgets__header-col section-budgets__header-col__3">
+        Reserve
+      </div>
     </div>
 
     <!-- The div below is used to wrap all the table rows excluding the column headers -->
@@ -160,30 +168,9 @@
         </div>
       </div>
     </div>
-    <!-- <mat-list class="section-budgets__scrollable-container">
-      <mat-list-item class="heading-list heading-tertiary">
-        <span>Year | Budget | Reserve</span>
-
-      </mat-list-item>
-
-      <mat-list-item
-        [class.highlighted-row]="item.year === 2026"
-        class="section-budgets__scrollable-list-item font-tertiary"
-        *ngFor="let item of annualBudgets"
-      >
-        {{ item.year }} | {{ item.percentBudget }}
-        <span class="budget-list-column">K</span> |
-
-        <span class="reserve-list-column">
-          {{ item.percentRemaining }}
-          <span class="reserve-list-column">K</span>
-        </span>
-      </mat-list-item>
-    </mat-list> -->
   </section>
   <!-- </div> -->
 </main>
 <footer class="footer">
-  <p>Hello</p>
-  <p>Hello</p>
+  <p class="footer">Created by Rivercybe Jan 2025</p>
 </footer>
