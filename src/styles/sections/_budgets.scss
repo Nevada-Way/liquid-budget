@@ -15,7 +15,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-content: start;
-
     gap: 2rem;
   }
 
@@ -29,6 +28,8 @@
     justify-self: stretch;
 
     @include my-font-secondary;
+    word-spacing: 0.8rem;
+
     color: $color-grey-light-1; //This comes here right after the @unclude because it needs to overide
     // the color of the "my-font-secondary" variable.
 

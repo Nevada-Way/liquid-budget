@@ -49,7 +49,7 @@
     // We want the placeholder text to be bold when in focus
     // and gray when not in focus.
     &::-webkit-input-placeholder {
-      color: $color-grey-dark-2;
+      color: $color-grey-dark-less;
     }
   }
 
