@@ -10,13 +10,25 @@ export class HardcodedDataService {
   //////////////////////////////////////////////////////
   ///// HARD CODED DATA  ///////////////////////////////
   //////////////////////////////////////////////////////
-
   /**
+   * Function : getALlFirms()
+   *   (1) What it does
+   *         - Returns an array of the hardcoded Firm items.
+   *         - FYI: These firm items do not have a list of the accounts, these
+   *                are associated onl via the service generateFirms()
+   *   (2) Why we need it
+   *         - We need the data of each firm. This tells us the id of the firm
+   *         - wich we later use to link accounts to it using the generateFirms() service.
+   *   (3) When to call it
+   *         - Whenever we need to get the firm data itself, regardless of the accounts value.
+   *         - It is called by the function fetchFirmById() where we return a specific
+   *           Firm object WITHOUT a value in the accounts property.
+   *   (4) How it works in general / the main mechanisem
+   *         - Creats a hardcoded array and retruns it.
    *
-   * These hard coded 'firm' array items dont have accounts associated with them
-   * To get a firm object with specific accounts need to
-   *  call getFirmWithAccounts(firm-id , array-of-account-ids)
-   * @returns Firm[] an array of firms with hardcoded property valuee
+   *    FYI : To get a firm object with its associated accounts you need
+   *          to call getFirmWithAccounts(firm-id , array-of-account-ids)
+   * @returns Firm[] an array of firms only (without the list of accounts)
    */
   getALlFirms(): Firm[] {
     const allFirms: Firm[] = [
@@ -243,21 +255,29 @@ export class HardcodedDataService {
     return allAccounts;
   }
 
-  //
-  //
-  //
-  // %
-  // %
-  // %
-  // %
-
-  //
-  // %
-  // %
-  // %
-  // %
-  // %
-  // .0%
+  /**
+   * Function : getAllBudgets()
+   *   (1) What it does
+   *         - Returns an array of the hardcoded AnnualBudget objects.
+   *         - Each object is for a specific year and its values are in percentage 
+   *         - from the total of all the assets (sum of equity of all the firms).
+   *   (2) Why we need it
+   *         - This data is the budget plan, we display in in the budget plan table.
+   *   (3) When to call it
+   *         - Whenever we need to get the firm data itself, regardless of the accounts value.
+   *         - It is called by the function fetchFirmById() where we return a specific
+   *           Firm object WITHOUT a value in the accounts property.
+   *   (4) How it works in general / the main mechanisem
+   *         - Creats a hardcoded array and retruns it.
+   * 
+   *    FYI : To get a firm object with its associated accounts you need
+   *          to call getFirmWithAccounts(firm-id , array-of-account-ids)
+  /**
+   *
+   * @returns AnnualBudget[] , Each item in the array is a budget for a specific year and
+   *                           the remainder from the total assets.
+   *                           Values are in percentage from total value of the assets.
+   */
   getAllBudgets(): AnnualBudget[] {
     const allBudgets: AnnualBudget[] = [
       {

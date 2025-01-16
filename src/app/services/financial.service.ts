@@ -20,9 +20,27 @@ export class FinancialService {
     private helperService: HelperService
   ) {}
 
-  generateDemoFirms(): Firm[] {
+  /**
+   * Function : generateFirms()
+   *   (1) What it does
+   *         - Reads the raw hardcoded data and organizes it into array of Firm objects
+   *   (2) Why we need it
+   *         - The hardcode data is organized into an array of firms metadata and another
+   *           array of accounts from the different firms.
+   *         - What we need is for each firm a list of its accounts, so this function does that.
+   *   (3) When to call it
+   *         - Whenever we need to get the data for the firms.
+   *         - This happens on initial page open and when changing the value in the input box
+   *         - of the total value of assets from all firms, updating the value of signalTotalFirmBalance()
+   *   (4) How it works in general / the main mechanisem
+   *         - For each firm i create a Firm object, then those objects are arranged in an array and returned.
+   *         - I need to manually update the account id in each Firm object so that it matches the accounts in
+   *           file hardcoded-data.service.ts
+   * @returns Firm[]
+   */
+  generateFirms(): Firm[] {
     // const demoFirmData: Firm[] = [];
-    var demoFirmData: Firm[];
+    var generatedFirms: Firm[];
 
     const firm1Data: Firm = this.getFirmWithAccounts('FIRM-1', [
       'OTS-ACCT-1',
@@ -31,7 +49,7 @@ export class FinancialService {
       'OTS-ACCT-4',
       'OTS-ACCT-5',
     ]);
-    console.log(firm1Data);
+    //console.log(firm1Data);
 
     const firm2Data: Firm = this.getFirmWithAccounts('FIRM-2', [
       'IBI-ACCT-1',
@@ -40,6 +58,7 @@ export class FinancialService {
       'IBI-ACCT-4',
       'IBI-ACCT-5',
     ]);
+
     const firm3Data: Firm = this.getFirmWithAccounts('FIRM-3', [
       'MTV-ACCT-1',
       'MTV-ACCT-2',
@@ -49,10 +68,31 @@ export class FinancialService {
     ]);
 
     // demoFirmData =
-    demoFirmData = [firm1Data, firm2Data, firm3Data];
-    return demoFirmData;
+    generatedFirms = [firm1Data, firm2Data, firm3Data];
+    return generatedFirms;
   }
 
+  /**
+   * Function : getFirmWithAccounts()
+   *   (1) What it does
+   *         - It injects a value into the 'accounts' property of a specific Firm.
+   *   (2) Why we need it
+   *         - The hardcode Firm data does not include the accounts.
+   *         - So we need a way to inject those accounts as a value to the 'accounts' property.
+   *   (3) When to call it
+   *         - Whenever we need to get a Firm object including it's accounts.
+   *         - This happens on initial page open and when changing the value in the input box
+   *         - of the total value of assets from all firms, updating the value of signalTotalFirmBalance()
+   *   (4) How it works in general / the main mechanisem
+   *         - For each firm i create a Firm object, then those objects are arranged in an array and returned.
+   *         - I need to manually update the account id in each Firm object so that it matches the accounts in
+   *           file hardcoded-data.service.ts
+   *
+   * @param firmId
+   * @param accountIds
+   * @returns Firm // A single Firm object with an aray tha includes all
+   *                  the users accounts in that firm
+   */
   getFirmWithAccounts(firmId: string, accountIds: string[]): Firm {
     // Fetch the firm from array of firms
     const firm: Firm = this.fetchFirmById(firmId);

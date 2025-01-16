@@ -48,8 +48,8 @@
         mat-mini
         class="btn-calc"
         (click)="
-          recalcFirms(
-            this.financialService.generateDemoFirms(),
+          this.recalcFirmsAndAnnualBudget(
+            this.financialService.generateFirms(),
             this.signalTotalFirmBalance()
           )
         "
