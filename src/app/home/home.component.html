@@ -39,6 +39,12 @@
         style="no-arrows"
         type="number"
         [(ngModel)]="this.signalTotalFirmBalance"
+        (keyup.enter)="
+          recalcFirmsAndAnnualBudget(
+            this.financialService.generateFirms(),
+            this.signalTotalFirmBalance()
+          )
+        "
       />
 
       <button
