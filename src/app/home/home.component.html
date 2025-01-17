@@ -1,4 +1,4 @@
-<!-- (1) The home comp will hold the content of the <body> element
+<!-- (1) The home component will hold the content of the <body> element
      The is the <header> and <main>. There is no <footer>.
       (2) The <main> holds the default <section-firms>
   -->
@@ -29,7 +29,6 @@
   <!-- ++++++++++++++++++++++++++++++++++++++  -->
   <!-- ++++++++++++++++++++++++++++++++++++++  -->
 
-  <!-- <div class="dashboard"> -->
   <section class="section-firms u-padding-vertical-medium">
     <div class="section-firms__title u-margin-bottom-small">
       <h2 class="font-secondary">Assets:</h2>
@@ -42,7 +41,6 @@
         [(ngModel)]="this.signalTotalFirmBalance"
       />
 
-      <!-- mat-raised-button -->
       <button
         mat-fab
         mat-mini
@@ -114,15 +112,12 @@
           </div>
           <div class="card__table-body card__table-typo">
             <div class="card__price-box">
-              <!-- <p class="card__price-only">Only</p>
-                             <p class="card__price-value">$297</p> -->
               <div class="card__details">
                 <app-assets-table
                   [accountsDataInput]="firm.accounts"
                 ></app-assets-table>
               </div>
             </div>
-            <!-- <a href="#" class="btn btn--white">Book now!</a> -->
           </div>
         </div>
       </div>
@@ -169,7 +164,6 @@
       </div>
     </div>
   </section>
-  <!-- </div> -->
 </main>
 <footer class="footer">
   <p class="footer">Created by Rivercybe Jan 2025</p>

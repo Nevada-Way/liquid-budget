@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Account, AnnualBudget, Firm } from '../interfaces/finance.model';
+import { Account, AnnualBudgetPlan, Firm } from '../interfaces/finance.model';
 
 @Injectable({
   providedIn: 'root',
@@ -278,8 +278,8 @@ export class HardcodedDataService {
    *                           the remainder from the total assets.
    *                           Values are in percentage from total value of the assets.
    */
-  getAllBudgets(): AnnualBudget[] {
-    const allBudgets: AnnualBudget[] = [
+  getAllBudgets(): AnnualBudgetPlan[] {
+    const allBudgets: AnnualBudgetPlan[] = [
       {
         year: 2025,
         percentBudget: 6.2,

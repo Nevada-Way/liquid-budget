@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { AnnualBudget, Firm } from '../interfaces/finance.model';
+import { AnnualBudgetPlan, Firm } from '../interfaces/finance.model';
 import { FinancialService } from '../services/financial.service';
 import { AssetsTableComponent } from '../assets-table/assets-table.component';
 import { ChartComponent } from '../chart/chart.component';
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
 
   charts: any[] = []; // Array to store charts
 
-  annualBudgets: AnnualBudget[] = [];
+  annualBudgets: AnnualBudgetPlan[] = [];
 
   constructor(
     public financialService: FinancialService,
@@ -51,100 +51,55 @@ export class HomeComponent implements OnInit {
       const generatedFirms: Firm[] = this.financialService.generateFirms();
       // console.log('Firms fetched:', generatedFirms);
 
+      // //////////////////////////////////
+      // // Recalculating the firms & annual budgets
+      // //////////////////////////////////
       this.recalcFirmsAndAnnualBudget(
         generatedFirms,
         this.signalTotalFirmBalance()
       );
-      // this.recalcFirms(generatedFirms, this.signalTotalFirmBalance());
 
-      // //////////////////////////////////
-      // // Recalculating the annual budgets
-      // //////////////////////////////////
-
-      // this.annualBudgets = this.recalcAnnualBudget(
-      //   this.signalTotalFirmBalance()
-      // );
-
-      console.log('annualBudgets = ', this.annualBudgets);
+      //console.log('annualBudgets = ', this.annualBudgets);
     } catch (error) {
-      console.error('Error fetching firms:', error);
+      console.error('Error recalculating the firms & annual budgets :', error);
     }
   }
 
+  /**
+   * Function : recalcFirmsAndAnnualBudget()
+   *   (1) What it does
+   *         - Calculates real values for both the Firm list and the AnnualBudgetPlan list.
+   *   (2) Why we need it
+   *         - This function just wraps two other functions, the reason it exists is that because :
+   *           (1) We need to call both functions in more than one place its easier when its wrapped as one.
+   *           (2) We need to set the output of the functions in this class's properties :
+   *               this.firms = Holds the list of firms to be displayed with the real values
+   *               this.annualBudgets = Holds the budget plan to be displayed with the real values
+   *   (3) When to call it
+   *         - Whenever we need to get an updated firm list and budget plan with real values (not %).
+   *         - This happens on initial page open and when changing the value in the input box
+   *         - of the total value of assets from all firms, updating the value of signalTotalFirmBalance().
+
+   *   (4) How it works in general / the main mechanisem
+   *           We simply call the two functions from this one.
+   *
+   * @param listOfFirms
+   * @param totalFirmsBalance
+   */
   recalcFirmsAndAnnualBudget(listOfFirms: Firm[], totalFirmsBalance: number) {
     //////////////////////////////////
     // Recalculating the equity value for each firm and each account in each firm
     //////////////////////////////////
-    this.firms = this.recalcFirms(listOfFirms, totalFirmsBalance);
+    this.firms = this.financialService.convertFirmsToRealValues(
+      listOfFirms,
+      totalFirmsBalance
+    );
 
     //////////////////////////////////
     // Recalculating the annual budgets
     //////////////////////////////////
 
-    this.annualBudgets = this.recalcAnnualBudget(totalFirmsBalance);
-  }
-
-  /**
-   * Function : generateFirms()
-   *   (1) What it does
-   *         - Reads the raw hardcoded data and organizes it into array of Firm objects
-   *   (2) Why we need it
-   *         - The hardcode data is organized into an array of firms metadata and another
-   *           array of accounts from the different firms.
-   *         - What we need is for each firm a list of its accounts, so this function does that.
-   *   (3) When to call it
-   *         - Whenever we need to get the data for the firms.
-   *         - This happens on initial page open and when changing the value in the input box
-   *         - of the total value of assets from all firms, updating the value of signalTotalFirmBalance()
-   *   (4) How it works in general / the main mechanisem
-   *         - For each firm i create a Firm object, then those objects are arranged in an array and returned.
-   *         - I need to manually update the account id in each Firm object so that it matches the accounts in
-   *           file hardcoded-data.service.ts
-   *
-   * @param inpuGeneratedFirms
-   * @param totalFirmBalance
-   */
-  recalcFirms(inpuGeneratedFirms: Firm[], totalFirmBalance: number): Firm[] {
-    const resultUpdatedFirms = this.financialService.convertDataToActualValues(
-      inpuGeneratedFirms,
-      totalFirmBalance
-    );
-
-    return resultUpdatedFirms;
-  }
-
-  /**
-   *
-   */
-  recalcAnnualBudget(totalBudget: number): AnnualBudget[] {
-    //Loading the hardcoded budget plan (value in %) into budgetsList
-    const budgetsList: AnnualBudget[] =
-      this.hardcodedDataService.getAllBudgets();
-    //console.log(`Budgets list length : ${budgetsList.length}`);
-    ///////////////////////////////
-
-    // Into the result lilst we calculate the real world numbers
-    // by multiplying the % with the total equity of all firms (the function's input parameter)
-    const resultAnnualBudget: AnnualBudget[] = budgetsList.map(
-      (budget, index) => {
-        const year = budget.year;
-        const percentBudget =
-          this.helperService.roundUpToNearestThousand(
-            (budget.percentBudget * totalBudget) / 100
-          ) / 1000;
-        const percentRemaining =
-          this.helperService.roundUpToNearestThousand(
-            (budget.percentRemaining * totalBudget) / 100
-          ) / 1000;
-
-        return {
-          year,
-          percentBudget,
-          percentRemaining,
-        };
-      }
-    );
-
-    return resultAnnualBudget;
-  } //end func recalcAnnualBudget
+    this.annualBudgets =
+      this.financialService.recalcAnnualBudgetPlan(totalFirmsBalance);
+  } // recalcFirmsAndAnnualBudget()
 }

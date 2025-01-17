@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Account, Firm, PseudoAccount } from '../interfaces/finance.model';
+import { Account, Firm, AnnualBudgetPlan } from '../interfaces/finance.model';
 import { HardcodedDataService } from './hardcoded-data.service';
 import { HelperService } from './helper.service';
 
@@ -99,11 +99,7 @@ export class FinancialService {
 
     //Populat the firm's accounts property with its correct accounts (using list of account ids)
     const accounts: Account[] = this.fetchAccountsByIds(accountIds);
-    // console.log('Mason: getFirmWithAccounts.accountIds =', accountIds);
-    // console.log(
-    //   'Mason: getFirmWithAccounts.fetchAccountsByIds.accounts =',
-    //   accounts
-    // );
+
     // Filter accounts to only include those with matching IDs
     const filteredAccounts = accounts.filter((account) =>
       accountIds.includes(account.id)
@@ -116,7 +112,7 @@ export class FinancialService {
     };
 
     return result;
-  }
+  } // end getFirmWithAccounts
 
   fetchFirmById(firmId: string): Firm {
     const emptyFirm: Firm = {
@@ -137,7 +133,7 @@ export class FinancialService {
     } else {
       return emptyFirm;
     }
-  }
+  } // end fetchFirmById
 
   fetchAccountsByIds(accountIds: string[]): Account[] {
     const allAccounts: Account[] = this.hardcodedDataService.getAllAccounts();
@@ -146,20 +142,60 @@ export class FinancialService {
     allAccounts.filter((account) => accountIds.includes(account.id));
 
     return allAccounts;
-  }
+  } // end fetchAccountsByIds
 
-  convertDataToActualValues(
-    originalFirms: Firm[],
-    totalFirmsValue: number
+  /**
+   * Function : convertFirmsToRealValues()
+   *   (1) What it does
+   *         - Creates an array of Firm objects where the values of the equity are in real values and not %.
+   *           FYI : The Firm object has two properties that hold a real (not %) value, one is the firm total
+   *                 and the other is the total in each of the firm's account ( each firm has a list of accounts).
+   *           The properties of a firm object that need real values are:
+   *            (1) Firm.actualValueFirmTotal = Holds the real value of all the equity in the firm
+   *            (2) Firm.account.actualValueAccountTotal = The real value of the equity of each account
+   *           FYI : By default the hardcoded vauesfor these properties is 0.
+   *
+   *   (2) Why we need it
+   *         - The hardcoded Firm equity values are in % and the real values are 0.
+   *         - So this function converts them to real values based on the input parameters
+   *            (1) originalFirms = An array of the firms with their % values
+   *            (2) totalFirmsValue = The real value of equity in all the firms (sum of all firm total)
+   *
+   *   (3) When to call it
+   *         - Whenever we need to get a list of firms with real values , not %.
+   *         - This happens on initial page open and when changing the value in the input box
+   *         - of the total value of assets from all firms, updating the value of signalTotalFirmBalance()
+   *
+   *   (4) How it works in general / the main mechanisem
+   *         - For each Firm object we updated the default 0 value of firm.actualValueFirmTotal
+   *           to a caclulated real value
+   *         - Then in step-2 per firm we update each of its account's default 0 value
+   *           of firm.account.actualValueAccountTotal to a caclulated real value.
+   *
+   * @param inputFirms
+   * @param totalEquityOfAllFirms
+   * @returns actualValueFirms : Firm[]
+   */
+  convertFirmsToRealValues(
+    inputFirms: Firm[],
+    totalEquityOfAllFirms: number
   ): Firm[] {
-    // Mapping actual values of the firms total
-    const actualValueFirms: Firm[] = originalFirms.map((firm) => ({
+    //////////////////////////////////////////////
+    // STEP - 1 : Focus on the Firm objects,
+    //            Converting the default 0 value of firm.actualValueFirmTotal to a caclulated real value
+    //            Mapping actual values of the firms total.
+    //////////////////////////////////////////////
+    const actualValueFirms: Firm[] = inputFirms.map((firm) => ({
       ...firm,
       actualValueFirmTotal:
-        (firm.percentFromTotalFirms / 100) * totalFirmsValue,
+        (firm.percentFromTotalFirms / 100) * totalEquityOfAllFirms,
     }));
 
-    // Mapping the actual values of each account in the firm
+    //////////////////////////////////////////////
+    // STEP - 2 : Focus on the Accounts objects array of each Firm object
+    //            Converting the default 0 value of firm.account.actualValueAccountTotal
+    //            to a caclulated real value.
+    //////////////////////////////////////////////
     actualValueFirms.forEach((firm) => {
       firm.accounts.forEach((account) => {
         account.actualValueAccountTotal =
@@ -168,7 +204,68 @@ export class FinancialService {
       });
     });
     return actualValueFirms;
-  }
+  } // end convertFirmsToRealValues
+
+  /**
+   * Function : recalcAnnualBudgetPlan()
+   *   (1) What it does
+   *         - Calculates real values for 2 of the AnnualBudgetPlan properties.
+   *         FTI : There is a bad practice use of the 2 properties, they have double use
+   *               with different units. Their names are 'percentBudget' & ' percentRemaining'
+   *               By default they have values with % units but after this recalcAnnualBudget()
+   *               their values are real numbers and not %.
+   *        TODO: In future refactor add 2 more properties to the AnnualBudgetPlan object
+   *              that will hold the real values (by default values are 0) so that the values of the
+   *              properties holding the % values are not overwritten.
+   *   (2) Why we need it
+   *         - The hardcoded annual budget plan is in % values, so we need to convert them to 
+   *           real values based on the total budget value.
+   *   (3) When to call it
+   *         - Whenever we need to get an updated budget plan with real values (not %).
+   *         - This happens on initial page open and when changing the value in the input box
+   *         - of the total value of assets from all firms, updating the value of signalTotalFirmBalance().
+
+   *   (4) How it works in general / the main mechanisem
+   *         - First we load the hardcoded budget plan with % values
+   *         - Then we recalc each of the % values to real values by multiplying by the total budget
+   *           We also make the values user freindly by using helperService.roundUpToNearestThousand.
+   *
+   * @param totalBudget
+   * @returns AnnualBudgetPlan[] // This is the recalculated plan with real numbers (not %)
+   */
+  recalcAnnualBudgetPlan(totalBudget: number): AnnualBudgetPlan[] {
+    /////////////////////////////////////
+    // STEP-1 : Loading the hardcoded budget plan, values are in % by default.
+    /////////////////////////////////////
+    const budgetsList: AnnualBudgetPlan[] =
+      this.hardcodedDataService.getAllBudgets();
+
+    /////////////////////////////////////
+    // Step-2 : Into the result lilst we calculate the real values by multiplying
+    //          the % with the total equity of all firms (the function's input parameter)
+    /////////////////////////////////////
+    const resultAnnualBudget: AnnualBudgetPlan[] = budgetsList.map(
+      (budget, index) => {
+        const year = budget.year;
+        const percentBudget =
+          this.helperService.roundUpToNearestThousand(
+            (budget.percentBudget * totalBudget) / 100
+          ) / 1000;
+        const percentRemaining =
+          this.helperService.roundUpToNearestThousand(
+            (budget.percentRemaining * totalBudget) / 100
+          ) / 1000;
+
+        return {
+          year,
+          percentBudget,
+          percentRemaining,
+        };
+      }
+    );
+
+    return resultAnnualBudget;
+  } //end func recalcAnnualBudgetPlan
 
   /**
    * This function is given an array of a firm's accounts and returns then combines accounts
@@ -233,5 +330,5 @@ export class FinancialService {
 
     // console.log('=== Converted RESULT=========\n', myResult);
     return myResult;
-  }
-}
+  } // end agregateAccounts
+} // end FinancialService class
