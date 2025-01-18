@@ -102,8 +102,8 @@
 }
 
 /* ====================================================
-** BREAKPOINT-3 : All screens BELOW 816px
-**  In rem units = 816px / 16px = 51rem 
+** BREAKPOINT-3 : All screens BELOW 800px
+**  In rem units = 800px / 16px = 50rem 
 ** Reasons for this breakpopint (both to fix by root font-size changing):
 ** (1) The font size of the shared-header is too big and collapses to 2 lines.
 **     Needs smaller font.
@@ -111,11 +111,14 @@
 ** (2) The annual-budget table is too narrow croping columns.
 **     Need to widen it to width of its container (like the card container is)
 **
+** (3) The spacing between the 2 dashboard children budget section and firm section is too big
+**     Need to redfine proprtions of grid-template-rows.
+**
 */
 // @media (max-width: 51rem) /* 816px */ {
-@media (max-width: 50rem) /* 816px */ {
+@media (max-width: 50rem) /* 800px */ {
   .dashboard {
-    border: 4px solid rgb(98, 239, 22); //A helper style used to indicate that breakppoint activated
+    //border: 4px solid rgb(98, 239, 22); //A helper style used to indicate that breakppoint activated
     grid-template-rows: 1.8fr 1fr;
   }
 
