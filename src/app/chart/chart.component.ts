@@ -109,8 +109,8 @@ export class ChartComponent {
         // height: '90%',
         // backgroundColor: 'yellow',
       },
-      width: '335', // prev value:  width: '450',
-      height: '200', // prev value: height: '250',
+      width: '300', // prev value:  width: '350',
+      height: '180', // prev value: height: '250',
 
       slices: [
         // If you want to update color values then first update the
