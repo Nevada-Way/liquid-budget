@@ -5,13 +5,13 @@
 // (2) The section that has the list of annual budgets
 
 .dashboard {
-  display: block grid;
+  display: grid;
   background-color: $color-grey-light-1;
   border-radius: 1rem;
 
-  grid-template-rows: 1fr;
+  grid-template-rows: none;
   grid-template-columns: 3fr 1.8fr;
-  overflow: hidden;
+  overflow: auto;
 
   padding: 0.5rem;
   padding-bottom: 4rem;

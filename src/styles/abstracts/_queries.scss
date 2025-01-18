@@ -54,15 +54,15 @@
 */
 
 /* ====================================================
-** BREAKPOINT-1 : All screens BELOW 1232px
-**  In rem units = 1232px / 16px = 77rem 
+** BREAKPOINT-1 : All screens BELOW 1504px
+**  In rem units = 1504px / 16px = 94rem 
 **
 ** Reason for this breakpopint:
 **   The font size in the annual-budget table is too big
 **   causing the column headers to be unreadable.
 **
 */
-@media (max-width: 77rem) /* 1232px */ {
+@media (max-width: 94rem) /* 1504px */ {
   html {
     font-size: 50%; /* 8 px / 16px =  50%*/
     /* This means that 1rem = 8px*/
@@ -77,7 +77,32 @@
 }
 
 /* ====================================================
-** BREAKPOINT-2 : All screens BELOW 816px
+** BREAKPOINT-2 : All screens BELOW 1200px
+**  In rem units = 1200px / 16px = 75rem 
+** Reasons for this breakpopint :
+** (1) The font firm card section wraps down, the rightmost card falls 1 level doen.
+**     We want the cards to stya horizontal, so we change the grid from columns to rows.
+**/
+@media (max-width: 75rem) /* 1200px */ {
+  .dashboard {
+    //border: 4px solid rgb(98, 239, 22); //A helper style used to indicate that breakppoint activated
+
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: none;
+  }
+
+  // Hiding the border left of the budgets section since from this
+  // query and narrower the budget plan is under the firm card section
+  .section-budgets {
+    border-top: 1px solid $color-grey-light-3;
+
+    padding-top: 2rem;
+    border-left: none;
+  }
+}
+
+/* ====================================================
+** BREAKPOINT-3 : All screens BELOW 816px
 **  In rem units = 816px / 16px = 51rem 
 ** Reasons for this breakpopint (both to fix by root font-size changing):
 ** (1) The font size of the shared-header is too big and collapses to 2 lines.
@@ -87,25 +112,13 @@
 **     Need to widen it to width of its container (like the card container is)
 **
 */
-@media (max-width: 51rem) /* 816px */ {
-  // html {
-  //   // Leave the font-size as prev breakpoint
-  //   // font-size: 50%; /* 8 px / 16px =  50%*/ /* This means that 1rem = 8px*/
-  // }
-
-  // header.shared-header.u-margin-bottom-small {
-  //   border: 4px solid rgb(229, 149, 21); //A helper style used to indicate that breakppoint activated
-  // }
-
-  .section-budgets {
-    // border: 4px solid rgb(91, 25, 206); //A helper style used to indicate that breakppoint activated
-    margin: 0 10%;
+// @media (max-width: 51rem) /* 816px */ {
+@media (max-width: 50rem) /* 816px */ {
+  .dashboard {
+    border: 4px solid rgb(98, 239, 22); //A helper style used to indicate that breakppoint activated
+    grid-template-rows: 1.8fr 1fr;
   }
 
-  // .heading-primary--main {
-  //   font-size: 3rem;
-  //   letter-spacing: 1rem;
-  // }
   .heading-primary--main {
     font-size: 3rem;
     letter-spacing: 2rem;
@@ -113,7 +126,7 @@
 }
 
 /* ====================================================
-** BREAKPOINT-3 : All screens BELOW 672px
+** BREAKPOINT-4 : All screens BELOW 672px
 **  In rem units = 672px / 16px = 42rem 
 ** Reasons for this breakpopint (both to fix by root font-size changing):
 ** (1) The font size of the shared-header is too big and collapses to 2 lines.
@@ -128,11 +141,6 @@
 @media (max-width: 42rem) /* 672px */ {
   html {
     font-size: 37.5%; /* 6 px / 16px =  37.5%*/ /* This means that 1rem = 6px*/
-  }
-
-  .section-budgets {
-    // border: 4px solid rgb(223, 117, 133); //A helper style used to indicate that breakppoint activated
-    margin: 0 0;
   }
 
   .heading-primary--main {
@@ -163,7 +171,7 @@
 }
 
 /* ====================================================
-** BREAKPOINT-4 : All screens BELOW 496px
+** BREAKPOINT-5 : All screens BELOW 496px
 **  In rem units = 496px / 16px = 31rem 
 ** Reasons for this breakpopint :
 **
@@ -201,7 +209,7 @@
 
   .section-budgets {
     // border: 4px solid rgb(71, 133, 240); //A helper style used to indicate that breakppoint activated
-    margin: 0 0;
+    // margin: 0 0;
 
     &__header-col {
       // background-color: rgb(247, 244, 150);//A helper style used to indicate that breakppoint activated
