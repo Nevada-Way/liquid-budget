@@ -3,17 +3,91 @@
 //
 
 .section-budgets {
-  background-color: $color-grey-light-1;
-  // border: 2px solid rgb(32, 101, 180);
-  flex: 1;
-  padding-top: 10rem;
+  //border: 8px solid rgb(223, 200, 107);
+  //background-color: $color-grey-light-1;
 
+  //margin: 0 20%;
+  margin: 0 0;
+  border-left: 1px solid $color-grey-light-3;
+  padding-left: 1rem;
+
+  overflow: auto;
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: start;
+    gap: 2rem;
+  }
+
+  &__header-row {
+    background-color: rgba(
+      $color-tertiary-light,
+      0.8
+    ); // $color-tertiary-light: #005cbb;
+
+    grid-column: 1 / -1;
+    justify-self: stretch;
+
+    @include my-font-secondary;
+    word-spacing: 0.8rem;
+
+    color: $color-grey-light-1; //This comes here right after the @unclude because it needs to overide
+    // the color of the "my-font-secondary" variable.
+
+    @include u-display-flex-justify-content-center;
+    // display: flex;
+    // justify-content: center;
+
+    //==== ROUNDED CORNERS
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  &__header-col {
+    //background-color: rgb(175, 234, 47);
+    @include my-font-secondary;
+
+    @include u-display-flex-justify-content-center;
+    // display: flex;
+    // justify-content: center;
+
+    &__1 {
+      background-color: rgba($color-budget-list-column-1, 0.8);
+    }
+    &__2 {
+      background-color: rgba($color-budget-list-column-2, 0.8);
+    }
+    &__3 {
+      background-color: rgba($color-budget-list-column-3, 0.8);
+    }
+  }
+
+  &__col1 {
+    background-color: rgba($color-budget-list-column-1, 0.4);
+    @include my-font-secondary;
+    @include u-display-flex-justify-content-center;
+  }
+
+  &__col2 {
+    background-color: rgba($color-budget-list-column-2, 0.4);
+    @include my-font-secondary;
+    @include u-display-flex-justify-content-center;
+  }
+
+  &__col3 {
+    background-color: rgba($color-budget-list-column-3, 0.4);
+    @include my-font-secondary;
+    @include u-display-flex-justify-content-center;
+  }
+
+  //****** NOT IN USE , RELAVENT ONLY IF WANT TO FORCE SCROLLING
+  //****** I DONT SEE NEED BECAUSE THE PAGE ITSELF SCROLLS AND
   &__scrollable-container {
     // background-color: lightgreen;
     // border-left: 3px solid #c61515;
     border-left: 3px solid $color-primary;
 
-    height: 40%; /* Adjust the height as needed */
+    height: 40vh; /* Adjust the height as needed */
     overflow-y: auto;
     // border: 1px solid #ccc;
     // padding: 10px;
@@ -31,10 +105,6 @@
 
     margin-bottom: 6rem;
   }
-}
-
-.budget-list-column {
-  color: $color-budget-list-column;
 }
 
 .reserve-list-column {

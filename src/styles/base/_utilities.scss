@@ -7,20 +7,38 @@
 // styling hierachy of the specific location we
 // add it to.
 
-.u-center-text {
+@mixin u-display-flex-justify-content-center {
+  border-bottom: solid 0.5px white;
+  // border-bottom-color: rgb(11, 11, 11);
+  display: flex;
+  justify-content: center;
+}
+
+.u-text-align-center {
   text-align: center !important;
 }
 
-.u-left-text {
+.u-text-align-justify {
+  // text-align: justify aligns text to both the left and right edges of its container.
+  // meaning it "spreads" the text using spacing between words so that the text fills the whole line.
   text-align: justify !important;
 }
 
-.u-margin-bottom-small {
-  margin-bottom: 1.5rem !important;
+.u-text-align-right {
+  //background-color: red;
+  //border: solid 2px black;
+  text-align: right !important;
 }
 
-.u-margin-right-small {
-  margin-right: 1.5rem !important;
+.u-flex-child-width-medium {
+  width: 100px;
+  flex: 0 0 100px; /* shorthand for flex-grow, flex-shrink, flex-basis */
+}
+
+/// margin bottom
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important;
 }
 
 .u-margin-bottom-medium {
@@ -29,6 +47,12 @@
 
 .u-margin-bottom-big {
   margin-bottom: 8rem !important;
+}
+
+/// margin right
+
+.u-margin-right-small {
+  margin-right: 1.5rem !important;
 }
 
 .u-margin-right-medium {

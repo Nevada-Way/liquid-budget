@@ -24,10 +24,13 @@ html {
 }
 
 body {
+  // max-height: 80vh;
+
   box-sizing: border-box; /* width height defined will include the padding & border */
   border: none;
+  // border: 10px solid rgb(245, 3, 201);
   //by default the whole webpage has a 3rem padding on all sides
-  padding: 3rem;
+  padding: 1rem;
 }
 
 /////////////////////////////////

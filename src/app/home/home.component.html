@@ -1,12 +1,13 @@
-<!-- (1) The home comp will hold the content of the <body> element
+<!-- (1) The home component will hold the content of the <body> element
      The is the <header> and <main>. There is no <footer>.
       (2) The <main> holds the default <section-firms>
   -->
 
-<header class="shared-header u-margin-bottom-medium">
+<header class="shared-header u-margin-bottom-small">
   <div>
+    <!-- src="./assets/img/logo-lb-gray.png" -->
     <img
-      src="./assets/img/logo-white.png"
+      src="./assets/img/logo-lb-blue.png"
       alt="Logo white"
       class="shared-header__logo-image"
     />
@@ -19,7 +20,7 @@
   </div>
 </header>
 
-<main>
+<main class="dashboard">
   <!-- =================================== -->
   <!-- ==== S E C T I O N - F I R M S  === -->
   <!-- =================================== -->
@@ -29,126 +30,148 @@
   <!-- ++++++++++++++++++++++++++++++++++++++  -->
   <!-- ++++++++++++++++++++++++++++++++++++++  -->
 
-  <div class="dashboard">
-    <section class="section-firms u-padding-vertical-medium">
-      <div class="sub-title u-padding-bottom-medium">
-        <h2 class="heading-secondary font-secondary">Assets:</h2>
+  <section class="section-firms u-padding-vertical-medium">
+    <div class="section-firms__title u-margin-bottom-small">
+      <h2 class="font-secondary">Assets:</h2>
 
-        <input
-          matInput
-          class="input-box-large input-box-round u-margin-right-medium no-arrows"
-          style="no-arrows"
-          type="number"
-          [(ngModel)]="this.signalTotalFirmBalance"
-        />
+      <input
+        matInput
+        class="input-box-large input-box-round u-margin-right-small no-arrows"
+        style="no-arrows"
+        type="number"
+        [(ngModel)]="this.signalTotalFirmBalance"
+        (keyup.enter)="
+          recalcFirmsAndAnnualBudget(
+            this.financialService.generateFirms(),
+            this.signalTotalFirmBalance()
+          )
+        "
+      />
 
-        <!-- mat-raised-button -->
-        <button
-          mat-fab
-          class="btn-calc"
-          style="font-size: 2.5rem !important; font-weight: 600 !important"
-          (click)="recalcAll()"
-        >
-          GO
-        </button>
-      </div>
-      <!-- <div class="uu-center-text"> -->
+      <button
+        mat-fab
+        mat-mini
+        class="btn-calc"
+        (click)="
+          this.recalcFirmsAndAnnualBudget(
+            this.financialService.generateFirms(),
+            this.signalTotalFirmBalance()
+          )
+        "
+      >
+        GO
+      </button>
+    </div>
 
-      <div class="section-firms__container">
-        @for (firm of firms; track firm.id) {
+    <div class="section-firms__card-container">
+      @for (firm of firms; track firm.id) {
 
-        <!-- ====================================================================== -->
-        <!-- ==== C A R D   L O O P  F O R   E A C H   F I R M  O N E   C A R D === -->
-        <!-- ====================================================================== -->
+      <!-- ====================================================================== -->
+      <!-- ==== C A R D   L O O P  F O R   E A C H   F I R M  O N E   C A R D === -->
+      <!-- ====================================================================== -->
 
-        <div class="card section-firms__container_card">
-          <!-- ===================================== -->
-          <!-- ==== C A R D   F R O N T S I D E  === -->
-          <div class="card__side card__side--front">
-            <div class="card__picture card__picture--2">&NonBreakingSpace;</div>
-            <h3 class="card__heading">
-              <h4 class="hrz-pad-2">{{ firm.name }} :</h4>
-              <!-- <span class="card__heading-span card__heading-span--2">
+      <div class="card">
+        <!-- ===================================== -->
+        <!-- ==== C A R D   F R O N T S I D E  === -->
+        <div class="card__side card__side--front">
+          <div class="card__picture card__picture--2">&NonBreakingSpace;</div>
+          <h3 class="card__heading">
+            <h4 class="hrz-pad-1">{{ firm.name }} :</h4>
+            <!-- <span class="card__heading-span card__heading-span--2">
               {{ firm.name }}
             </span> -->
 
-              <h4 class="hrz-pad-2">
-                <!-- <h1 class="card__heading-span card__heading-span--2"> -->
+            <h4 class="hrz-pad-1">
+              <!-- <h1 class="card__heading-span card__heading-span--2"> -->
+              {{
+                this.helperService.roundUpToNearestThousand(
+                  firm.actualValueFirmTotal
+                ) / 1000
+              }}K
+            </h4>
+          </h3>
+          <!-- ====================================================== -->
+          <!-- Displaying the pie chart for accounts inside the firm -->
+          <!-- ====================================================== -->
+          <div class="card__content">
+            <app-chart [firmDataInput]="firm"></app-chart>
+            <!-- <p>{{ firm.name }}</p> -->
+            <!-- <div id="donutchart-{{ firm.id }}"></div> -->
+          </div>
+        </div>
+
+        <!-- ===================================== -->
+        <!-- ==== C A R D   B A C K S I D E  === -->
+        <div class="card__side card__side--back card__side--back--3">
+          <div class="flex-center">
+            <h4>
+              <span class="card__backside-heading">
+                {{ firm.name }}
+              </span>
+              <span class="card__backside-heading">
                 {{
                   this.helperService.roundUpToNearestThousand(
                     firm.actualValueFirmTotal
                   ) / 1000
                 }}K
-              </h4>
-            </h3>
-            <!-- ====================================================== -->
-            <!-- Displaying the pie chart for accounts inside the firm -->
-            <!-- ====================================================== -->
-            <div class="card__content">
-              <app-chart [firmDataInput]="firm"></app-chart>
-              <!-- <p>{{ firm.name }}</p> -->
-              <!-- <div id="donutchart-{{ firm.id }}"></div> -->
-            </div>
+              </span>
+            </h4>
           </div>
-
-          <!-- ===================================== -->
-          <!-- ==== C A R D   B A C K S I D E  === -->
-          <div class="card__side card__side--back card__side--back--3">
-            <div class="flex-center">
-              <h4>
-                <span class="card__backside-heading">
-                  {{ firm.name }}
-                </span>
-                <span class="card__backside-heading">
-                  {{
-                    this.helperService.roundUpToNearestThousand(
-                      firm.actualValueFirmTotal
-                    ) / 1000
-                  }}K
-                </span>
-              </h4>
-            </div>
-            <div class="card__table-body card__table-typo">
-              <div class="card__price-box">
-                <!-- <p class="card__price-only">Only</p>
-                             <p class="card__price-value">$297</p> -->
-                <div class="card__details">
-                  <app-assets-table
-                    [accountsDataInput]="firm.accounts"
-                  ></app-assets-table>
-                </div>
+          <div class="card__table-body card__table-typo">
+            <div class="card__price-box">
+              <div class="card__details">
+                <app-assets-table
+                  [accountsDataInput]="firm.accounts"
+                ></app-assets-table>
               </div>
-              <!-- <a href="#" class="btn btn--white">Book now!</a> -->
             </div>
           </div>
         </div>
-
-        }
       </div>
-    </section>
 
-    <section class="section-budgets">
-      <h2 class="font-secondary u-center-text">Budget</h2>
-      <h3 class="heading-list heading-tertiary">
-        <span>Year </span>
-        <span>Budget</span>
-        <span>Reserve</span>
-      </h3>
-      <mat-list class="section-budgets__scrollable-container">
-        <mat-list-item
-          [class.highlighted-row]="item.year === focusYear"
-          class="section-budgets__scrollable-list-item font-tertiary"
-          *ngFor="let item of annualBudgets"
-        >
-          {{ item.year }} | {{ item.percentBudget }}
-          <span class="budget-list-column">K</span> |
+      }
+    </div>
+  </section>
 
-          <span class="reserve-list-column">
+  <section class="section-budgets">
+    <div class="section-budgets__row section-budgets__header-row">
+      Budget Plan
+    </div>
+
+    <div class="section-budgets__row">
+      <div class="section-budgets__header-col section-budgets__header-col__1">
+        Year
+      </div>
+      <div class="section-budgets__header-col section-budgets__header-col__2">
+        Budget
+      </div>
+      <div class="section-budgets__header-col section-budgets__header-col__3">
+        Reserve
+      </div>
+    </div>
+
+    <!-- The div below is used to wrap all the table rows excluding the column headers -->
+    <!-- That way when scrolling the headers are fixed place and dont disapear off screen -->
+    <!-- I commented out the div because I dont want scroll in this version -->
+    <!--  -->
+    <!-- <div class="section-budgets__scrollable-container"> -->
+    <div>
+      <div class="section-budgets__row" *ngFor="let item of annualBudgets">
+        <div class="section-budgets__col1">{{ item.year }}</div>
+        <div class="section-budgets__col2">
+          <div class="u-text-align-right u-flex-child-width-medium">
+            {{ item.percentBudget }}
+          </div>
+        </div>
+        <div class="section-budgets__col3">
+          <div class="u-text-align-right u-flex-child-width-medium">
             {{ item.percentRemaining }}
-            <span class="reserve-list-column">K</span>
-          </span>
-        </mat-list-item>
-      </mat-list>
-    </section>
-  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+<footer class="footer">
+  <p class="footer">Created by Rivercybe Jan 2025</p>
+</footer>

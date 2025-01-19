@@ -24,12 +24,12 @@ body {
   font-size: 4rem;
   letter-spacing: 2.5rem;
 
-  animation: moveFromLeft 1000ms ease-out 400ms;
+  // animation: moveFromLeft 1000ms ease-out 400ms;
 
-  /* The 'backface-visibility' property will hide the backside of the element */
-  /* In some browsers the animation may flcker because the back side is visible */
-  /* I did not see a need for this in chrome but as good practice I use it */
-  backface-visibility: hidden;
+  // /* The 'backface-visibility' property will hide the backside of the element */
+  // /* In some browsers the animation may flcker because the back side is visible */
+  // /* I did not see a need for this in chrome but as good practice I use it */
+  // backface-visibility: hidden;
 }
 
 .heading-primary--sub {
@@ -43,12 +43,26 @@ body {
   backface-visibility: hidden;
 }
 
-.font-secondary {
+@mixin my-font-secondary {
   text-transform: uppercase !important;
-  font-size: 3rem !important;
   font-weight: 700 !important;
+  font-size: 3rem !important;
   letter-spacing: 0.8rem !important;
   color: $color-primary-dark;
+}
+
+.font-secondary {
+  @include my-font-secondary;
+  letter-spacing: 0.1rem !important;
+}
+
+@mixin my-font-footer {
+  // text-transform: uppercase !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  letter-spacing: 0.2rem !important;
+  word-spacing: 0.4rem;
+  color: $color-grey-dark-more;
 }
 
 .font-tertiary {
@@ -66,32 +80,32 @@ body {
   color: $color-primary-dark;
 }
 
-.heading-secondary {
-  // The style rules of font-secondary are already inside
-  // the heading-secondary class, now we just add more rules to
-  // the heading-secondary that are specific for it.
+// .heading-secondary {
+//   // The style rules of font-secondary are already inside
+//   // the heading-secondary class, now we just add more rules to
+//   // the heading-secondary that are specific for it.
 
-  //---------------------------------------
-  // Start of rules for cliping text so that
-  // it is filled with background-image
-  background-image: linear-gradient(
-    to right,
-    $color-primary,
-    $color-primary-dark
-  );
-  background-clip: text;
-  color: transparent;
-  // End of rules for cliping text with background-image
-  //---------------------------------------
+//   //---------------------------------------
+//   // Start of rules for cliping text so that
+//   // it is filled with background-image
+//   background-image: linear-gradient(
+//     to right,
+//     $color-primary,
+//     $color-primary-dark
+//   );
+//   background-clip: text;
+//   color: transparent;
+//   // End of rules for cliping text with background-image
+//   //---------------------------------------
 
-  display: inline-block;
-  transition: all 0.2s;
+//   display: inline-block;
+//   transition: all 0.2s;
 
-  // &:hover {
-  //   transform: skewX(3deg) skewY(5deg) scale(1.1);
-  //   text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
-  // }
-}
+//   // &:hover {
+//   //   transform: skewX(3deg) skewY(5deg) scale(1.1);
+//   //   text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
+//   // }
+// }
 
 .heading-tertiary {
   text-transform: uppercase;
@@ -145,6 +159,12 @@ body {
   // padding: 0 4rem;
 }
 
+.hrz-pad-0 {
+  padding: 0;
+}
+.hrz-pad-1 {
+  padding: 1;
+}
 .hrz-pad-2 {
   padding: 0 2rem;
 }

@@ -1,0 +1,233 @@
+/* 
+**
+** IMPORTANT:
+** To support mobile decices add inside the root <html> tag this <meta> viewport
+**    <meta name="viewport" content="width=device-width initial-scale=1">
+**
+** BEST PRACTICES:
+** (1) If designed the website for mobile first then use minimum widths 
+**     in media query, i.e. @media (min-width: 84v) { ... }
+**     otherwise use max-width.
+**
+** (2) In @media query this is always true : 
+**       1 rem = 1em = 16px (or whatever the defaulty browser font size).
+**     So what we set in the root element (the html { }) is ignored,
+**     we set the font-size there to be 62.5% ( = 10px) but in @media query that
+**     setting is ignored and 1rem = 16px (or whatever the user set
+**     in browser settings for Medium font size)
+**  
+** (3) The most best practice and recommended units for media query are 'rem' units.
+**     How to use rem units in media query:
+**       (a) Decide on target dimension, i.e. width of 1140px.
+**       (b) Use this formula:  rem value = pixel value / root font size
+**           If we set font-size: 16px in our root html then formula is :
+**           rem-value = screen-value-px / 16px
+**           Example: Screen width = 1140px then rem = 1140 / 16 = 71.25rem 
+**     
+** (4) DO-NOT use px units in media queries because of because of
+**     Inconsistent Behavior Across Devices.
+**
+** (5) max vs min , what to use :
+**     (a) For readability of media query think of alias for 'max' as 'below'
+**         and for min think of the alias 'above'.
+**     (b) Example:  @media (max-width: 84em) { ... } is read as 
+**                   @media (when below-width 84em) { do this ... }
+**
+** (5) ORDER OF @media queries in file:
+**     If using max-width/max-height then the order of the @media 
+**     queries needs to be in descending order (largest to smallest).
+**     This is because as we go to lower screen sizes we will need more specific 
+**     styling that we dont want to appear in the larger screens.
+*/
+
+/*********************************/
+/*******   Breakpoints ***********/
+/*********************************/
+
+/*********************************
+** Default Screen Sizes : 
+** This is the default screen width without need for a media query.
+**   Screen width = 1140px 
+**   Any screen size above 1140 gets no change in the css
+**   So our first breakpoint is anything below 1140 (max-width alias "below width")
+**   
+*/
+
+/* ====================================================
+** BREAKPOINT-1 : All screens BELOW 1504px
+**  In rem units = 1504px / 16px = 94rem 
+**
+** Reason for this breakpopint:
+**   The font size in the annual-budget table is too big
+**   causing the column headers to be unreadable.
+**
+*/
+@media (max-width: 94rem) /* 1504px */ {
+  html {
+    font-size: 50%; /* 8 px / 16px =  50%*/
+    /* This means that 1rem = 8px*/
+  }
+
+  header.shared-header.u-margin-bottom-small {
+    //border: 4px solid rgb(98, 239, 22); //A helper style used to indicate that breakppoint activated
+  }
+
+  // More TODO
+  // The legend of the chart is cropped by card width, need fix.
+}
+
+/* ====================================================
+** BREAKPOINT-2 : All screens BELOW 1200px
+**  In rem units = 1200px / 16px = 75rem 
+** Reasons for this breakpopint :
+** (1) The font firm card section wraps down, the rightmost card falls 1 level doen.
+**     We want the cards to stya horizontal, so we change the grid from columns to rows.
+**/
+@media (max-width: 75rem) /* 1200px */ {
+  .dashboard {
+    //border: 4px solid rgb(98, 239, 22); //A helper style used to indicate that breakppoint activated
+
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: none;
+  }
+
+  // Hiding the border left of the budgets section since from this
+  // query and narrower the budget plan is under the firm card section
+  .section-budgets {
+    border-top: 1px solid $color-grey-light-3;
+
+    padding-top: 2rem;
+    border-left: none;
+  }
+}
+
+/* ====================================================
+** BREAKPOINT-3 : All screens BELOW 800px
+**  In rem units = 800px / 16px = 50rem 
+** Reasons for this breakpopint (both to fix by root font-size changing):
+** (1) The font size of the shared-header is too big and collapses to 2 lines.
+**     Needs smaller font.
+**
+** (2) The annual-budget table is too narrow croping columns.
+**     Need to widen it to width of its container (like the card container is)
+**
+** (3) The spacing between the 2 dashboard children budget section and firm section is too big
+**     Need to redfine proprtions of grid-template-rows.
+**
+*/
+// @media (max-width: 51rem) /* 816px */ {
+@media (max-width: 50rem) /* 800px */ {
+  .dashboard {
+    //border: 4px solid rgb(98, 239, 22); //A helper style used to indicate that breakppoint activated
+    grid-template-rows: 1.8fr 1fr;
+  }
+
+  .heading-primary--main {
+    font-size: 3rem;
+    letter-spacing: 2rem;
+  }
+}
+
+/* ====================================================
+** BREAKPOINT-4 : All screens BELOW 672px
+**  In rem units = 672px / 16px = 42rem 
+** Reasons for this breakpopint (both to fix by root font-size changing):
+** (1) The font size of the shared-header is too big and collapses to 2 lines.
+**     Needs even smaller font.
+**
+** (2) In the assets input bar, the button is hidden and cropped
+**     Need to change the display spacing & logic to flex or not allow overflow and hiding
+**
+** (3) The legend of the chart overflows in the bottom & hidden, need to
+**     make the card longer.
+*/
+@media (max-width: 42rem) /* 672px */ {
+  html {
+    font-size: 37.5%; /* 6 px / 16px =  37.5%*/ /* This means that 1rem = 6px*/
+  }
+
+  .heading-primary--main {
+    // border: 4px solid rgb(94, 250, 59); //A helper style used to indicate that breakppoint activated
+    font-size: 3rem;
+    letter-spacing: 1.58rem;
+  }
+
+  //.......................
+  //  section-firms __title
+  .section-firms {
+    &__title {
+      // border: 4px solid rgb(72, 182, 216); //A helper style used to indicate that breakppoint activated
+      padding: 1rem 1rem;
+    }
+  }
+
+  //.......................
+  //  card__side
+  // Making the card longer so that the legend fits into the card border
+
+  .card {
+    &__side {
+      width: 95%;
+      height: 100%;
+    }
+  }
+}
+
+/* ====================================================
+** BREAKPOINT-5 : All screens BELOW 496px
+**  In rem units = 496px / 16px = 31rem 
+** Reasons for this breakpopint :
+**
+** (1) The input row width is too large 
+** (2) The GO button overflows to the right.
+**
+*/
+@media (max-width: 31rem) /* 496px */ {
+  // .section-firms {
+  //   &__title {
+  //     /* section-firms__title */
+  //     border: 4px solid rgb(66, 99, 232);
+  //   }
+  // }
+
+  .input-box-large {
+    max-width: 17rem;
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .shared-header {
+    padding: 0 2rem;
+
+    &__logo-image {
+      height: 3rem;
+    }
+  }
+  .heading-primary--main {
+    // border: 4px solid rgb(94, 250, 59); //A helper style used to indicate that breakppoint activated
+    font-size: 2.5rem;
+    letter-spacing: 1.2rem;
+  }
+
+  .section-budgets {
+    // border: 4px solid rgb(71, 133, 240); //A helper style used to indicate that breakppoint activated
+    // margin: 0 0;
+
+    &__header-col {
+      // background-color: rgb(247, 244, 150);//A helper style used to indicate that breakppoint activated
+      font-size: 2.8rem !important;
+      letter-spacing: 0.4rem !important;
+      // display: flex;
+      // justify-content: center;
+    }
+  }
+}
+
+/* --- 0x LAYOUT SPACING SYSTEM (px)
+  2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+............................................................
+--- 01 TYPOGRAPHY SYSTEM
+- Font size (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98 */

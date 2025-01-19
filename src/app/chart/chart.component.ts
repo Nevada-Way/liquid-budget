@@ -92,14 +92,14 @@ export class ChartComponent {
     var options = {
       backgroundColor: 'transparent', //'white',
       title: '',
-      pieHole: 0.4,
+      pieHole: 0.4, // last balue was 0.4
       enableInteractivity: false,
-      pieSliceText: 'value', // other values : 'none', 'label' , 'percentage' (default)
-      pieSliceTextStyle: { color: 'white', fontSize: 15 },
+      pieSliceText: 'none', // optional values : 'value' , 'none', 'label' , 'percentage' (default)
+      pieSliceTextStyle: { color: 'white', fontSize: 14 },
       // legend: { position: 'none' },
       legend: {
         position: 'bottom', // Possible values: 'labeled'
-        textStyle: { color: 'black', fontSize: 18 },
+        textStyle: { color: 'black', fontSize: 14 },
       },
 
       chartArea: {
@@ -109,14 +109,17 @@ export class ChartComponent {
         // height: '90%',
         // backgroundColor: 'yellow',
       },
-      width: '450',
-      height: '250',
+      width: '330', // prev value:  width: '350',
+      height: '180', // prev value: height: '250',
 
       slices: [
-        { color: 'black' },
-        { color: '#497542' },
-        { color: 'brown' },
-        { color: 'blue' },
+        // If you want to update color values then first update the
+        // commented color defenitions here and in file \src\styles\abstracts\_variables.scss
+        { color: '#60099e' }, // $chart-color-cash: #60099e;
+        { color: '#005cbb' }, //$chart-color-bonds: #005cbb;
+
+        { color: '#c78f0c' }, // $chart-color-shares: #c78f0c;
+        { color: 'blue' }, // $chart-color-other: 'blue';
       ],
     };
 
@@ -126,11 +129,3 @@ export class ChartComponent {
     chartDiv.draw(data, options);
   }
 }
-
-// ===========================================================================
-// ===========================================================================
-// ===========================================================================
-//               T R A S H B I N      /    R E F E R E N C E
-// ===========================================================================
-// ===========================================================================
-// ===========================================================================

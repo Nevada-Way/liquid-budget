@@ -1,0 +1,11 @@
+// This style is for a wrapper for the whole page
+// It should encompass the header, dashboard (whiuch is the <main> )
+// and the footer.
+
+.whole-page {
+  display: flex;
+  flex-direction: column;
+  //border: 8px solid rgb(245, 3, 201);
+  // max-height: 80vh;
+  padding: 1rem;
+}

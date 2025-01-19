@@ -7,6 +7,11 @@
 // $color-primary: #55c57a;
 // $color-primary-dark: #28b485;
 
+// $chart-color-cash: #60099e;
+//$chart-color-bonds: #005cbb;
+// $chart-color-shares: #c78f0c;
+// $chart-color-other: 'blue';
+
 $color-primary-light: #548ee6;
 $color-primary: #0b5edb;
 $color-primary-dark: #062f6e;
@@ -14,19 +19,25 @@ $color-primary-dark: #062f6e;
 $color-secondary-light: #ffb900;
 $color-secondary-dark: #ff7730;
 
-$color-tertiary-light: #2998ff;
+$color-tertiary-light: #005cbb;
 $color-tertiary-dark: #5643fa;
 
 $color-grey-light-1: #f7f7f7;
 $color-grey-light-2: #eee;
+$color-grey-light-3: #ccc;
 $color-grey-dark: #777;
-$color-grey-dark-2: #999;
-$color-grey-dark-3: #333;
+$color-grey-dark-less: #999;
+$color-grey-dark-more: #555;
 
 $color-white: #fff;
 $color-black: #000;
 
-$color-budget-list-column: green;
+// BUDGET TABLE COLORS
+//$color-budget-list-column-1: rgb(245, 145, 223); //rgb(238, 167, 144);
+$color-budget-list-column-1: rgb(160, 190, 255); //rgb(238, 167, 144);
+$color-budget-list-column-2: rgb(152, 225, 140);
+$color-budget-list-column-3: rgb(167, 167, 167);
+
 $color-reserve-list-column: rgb(226, 112, 201);
 
 // TYPOGRAPHY FONT SIZES
@@ -34,7 +45,7 @@ $font-size-default: 2.4rem;
 $font-size-small: 1.8rem;
 
 // Shapes
-$shape-border-radius: 3px;
+$shape-border-radius: 2rem;
 
 // Shadows
 // box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
