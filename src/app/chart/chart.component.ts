@@ -94,7 +94,7 @@ export class ChartComponent {
       title: '',
       pieHole: 0.4, // last balue was 0.4
       enableInteractivity: false,
-      pieSliceText: 'value', // other values : 'none', 'label' , 'percentage' (default)
+      pieSliceText: 'none', // optional values : 'value' , 'none', 'label' , 'percentage' (default)
       pieSliceTextStyle: { color: 'white', fontSize: 14 },
       // legend: { position: 'none' },
       legend: {
