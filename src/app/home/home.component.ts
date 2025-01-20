@@ -28,7 +28,7 @@ import { HardcodedDataService } from '../services/hardcoded-data.service';
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
-  signalTotalFirmBalance: WritableSignal<number> = signal(650000);
+  signalTotalFirmBalance: WritableSignal<number> = signal(250000);
 
   firms: Firm[] = [];
 
