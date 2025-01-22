@@ -13,19 +13,18 @@ import { MatListModule } from '@angular/material/list';
 import { HardcodedDataService } from '../services/hardcoded-data.service';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    AssetsTableComponent,
-    ChartComponent,
-    CommonModule,
-    FormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatListModule,
-  ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+    selector: 'app-home',
+    imports: [
+        AssetsTableComponent,
+        ChartComponent,
+        CommonModule,
+        FormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatListModule,
+    ],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   signalTotalFirmBalance: WritableSignal<number> = signal(650000);

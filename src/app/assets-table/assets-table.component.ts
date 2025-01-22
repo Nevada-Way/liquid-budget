@@ -5,11 +5,10 @@ import { Account } from '../interfaces/finance.model';
 import { HelperService } from '../services/helper.service';
 
 @Component({
-  selector: 'app-assets-table',
-  standalone: true,
-  imports: [MatTableModule, CommonModule],
-  templateUrl: './assets-table.component.html',
-  styleUrl: './assets-table.component.css',
+    selector: 'app-assets-table',
+    imports: [MatTableModule, CommonModule],
+    templateUrl: './assets-table.component.html',
+    styleUrl: './assets-table.component.css'
 })
 export class AssetsTableComponent {
   // @Input() firmsDataInput: Firm[] = [];
