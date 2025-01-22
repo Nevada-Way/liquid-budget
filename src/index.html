@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>Liquid Budget &mdash; Living off asset drawdown</title>
+
+    <!-- For PWA capabilitywe here linkng to the manifest file -->
+    <link rel="manifest" href="manifest.webmanifest" />
 
     <!-- The <base href="/" /> tag in an HTML file specifies the 
      base URL for relative URLs within the document. 
@@ -10,11 +13,11 @@
      interpreted relative to this base URL.
      In this case, setting the base URL to / means that all relative URLs 
      will be interpreted relative to the root of the current domain. -->
-    <base href="/"/>
+    <base href="/" />
 
     <!-- This viewport meta setting is crucial for responsive design -->
     <!-- without it the @media queries for screen reactivness on mobile devices wont work -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- 
     (1) rel="icon": This attribute indicates that the linked resource is a favicon.
@@ -28,7 +31,7 @@
 
     <!-- <link rel="icon" type="image/x-icon" href="src/favicon.ico" /> -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="./src/favicon.ico" /> -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
     <!--
     Discussion about the favicon alternative code :
@@ -43,22 +46,34 @@
         browser the same thing as rel="shortcut icon".
     -->
 
-    <meta name="description" content="This is the Liquid Budget website, View your Liquidable assets and annual drawdown"/>
+    <meta
+      name="description"
+      content="This is the Liquid Budget website, View your Liquidable assets and annual drawdown"
+    />
 
     <!-- ==================================  -->
     <!-- =======    Linking fonts    ======  -->
     <!-- ==================================  -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <!-- <link
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:wght@300..900&display=swap"
       rel="stylesheet"
     /> -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
+    />
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <!-- ==================================  -->
     <!-- =======    Linking icons    ======-->
@@ -80,13 +95,17 @@
 
     <!-- This line loads the loader itself, You can only load the loader one time no matter how many charts you plan to draw. After loading the loader, you can call the google.charts.load function one or more times to load packages for particular chart types. -->
     <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
-</head>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#1976d2" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#1976d2" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#1976d2" />
+  </head>
   <body>
     <app-root></app-root>
-    <noscript>Please enable JavaScript to continue using this application.</noscript>
-</body>
+    <noscript
+      >Please enable JavaScript to continue using this application.</noscript
+    >
+  </body>
 </html>
