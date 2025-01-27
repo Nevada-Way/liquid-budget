@@ -14,16 +14,18 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'workspace-1' title`, () => {
+  it(`should have the 'liquid-bdgt' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('workspace-1');
+    expect(app.title).toEqual('liquid-bdgt');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, workspace-1');
+    expect(compiled.querySelector('h1')?.textContent).toContain(
+      'Hello, liquid-bdgt'
+    );
   });
 });
