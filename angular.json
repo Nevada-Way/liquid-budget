@@ -20,9 +20,14 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
+              "src/manifest.webmanifest",
               {
                 "glob": "**/*",
                 "input": "src/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "public"
               }
             ],
             "stylePreprocessorOptions": {
@@ -83,6 +88,10 @@
               {
                 "glob": "**/*",
                 "input": "src/assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "public"
               }
             ],
             "styles": [
